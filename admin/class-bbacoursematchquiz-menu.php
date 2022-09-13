@@ -57,7 +57,7 @@ class BBACourseMatchMenu {
       'manage_options',
        'wp-get-ratings',
         [$this, 'wp_get_bba_quiz_match_rendered'],
-        'dashicons-format-quote'
+        'dashicons-welcome-write-blog'
     
       );
     

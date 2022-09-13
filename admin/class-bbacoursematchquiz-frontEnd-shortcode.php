@@ -30,11 +30,78 @@
 
 class BBACourseMatchFrontEndShortCode {
 
-    // private static $var = 'foo';
-
     static function frontEndShortCode()
     {
-        return "This is The BBA Coure Code !";
+        return self::QuizMatchPages();
     }
+
+   /**
+    * @since v1.0 | 09142022
+    * Defined: QuizMatchPages method for processing pages
+    */
+    public static function QuizMatchPages() {
+       
+        $current_pages = '';
+           
+        if( isset($_REQUEST['bba-qm-pg']) == true )         { $current_pages  = self::QuizMatchPageBegin();
+        } else if( isset($_REQUEST['bba-qm-pg1']) == true ) { $current_pages .= self::QuizMatchPageOne();
+        } else if( isset($_REQUEST['bba-qm-pg2']) == true ) { $current_pages .= self::QuizMatchPageTwo();
+        } else if( isset($_REQUEST['bba-qm-pg3']) == true ) { $current_pages .= self::QuizMatchPageThree();
+        } else if( isset($_REQUEST['bba-qm-pg4']) == true ) { $current_pages .= self::QuizMatchPageFour();
+        }
+
+        return $current_pages;
+    }
+
+   /**
+    * @since v1.0 | 09142022
+    * Defined: Page begin Quiz Match for front end
+    */
+    public static function QuizMatchPageBegin() {
+
+        return 'Begin';
+
+    }
+
+   /**
+    * @since v1.0 | 09142022
+    * Defined: Page one for Quiz Match for front end
+    */
+    public static function QuizMatchPageOne() {
+
+        return 'One';
+
+    }
+
+   /**
+    * @since v1.0 | 09142022
+    * Defined: Page two for Quiz Match for front end
+    */
+    public static function QuizMatchPageTwo() {
+
+        return 'Two';
+
+    }
+
+   /**
+    * @since v1.0 | 09142022
+    * Defined: Page three for Quiz Match for front end
+    */
+    public static function QuizMatchPageThree() {
+
+        return 'Three';
+
+    }
+
+   /**
+    * @since v1.0 | 09142022
+    * Defined: Page Four for Quiz Match for front end
+    */
+    public static function QuizMatchPageFour() {
+
+        return 'Four';
+
+    }
+
 
 }
