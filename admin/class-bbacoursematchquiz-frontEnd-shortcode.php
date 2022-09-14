@@ -43,14 +43,17 @@ class BBACourseMatchFrontEndShortCode {
        
         $current_pages = '';
            
-        if( isset($_REQUEST['bba-qm-pg']) == true )         { $current_pages  = self::QuizMatchPageBegin();
+        if( isset($_REQUEST['bba-qm-pg']) == true )         
+                                                            { $current_pages  = self::QuizMatchPageBegin();
         } else if( isset($_REQUEST['bba-qm-pg1']) == true ) { $current_pages .= self::QuizMatchPageOne();
         } else if( isset($_REQUEST['bba-qm-pg2']) == true ) { $current_pages .= self::QuizMatchPageTwo();
         } else if( isset($_REQUEST['bba-qm-pg3']) == true ) { $current_pages .= self::QuizMatchPageThree();
         } else if( isset($_REQUEST['bba-qm-pg4']) == true ) { $current_pages .= self::QuizMatchPageFour();
-        }
+
+        } else { return ('BBA Quiz Match : 404 Page Not found!'); }
 
         return $current_pages;
+
     }
 
    /**
@@ -59,7 +62,11 @@ class BBACourseMatchFrontEndShortCode {
     */
     public static function QuizMatchPageBegin() {
 
-        return 'Begin';
+        return 'Begin' ;
+
+        // session_start();
+
+
 
     }
 
@@ -100,6 +107,13 @@ class BBACourseMatchFrontEndShortCode {
     public static function QuizMatchPageFour() {
 
         return 'Four';
+
+    }
+
+    public static function redirectTo($url = '') {
+       
+        return "<script> location.reload(); </script>" . header("$url");
+        die();
 
     }
 

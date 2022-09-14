@@ -20,7 +20,7 @@
  * @subpackage Bbacoursematchquiz/includes
  * @author     nielfernandez <renniel.fernandez@outgive.ca>
  */
-class Bbacoursematchquiz_Activator {
+class UserSessionBBAcoursematchquiz {
 
 	/**
 	 * Short Description. (use period)
@@ -34,7 +34,7 @@ class Bbacoursematchquiz_Activator {
 		global $wpdb;
 		$jal_db_version = '1.0';
 	
-		$table_name = $wpdb->prefix . 'liveshoutbox';
+		$table_name = $wpdb->prefix . 'bba_qm_session';
 		
 		$charset_collate = $wpdb->get_charset_collate();
 	
