@@ -2,3 +2,22 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
+
+   /* google fonts installed */   
+   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
+   /* BBA QM main layout */
+   h1, h2, h3, h4, h5, h6, p, span, div { font-family: 'Roboto', sans-serif; }
+   h1, h2, h3, h4, h5, h6 { font-weight: 500; }
+   p, span, div { font-weight: 300; }
+   /* Parent Container */
+   #bba_parent_qm_pg1 { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #FFF; overflow: scroll;}
+   /* BBA QM Branding */
+   #bba_icon_brand { width: 15%; text-align: center;}
+   /* QM Content */
+   #bba_qm_content { margin-top: 10%; }
+   /* QM Primary container */
+  .bba_container  { width: 1024px; margin: 0 auto ; text-align: center; margin-top: 15px;}
+   /* QM btn */
+  .bba-qm-btn { background-color: #69b569; border: none; width: 30%; padding: 10px 20px; font-weight: 500; margin-bottom: 15px;}
+   /* QM btn hover */
+  .bba-qm-btn:hover { background-color: #60ad60; cursor: pointer; }

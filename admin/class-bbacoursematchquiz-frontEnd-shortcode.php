@@ -60,62 +60,164 @@ class BBACourseMatchFrontEndShortCode {
     * @since v1.0 | 09142022
     * Defined: Page begin Quiz Match for front end
     */
-    public static function QuizMatchPageBegin() {
+    public static function QuizMatchPageBegin() { ?>
+        
+        <div id="bba_parent_qm_pg1">
+        <?php  self::bba_qm_banner(); ?>
+        <div id="bba_qm_content" class="bba_container">
+            <div class="bba_row">
+                <div class="bba_col1">
+                      <h3>Which BBA course is right for me?</h3>
+                      <p>Take the quiz to be matched with your perfect lash journey!</p>
 
-        return 'Begin' ;
-
-        // session_start();
-
-
-
-    }
+                      <form action="" method="POST">
+                        <button id="bba_qm_begin" class="bba-qm-btn"> BEGIN </button>
+                      </form>
+                </div>
+            </div>  
+        </div>
+        </div> 
+    
+    <?php }
 
    /**
     * @since v1.0 | 09142022
     * Defined: Page one for Quiz Match for front end
     */
-    public static function QuizMatchPageOne() {
+    public static function QuizMatchPageOne() { ?>
 
-        return 'One';
+    <div id="bba_parent_qm_pg1">
+        <?php  self::bba_qm_banner(); ?>
+        <div id="bba_qm_content" class="bba_container">
+            <div class="bba_row">
+                <div class="bba_col1">
+                      <h3>What are your lash goals?</h3>
+                      <form action="" method="POST">
+                        <button id="bba_qm_begin" class="bba-qm-btn">
+                          I want to make lashing my career!
+                        </button>
+                      </form>
+                      <form action="" method="POST">
+                        <button id="bba_qm_begin" class="bba-qm-btn">
+                          I want to try out as a hobby.
+                        </button>
+                      </form>
+                </div>
+                <div class="bba_col2">
+                 <img src="<?php print(plugins_url('/img/Elizabeth.png', __FILE__)); ?>" />
+                </div>    
+            </div>  
+        </div>
+        </div> 
 
-    }
+    <?php }
 
    /**
     * @since v1.0 | 09142022
     * Defined: Page two for Quiz Match for front end
     */
-    public static function QuizMatchPageTwo() {
+    public static function QuizMatchPageTwo() { ?>
 
-        return 'Two';
+      <div id="bba_parent_qm_pg1">
+        <?php  self::bba_qm_banner(); ?>
+        <div id="bba_qm_content" class="bba_container">
+            <div class="bba_row">
+                <div class="bba_col1">
+                      <h3>What are your lash goals?</h3>
+                      <form action="" method="POST">
+                        <button id="bba_qm_begin" class="bba-qm-btn">
+                          I want to make lashing my career!
+                        </button>
+                      </form>
+                      <form action="" method="POST">
+                        <button id="bba_qm_begin" class="bba-qm-btn">
+                          I want to try out as a hobby.
+                        </button>
+                      </form>
+                </div>
+            </div>  
+        </div>
+        </div> 
 
-    }
+    <?php }
 
    /**
     * @since v1.0 | 09142022
     * Defined: Page three for Quiz Match for front end
     */
-    public static function QuizMatchPageThree() {
+    public static function QuizMatchPageThree() { ?>
 
-        return 'Three';
+       <div id="bba_parent_qm_pg1">
+        <?php  self::bba_qm_banner(); ?>
+        <div id="bba_qm_content" class="bba_container">
+            <div class="bba_row">
+                <div class="bba_col1">
+                      <h3>Do you currently own any lash supplies?</h3>
+                      <form action="" method="POST">
+                        <button id="bba_qm_begin" class="bba-qm-btn">
+                          Yup! I've got tweezers, adhesive, lash extension & more.
+                        </button>
+                      </form>
+                      <form action="" method="POST">
+                        <button id="bba_qm_begin" class="bba-qm-btn">
+                          No supplies yet!
+                        </button>
+                      </form>
+                </div>
+            </div>  
+        </div>
+        </div> 
 
-    }
+    <?php }
 
    /**
     * @since v1.0 | 09142022
     * Defined: Page Four for Quiz Match for front end
     */
-    public static function QuizMatchPageFour() {
+    public static function QuizMatchPageFour() { ?>
 
-        return 'Four';
+       <div id="bba_parent_qm_pg1">
+        <?php self::bba_qm_banner(); ?>
+        <div id="bba_qm_content" class="bba_container">
+            <div class="bba_row">
+                <div class="bba_col1">
+                      <h3>Almost There?</h3>
+                      <h4>What is your email address?</h4>
 
-    }
+                      <form action="" method="POST">
+                        <div>
+                        <input type="text" name="bba_qm_email" id="bba_qm_email" />
+                        </div>
+                        <div>
+                        <input type="checkbox" name="bba_qm_agree" id="bba_qm_agree" />
+                        <p>I want to receive emails from Beauty Boss Academy</p>
+                        </div>
+                        <button id="bba_qm_begin" class="bba-qm-btn"> Submit </button>
+                      </form>
+                </div>
+            </div>  
+      </div>
+     </div> 
+
+    <?php }
+       // $url = 'https://beautybossacademy.com/wp-content/uploads/2022/09/BBA-Main.png'
+    public static function bba_qm_banner() { ?>
+       
+        <div id="bba_qm_brand" class="bba_container">
+            <div class="bba_row">
+                <div class="bba_col">
+                     <img id="bba_icon_brand" src="<?php print(plugins_url('/img/BBA_Main.png', __FILE__)); ?>" />
+                </div>
+            </div>  
+        </div>
+
+    <?php }
 
     public static function redirectTo($url = '') {
        
-        return "<script> location.reload(); </script>" . header("$url");
+        return header("$url");
         die();
 
     }
-
 
 }
