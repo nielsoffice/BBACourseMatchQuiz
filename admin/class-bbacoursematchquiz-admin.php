@@ -75,6 +75,21 @@ class Bbacoursematchquiz_Admin {
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/bbacoursematchquiz-admin.css', array(), $this->version, 'all' );
 
+		/*
+		* This combined file was created by the DataTables downloader builder:
+		*   https://datatables.net/download
+		*
+		* To rebuild or modify this file with the latest versions of the included
+		* software please visit:
+		*   https://datatables.net/download/#bs5/dt-1.12.1
+		*
+		* Included libraries:
+		*   DataTables 1.12.1
+		*/
+	
+    	//	wp_enqueue_style( 'Datatables-Style', plugin_dir_url( __FILE__ ) . 'css/datatables.min.css', array(), '1.12.1', 'all' );
+			
+	
 	}
 
 	/**
@@ -97,6 +112,21 @@ class Bbacoursematchquiz_Admin {
 		 */
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/bbacoursematchquiz-admin.js', array( 'jquery' ), $this->version, false );
+    
+		/*
+		* This combined file was created by the DataTables downloader builder:
+		*   https://datatables.net/download
+		*
+		* To rebuild or modify this file with the latest versions of the included
+		* software please visit:
+		*   https://datatables.net/download/#bs5/dt-1.12.1
+		*
+		* Included libraries:
+		*   DataTables 1.12.1
+		*/
+	
+		  // wp_enqueue_script( 'Datatables', plugin_dir_url( __FILE__ ) . 'js/datatables.min.js', array( 'jquery' ), '1.12.1' , false );
+      
 
 	}
 

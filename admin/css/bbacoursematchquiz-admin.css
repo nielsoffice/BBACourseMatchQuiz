@@ -2,3 +2,22 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
+
+ #bba_qm_con {
+    margin-top: 45px;
+    border: solid 1px #dfdede;
+    border-radius: 7px;
+    padding: 30px;
+
+    box-shadow: 3px 1px 12px 1px rgba(160, 91, 5, 0.37);
+}
+
+.page-item.active .page-link {
+    color: #fff !important;
+    background-color: #fd955d !important;
+    border-color: #fd955d !important;
+}
+
+.page-link {
+    color :  #fd955d !important;
+}

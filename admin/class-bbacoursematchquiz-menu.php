@@ -55,7 +55,7 @@ class BBACourseMatchMenu {
       'BBA Quiz Match Result',
       'CBBA Quiz Match',
       'manage_options',
-       'wp-get-ratings',
+       'bba-quiz-match-result',
         [$this, 'wp_get_bba_quiz_match_rendered'],
         'dashicons-welcome-write-blog'
     
