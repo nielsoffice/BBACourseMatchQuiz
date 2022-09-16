@@ -4,12 +4,11 @@
  */
 
 #bba_qm_con {
-    margin-top: 45px;
-    border: solid 1px #dfdede;
-    border-radius: 7px;
-    padding: 30px;
-
-    box-shadow: 3px 1px 12px 1px rgba(160, 91, 5, 0.37);
+    margin-top: 19px;
+    border: solid 1px #dfdede2b;
+    border-radius: 14px;
+    padding: 36px;
+    box-shadow: 3px 1px 12px 1px rgb(160 91 5 / 18%);
 }
 
 .page-item.active .page-link {
@@ -24,5 +23,26 @@
 
 .page-link:hover {
     background-color: #fd955d !important;
+    color :  #fff !important;
+}
+
+.table-image td,
+.table-image th {
+  vertical-align: middle;
+}
+
+
+
+.exportToExcel {
+    color: #fff !important;
+    background-color: #fd955d !important;
+    border-color: #fd955d !important;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.exportToExcel:hover {
+    background-color: #fd955dcc !important;
+    border-color: #fd955dcc !important;
     color :  #fff !important;
 }

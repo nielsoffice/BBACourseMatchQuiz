@@ -16,7 +16,7 @@
    /* QM Content */
    #bba_qm_content { margin-top: 10%; }
    /* QM Primary container */
-  .bba_container  { width: 1024px; margin: 0 auto ; text-align: center; margin-top: 15px;}
+  .bba_container  { width: 100%; margin: 0 auto ; text-align: center; margin-top: 15px;}
    /* QM btn */
   .bba-qm-btn { background-color: #69b569; border: none; width: 30%; padding: 10px 20px; font-weight: 500; margin-bottom: 15px;}
    /* QM btn hover */
