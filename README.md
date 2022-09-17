@@ -2,7 +2,7 @@
 Exclusive BBA Course Match Quiz Micro Plugin 
 
 ```PHP
- // Front End Approach 
+ // Front End Base or Primary Approach 
  // Adding Question Column base on b5 Framework BBA Quiz Match approach
  BbaQMCourse::BBATemplate('3-col' , ['breakPoint' , 'parentId'] ); : [ 'colType', [parentBreakPoint, 'parentId'] ]
  BbaQMCourse::BBAaddCol1Content( selection: '',' breakpoint: lg', content: function() {
