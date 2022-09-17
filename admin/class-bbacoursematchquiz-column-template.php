@@ -52,8 +52,7 @@ class BBACourseMatchColumnTemplate {
 
      static public function BBATemplateCol($breakPoint = '', $content_col = '' ) { ?>
         
-      <div class="col-<?php print $breakPoint; ?>"><?php print $content_col(self::$doString); ?></div>
-
+ 
      <?php }
 
 }
