@@ -37,12 +37,10 @@ Exclusive BBA Course Match Quiz Micro Plugin
  BbaQMCourse::BBATemplate('1-col' , ['xl' , 'newSelectionPage'] ); 
  BbaQMCourse::BBAaddCol1Content([
      
-    'target'          => ['#btn_iD'],    // btn must be click to process
+    'target'          => ['#btn_iD'],  // btn must be click to process
     'redirect'        => ['https://www.domain.com/quiz-match/?bba-qm-pg2'],  // page redirect after processing
-    'Have you try?'   => [ 1 , 0 , 2 , 1],
-    // can add more here .... 
-    'Don\'t even try!' => [ 1 , 0 , 2 , 1],
-
+    'Have you try?'   => [ 1 , 0 , 2 , 1 ] //  Selection guide and score basis
+    
   ],'lg', function() {
     return '<h1>New Selection Request!</h1>';
  });
