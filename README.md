@@ -35,7 +35,7 @@ Exclusive BBA Course Match Quiz Micro Plugin
 ```PHP
  // New Request Selection and page redirect!
  BbaQMCourse::BBATemplate('1-col' , ['xl' , 'newSelectionPage'] ); 
- BbaQMCourse::BBAaddCol1Content(BbaQMCourse::BBACourseSelection([
+ BbaQMCourse::BBAaddCol1Content([
      
     'target'          => ['#btn_iD'],    // btn must be click to process
     'redirect'        => ['https://www.domain.com/quiz-match/?bba-qm-pg2'],  // page redirect after processing
