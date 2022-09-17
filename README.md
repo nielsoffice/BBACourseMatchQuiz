@@ -15,7 +15,6 @@ Exclusive BBA Course Match Quiz Micro Plugin
    return 'test col 3';
  });
  BbaQMCourse::execute(); 
-
 ```
 
 ```HTML
@@ -31,4 +30,21 @@ Exclusive BBA Course Match Quiz Micro Plugin
       </div>
     </div>
  </div>
+```
+
+```PHP
+ // New Request Selection and page redirect!
+ BbaQMCourse::BBATemplate('1-col' , ['xl' , 'newSelectionPage'] ); 
+ BbaQMCourse::BBAaddCol1Content(BbaQMCourse::BBACourseSelection([
+     
+    'target'          => ['#btn_iD'],    // btn must be click to process
+    'redirect'        => ['page-name'],  // page redirect after processing
+    'Have you try?'   => [ 1 , 0 , 2 , 1],
+    // can add more here .... 
+    'Don\'t even try!' => [ 1 , 0 , 2 , 1],
+
+  ],'lg', function() {
+    return '<h1>New Selection Request!</h1>';
+ });
+ BbaQMCourse::execute(); 
 ```
