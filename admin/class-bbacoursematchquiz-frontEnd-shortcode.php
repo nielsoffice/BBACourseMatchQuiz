@@ -1,5 +1,9 @@
 <?php 
 
+session_start();
+
+ require_once 'class-bbacoursematchquiz-quiz-match.php';
+
 /**
  * The file that defines the core plugin class
  *
@@ -29,6 +33,8 @@
  */
 
 class BBACourseMatchFrontEndShortCode {
+     
+    private static $getLastId;
 
     static function frontEndShortCode()
     {
@@ -49,8 +55,14 @@ class BBACourseMatchFrontEndShortCode {
         } else if( isset($_REQUEST['bba-qm-pg2']) == true ) { $current_pages .= self::QuizMatchPageTwo();
         } else if( isset($_REQUEST['bba-qm-pg3']) == true ) { $current_pages .= self::QuizMatchPageThree();
         } else if( isset($_REQUEST['bba-qm-pg4']) == true ) { $current_pages .= self::QuizMatchPageFour();
+        } else if( isset($_REQUEST['bba-qm-pgx']) == true ) { $current_pages .= self::QuizMatchPageLogOut();
 
-        } else { return ('BBA Quiz Match : 404 Page Not found!'); }
+
+        } else { 
+
+          return ('BBA Quiz Match : 404 Page Not found!');
+        
+        }
 
         return $current_pages;
 
@@ -61,16 +73,19 @@ class BBACourseMatchFrontEndShortCode {
     * Defined: Page begin Quiz Match for front end
     */
     public static function QuizMatchPageBegin() { ?>
-        
-        <div id="bba_parent_qm_pg1">
+
+       <div id="bba_parent_qm_pg1">
         <?php  self::bba_qm_banner(); ?>
         <div id="bba_qm_content" class="bba_container">
             <div class="bba_row">
                 <div class="bba_col1">
                       <h3>Which BBA course is right for me?</h3>
                       <p>Take the quiz to be matched with your perfect lash journey!</p>
-
+                      <?php 
+                  
+                      ?>
                       <form action="" method="POST">
+                         
                         <button id="bba_qm_begin" class="bba-qm-btn"> BEGIN </button>
                       </form>
                 </div>
@@ -78,7 +93,21 @@ class BBACourseMatchFrontEndShortCode {
         </div>
         </div> 
     
-    <?php }
+     <?php 
+      
+        BbaQMCourse::BBATemplate('3-col' , ['breakPoint' , 'parentId'] );
+        BbaQMCourse::BBAaddCol1Content('','lg', function() {
+            return 'test';
+        });
+        BbaQMCourse::BBAaddCol2Content('','sm', function() {
+            return 'test col 2';
+        });
+        BbaQMCourse::BBAaddCol3Content('','sm', function() {
+          return 'test col 3';
+        });
+        BbaQMCourse::execute(); 
+    
+  }
 
    /**
     * @since v1.0 | 09142022
@@ -86,12 +115,26 @@ class BBACourseMatchFrontEndShortCode {
     */
     public static function QuizMatchPageOne() { ?>
 
+     <?php
+
+    
+      /**
+       * @since v1.0 | 09142022
+       * Defined: Insert base on Session Last ID  /  Activate Session and Get Last ID
+      */
+      // session_regenerate_id();
+                           
+      // ADD YOUR SESSION DATA GOES HERE
+    
+
+      
+     ?>
     <div id="bba_parent_qm_pg1">
         <?php  self::bba_qm_banner(); ?>
         <div id="bba_qm_content" class="bba_container">
             <div class="bba_row">
                 <div class="bba_col1">
-                      <h3>What are your lash goals?</h3>
+                      <h3>What are your lash goals? </h3>
                       <form action="" method="POST">
                         <button id="bba_qm_begin" class="bba-qm-btn">
                           I want to make lashing my career!
@@ -118,12 +161,16 @@ class BBACourseMatchFrontEndShortCode {
     */
     public static function QuizMatchPageTwo() { ?>
 
+    <?php 
+      // Part 2 Session Get Last ID
+      // Insert base on Session Last ID 
+     ?>
       <div id="bba_parent_qm_pg1">
         <?php  self::bba_qm_banner(); ?>
         <div id="bba_qm_content" class="bba_container">
             <div class="bba_row">
                 <div class="bba_col1">
-                      <h3>What are your lash goals?</h3>
+                      <h3>What are your lash goals?  </h3>
                       <form action="" method="POST">
                         <button id="bba_qm_begin" class="bba-qm-btn">
                           I want to make lashing my career!
@@ -147,8 +194,12 @@ class BBACourseMatchFrontEndShortCode {
     */
     public static function QuizMatchPageThree() { ?>
 
+     <?php 
+      // Part 2 Session Get Last ID
+      // Insert base on Session Last ID 
+     ?>
        <div id="bba_parent_qm_pg1">
-        <?php  self::bba_qm_banner(); ?>
+        <?php self::bba_qm_banner(); ?>
         <div id="bba_qm_content" class="bba_container">
             <div class="bba_row">
                 <div class="bba_col1">
@@ -176,6 +227,11 @@ class BBACourseMatchFrontEndShortCode {
     */
     public static function QuizMatchPageFour() { ?>
 
+    <?php 
+      // Part 2 Session Get Last ID
+      // Insert base on Session Last ID 
+      // Redirect to BEGIN and Destroy Session
+     ?>
        <div id="bba_parent_qm_pg1">
         <?php self::bba_qm_banner(); ?>
         <div id="bba_qm_content" class="bba_container">
@@ -215,8 +271,14 @@ class BBACourseMatchFrontEndShortCode {
 
     public static function redirectTo($url = '') {
        
-        return header("$url");
+        header("Location: $url");
         die();
+
+    }
+
+    public static function QuizMatchPageLogOut() {
+
+      unset($_SESSION["id"]);
 
     }
 

@@ -1,6 +1,7 @@
 <?php 
 
-require_once 'class-bbacoursematchquiz-frontEnd-shortcode.php';
+// require_once 'class-bbacoursematchquiz-frontEnd-shortcode.php';
+
 /**
  * The file that defines the core plugin class
  *
@@ -34,6 +35,9 @@ class BBACourseMatchMenuRendered {
     public function __construct()
     {
        
+        
+ 
+
         print(BBACourseMatchMenuRendered::BBA_QM_REDERED());
         print(BBACourseMatchMenuRendered::BBA_MQ_ASSETS());
 
