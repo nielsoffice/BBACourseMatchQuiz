@@ -156,18 +156,18 @@ class BbaQMCourse extends BBACourseMatchColumnTemplate {
 
               switch (self::$colType ) {
 
-                case '2-col':  for($dataRequest = 1; $dataRequest <= 2; $dataRequest++)  { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
-                case '3-col':  for($dataRequest = 1; $dataRequest <= 3; $dataRequest++)  { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
-                case '4-col':  for($dataRequest = 1; $dataRequest <= 4; $dataRequest++)  { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
-                case '5-col':  for($dataRequest = 1; $dataRequest <= 5; $dataRequest++)  { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
-                case '6-col':  for($dataRequest = 1; $dataRequest <= 6; $dataRequest++)  { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
-                case '7-col':  for($dataRequest = 1; $dataRequest <= 7; $dataRequest++)  { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
-                case '8-col':  for($dataRequest = 1; $dataRequest <= 8; $dataRequest++)  { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
-                case '9-col':  for($dataRequest = 1; $dataRequest <= 9; $dataRequest++)  { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
+                case '2-col':  for($dataRequest = 1; $dataRequest <= 2;  $dataRequest++) { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
+                case '3-col':  for($dataRequest = 1; $dataRequest <= 3;  $dataRequest++) { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
+                case '4-col':  for($dataRequest = 1; $dataRequest <= 4;  $dataRequest++) { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
+                case '5-col':  for($dataRequest = 1; $dataRequest <= 5;  $dataRequest++) { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
+                case '6-col':  for($dataRequest = 1; $dataRequest <= 6;  $dataRequest++) { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
+                case '7-col':  for($dataRequest = 1; $dataRequest <= 7;  $dataRequest++) { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
+                case '8-col':  for($dataRequest = 1; $dataRequest <= 8;  $dataRequest++) { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
+                case '9-col':  for($dataRequest = 1; $dataRequest <= 9;  $dataRequest++) { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
                 case '10-col': for($dataRequest = 1; $dataRequest <= 10; $dataRequest++) { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
                 case '11-col': for($dataRequest = 1; $dataRequest <= 11; $dataRequest++) { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
                 case '12-col': for($dataRequest = 1; $dataRequest <= 12; $dataRequest++) { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
-                default:       for($dataRequest = 1; $dataRequest <= 1; $dataRequest++)  { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
+                default:       for($dataRequest = 1; $dataRequest <= 1;  $dataRequest++) { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
               
               } ?>
 
@@ -176,11 +176,7 @@ class BbaQMCourse extends BBACourseMatchColumnTemplate {
      </div>
  
     <?php } 
-
-    static public function Execute() { 
-        
-      BbaQMCourse::do_BBATemplate();
-
-    }  
+    
+    static public function Execute() { BbaQMCourse::do_BBATemplate(); }  
   
 }
