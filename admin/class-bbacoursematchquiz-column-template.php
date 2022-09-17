@@ -50,9 +50,6 @@ class BBACourseMatchColumnTemplate {
 
     }
 
-     static public function BBATemplateCol($breakPoint = '', $content_col = '' ) { ?>
-        
- 
-     <?php }
+     static public function BBATemplateCol($breakPoint = '', $content_col = '' ) { ?> 'Test'! <?php }
 
 }
