@@ -1,7 +1,5 @@
 <?php 
 
-session_start();
-
 require_once 'class-bbacoursematchquiz-column-template.php';
 /**
  * The file that defines the core plugin class
@@ -62,84 +60,84 @@ class BbaQMCourse extends BBACourseMatchColumnTemplate {
 
     }
     
-    static public function BBAaddCol1Content($selection = null, $breakPoint , $cbConFn) {
+    static public function BBAaddCol1Content($selection = [], $breakPoint , $cbConFn) {
 
         self::$selection        = $selection;
         self::$breakPoint['c1'] = $breakPoint;
         self::$cbConFn['c1']    = $cbConFn;
     }
 
-    static public function BBAaddCol2Content($selection = null, $breakPoint , $cbConFn) {
+    static public function BBAaddCol2Content($selection = [], $breakPoint , $cbConFn) {
 
         self::$selection        = $selection;
         self::$breakPoint['c2'] = $breakPoint;
         self::$cbConFn['c2']    = $cbConFn;
     }
 
-    static public function BBAaddCol3Content($selection = null, $breakPoint , $cbConFn) {
+    static public function BBAaddCol3Content($selection = [], $breakPoint , $cbConFn) {
 
         self::$selection        = $selection;
         self::$breakPoint['c3'] = $breakPoint;
         self::$cbConFn['c3']    = $cbConFn;
     }
 
-    static public function BBAaddCol4Content($selection = null, $breakPoint , $cbConFn) {
+    static public function BBAaddCol4Content($selection = [], $breakPoint , $cbConFn) {
 
         self::$selection        = $selection;
         self::$breakPoint['c4'] = $breakPoint;
         self::$cbConFn['c4']    = $cbConFn;
     }
 
-    static public function BBAaddCol5Content($selection = null, $breakPoint , $cbConFn) {
+    static public function BBAaddCol5Content($selection = [], $breakPoint , $cbConFn) {
 
         self::$selection        = $selection;
         self::$breakPoint['c5'] = $breakPoint;
         self::$cbConFn['c5']    = $cbConFn;
     }
 
-    static public function BBAaddCol6Content($selection = null, $breakPoint , $cbConFn) {
+    static public function BBAaddCol6Content($selection = [], $breakPoint , $cbConFn) {
 
         self::$selection        = $selection;
         self::$breakPoint['c6'] = $breakPoint;
         self::$cbConFn['c6']    = $cbConFn;
     }
 
-    static public function BBAaddCol7Content($selection = null, $breakPoint , $cbConFn) {
+    static public function BBAaddCol7Content($selection = [], $breakPoint , $cbConFn) {
 
         self::$selection        = $selection;
         self::$breakPoint['c7'] = $breakPoint;
         self::$cbConFn['c7']    = $cbConFn;
     }
 
-    static public function BBAaddCol8Content($selection = null, $breakPoint , $cbConFn) {
+    static public function BBAaddCol8Content($selection = [], $breakPoint , $cbConFn) {
 
         self::$selection        = $selection;
         self::$breakPoint['c8'] = $breakPoint;
         self::$cbConFn['c8']    = $cbConFn;
     }
 
-    static public function BBAaddCol9Content($selection = null, $breakPoint , $cbConFn) {
+    static public function BBAaddCol9Content($selection = [], $breakPoint , $cbConFn) {
 
         self::$selection        = $selection;
         self::$breakPoint['c9'] = $breakPoint;
         self::$cbConFn['c9']    = $cbConFn;
     }
 
-    static public function BBAaddCol10Content($selection = null, $breakPoint , $cbConFn) {
+    static public function BBAaddCol10Content($selection = [], $breakPoint , $cbConFn) {
 
         self::$selection         = $selection;
         self::$breakPoint['c10'] = $breakPoint;
         self::$cbConFn['c10']    = $cbConFn;
     }
 
-    static public function BBAaddCol11Content($selection = null, $breakPoint , $cbConFn) {
+    static public function BBAaddCol11Content($selection = [], $breakPoint , $cbConFn) {
 
         self::$selection         = $selection;
         self::$breakPoint['c11'] = $breakPoint;
         self::$cbConFn['c11']    = $cbConFn;
     }
 
-    static public function BBAaddCol12Content($selection = null, $breakPoint , $cbConFn) {
+    static public function BBAaddCol12Content($selection = [], $breakPoint , $cbConFn) {
 
         self::$selection         = $selection;
         self::$breakPoint['c12'] = $breakPoint;
@@ -156,18 +154,18 @@ class BbaQMCourse extends BBACourseMatchColumnTemplate {
 
               switch (self::$colType ) {
 
-                case '2-col':  for($dataRequest = 1; $dataRequest <= 2;  $dataRequest++) { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
-                case '3-col':  for($dataRequest = 1; $dataRequest <= 3;  $dataRequest++) { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
-                case '4-col':  for($dataRequest = 1; $dataRequest <= 4;  $dataRequest++) { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
-                case '5-col':  for($dataRequest = 1; $dataRequest <= 5;  $dataRequest++) { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
-                case '6-col':  for($dataRequest = 1; $dataRequest <= 6;  $dataRequest++) { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
-                case '7-col':  for($dataRequest = 1; $dataRequest <= 7;  $dataRequest++) { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
-                case '8-col':  for($dataRequest = 1; $dataRequest <= 8;  $dataRequest++) { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
-                case '9-col':  for($dataRequest = 1; $dataRequest <= 9;  $dataRequest++) { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
-                case '10-col': for($dataRequest = 1; $dataRequest <= 10; $dataRequest++) { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
-                case '11-col': for($dataRequest = 1; $dataRequest <= 11; $dataRequest++) { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
-                case '12-col': for($dataRequest = 1; $dataRequest <= 12; $dataRequest++) { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
-                default:       for($dataRequest = 1; $dataRequest <= 1;  $dataRequest++) { print self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); }  break;
+                case '2-col':  print(BbaQMCourse::BBAColumnRequest(2));  break;
+                case '3-col':  print(BbaQMCourse::BBAColumnRequest(3));  break;
+                case '4-col':  print(BbaQMCourse::BBAColumnRequest(4));  break;
+                case '5-col':  print(BbaQMCourse::BBAColumnRequest(5));  break;
+                case '6-col':  print(BbaQMCourse::BBAColumnRequest(6));  break;
+                case '7-col':  print(BbaQMCourse::BBAColumnRequest(7));  break;
+                case '8-col':  print(BbaQMCourse::BBAColumnRequest(8));  break;
+                case '9-col':  print(BbaQMCourse::BBAColumnRequest(9));  break;
+                case '10-col': print(BbaQMCourse::BBAColumnRequest(10)); break;
+                case '11-col': print(BbaQMCourse::BBAColumnRequest(11)); break;
+                case '12-col': print(BbaQMCourse::BBAColumnRequest(12)); break;
+                default:       print(BbaQMCourse::BBAColumnRequest(1));  break;
               
               } ?>
 
@@ -177,6 +175,18 @@ class BbaQMCourse extends BBACourseMatchColumnTemplate {
  
     <?php } 
     
+    static public function BBAColumnRequest($colType) {
+
+      $data = [];  
+      $init = 1; 
+      
+      for($dataRequest = $init; $dataRequest <= $colType;  $dataRequest++) 
+      { $data[] = self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); } 
+      
+      return (implode("", $data));
+
+    }
+
     static public function Execute() { BbaQMCourse::do_BBATemplate(); }  
   
 }
