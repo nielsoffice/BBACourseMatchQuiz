@@ -42,7 +42,7 @@ Exclusive BBA Course Match Quiz Micro Plugin
  // New Request Selection and page redirect!
  if (class_exists('BbaQMCourse')) {
  
-   add_action( 'admin_init', function() {
+   add_action( 'init', function() {
   
    BbaQMCourse::BBATemplate('1-col' , ['xl' , 'newSelectionPage'] ); 
    BbaQMCourse::BBAaddCol1Content([
