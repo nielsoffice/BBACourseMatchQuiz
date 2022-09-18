@@ -40,9 +40,9 @@ Exclusive BBA Course Match Quiz Micro Plugin
 
 ```PHP
  // New Request Selection and page redirect!
- if (class_exists('BbaQMCourse')) {
+ add_action( 'init', function() {
  
-   add_action( 'init', function() {
+   if (class_exists('BbaQMCourse')) {
   
    BbaQMCourse::BBATemplate('1-col' , ['xl' , 'newSelectionPage'] ); 
    BbaQMCourse::BBAaddCol1Content([
@@ -55,10 +55,10 @@ Exclusive BBA Course Match Quiz Micro Plugin
       return '<h1>New Selection Request!</h1>';
    });
    BbaQMCourse::execute(); 
-  
-   });
-  
- } else {
-   echo "WP Plugin: BBA Quiz Match was removed or deactivated";
- }
+
+   } else {
+     echo "WP Plugin: BBA Quiz Match was removed or deactivated";
+   }
+ 
+ }); 
 ```
