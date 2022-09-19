@@ -39,26 +39,35 @@ Exclusive BBA Course Match Quiz Micro Plugin
 ```
 
 ```PHP
- // New Request Selection and page redirect!
- add_action( 'init', function() {
- 
-   if (class_exists('BbaQMCourse')) {
-  
-   BbaQMCourse::BBATemplate('1-col' , ['xl' , 'newSelectionPage'] ); 
-   BbaQMCourse::BBAaddCol1Content([
-     
-      'target'          => ['#btn_iD'],  // btn must be click to process
-      'redirect'        => ['https://www.domain.com/quiz-match/?bba-qm-pg2'],  // page redirect after processing
-      'Have you try?'   => [ 1 , 0 , 2 , 1 ] //  Selection guide and score basis
-    
-    ], 'lg', function() {
-      return '<h1>New Selection Request!</h1>';
-   });
-   BbaQMCourse::execute(); 
+// Initialize Custom Page URL
+BBAQuizMatchPageURL::setURL('?this-1');
 
-   } else {
-     echo "WP Plugin: BBA Quiz Match was removed or deactivated";
-   }
- 
- }); 
+// Init action then run custom selection!
+add_action('init', function() {
+   
+  if(BBAQuizMatchPageURL::URL() == true ) {
+
+    if (class_exists('BBAQMSelection')) {
+	   
+	BBAQMSelection::BBATemplate('1-col' , ['xl' , 'newSelectionPage'] ); 
+	BBAQMSelection::BBAaddCol1Content([
+		  
+	   'target'          => ['#btn_iD'],  // btn must be click to process
+	   'redirect'        => ['https://www.domain.com/quiz-match/?bba-qm-pg2'],  // page redirect after processing
+	   'Have you try?'   => [ 1 , 0 , 2 , 1 ] //  Selection guide and score basis
+		 
+	 ], 'lg', function() {
+
+	    return '<h1>New Selection Request!</h1>';
+
+         });
+         BBAQMSelection::execute(); 
+	 
+     } else {
+	 echo "WP Plugin: BBA Quiz Match was removed or deactivated";
+     }
+
+   }     
+    
+});
 ```
