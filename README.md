@@ -39,34 +39,33 @@ Exclusive BBA Course Match Quiz Micro Plugin
 ```
 
 ```PHP
-// Initialize Custom Page URL
-BBAQuizMatchPageURL::setURL('?this-1');
-
 // Init action then run custom selection!
 add_action('init', function() {
    
-  if(BBAQuizMatchPageURL::URL() == true ) {
+  if (class_exists('BBAQMSelection')) {
+       
+     // Initialize Custom Page URL
+     BBAQuizMatchPageURL::setURL('?this-1');
 
-    if (class_exists('BBAQMSelection')) {
-	   
+    if(BBAQuizMatchPageURL::URL() == true ) {
+   
 	BBAQMSelection::BBATemplate('1-col' , ['xl' , 'newSelectionPage'] ); 
 	BBAQMSelection::BBAaddCol1Content([
 		  
-	   'target'          => ['#btn_iD'],  // btn must be click to process
-	   'redirect'        => ['https://www.domain.com/quiz-match/?bba-qm-pg2'],  // page redirect after processing
-	   'Have you try?'   => [ 1 , 0 , 2 , 1 ] //  Selection guide and score basis
+	  'target'          => ['#btn_iD'],  // btn must be click to process
+	  'redirect'        => ['https://www.domain.com/quiz-match/?bba-qm-pg2'],  // page redirect after processing
+	  'Have you try?'   => [ 1 , 0 , 2 , 1 ] //  Selection guide and score basis
 		 
-	 ], 'lg', function() {
+        ], 'lg', function() {
 
-	    return '<h1>New Selection Request!</h1>';
+	  return '<h1>New Selection Request!</h1>';
 
-         });
-         BBAQMSelection::execute(); 
-	 
-     } else {
-	 echo "WP Plugin: BBA Quiz Match was removed or deactivated";
+        });
+        BBAQMSelection::execute();  
      }
 
+   }  else {
+      echo "WP Plugin: BBA Quiz Match was removed or deactivated";
    }     
     
 });
