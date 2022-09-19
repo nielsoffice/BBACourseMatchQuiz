@@ -55,7 +55,7 @@ add_action('init', function() {
          'target'    => '#bba_qm_begin', 
          'redirect'  => 'http://localhost/bba/quiz-match/?bba-qm-pg1', 
          'question'  => 'Have you try?',
-         'selection' =>  [ 1 , 0 , 2 , 1 ] 
+         'selection' =>  [ ] 
                 
        ],'lg', function() {
       
