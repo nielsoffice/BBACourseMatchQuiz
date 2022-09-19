@@ -49,16 +49,21 @@ add_action('init', function() {
 
     if(BBAQuizMatchPageURL::URL() == true ) {
    
-	BBAQMSelection::BBATemplate('1-col' , ['xl' , 'newSelectionPage'] ); 
-	BBAQMSelection::BBAaddCol1Content([
-		  
-	  'target'          => ['#btn_iD'],  // btn must be click to process
-	  'redirect'        => ['https://www.domain.com/quiz-match/?bba-qm-pg2'],  // page redirect after processing
-	  'Have you try?'   => [ 1 , 0 , 2 , 1 ] //  Selection guide and score basis
-		 
-        ], 'lg', function() {
+       BBAQMSelection::BBATemplate('1-col' , ['box-md' , 'bba_activate_page'] ); 
+       BBAQMSelection::BBAaddCol1Content([
+                  
+         'target'    => '#bba_qm_begin', 
+         'redirect'  => 'http://localhost/bba/quiz-match/?bba-qm-pg1', 
+         'question'  => 'Have you try?',
+         'selection' =>  [ 1 , 0 , 2 , 1 ] 
+                
+       ],'lg', function() {
+      
+          $html  = '';
+          $html .= '<h3>Which BBA course is right for me?</h3>';
+          $html .= '<p>Take the quiz to be matched with your perfect lash journey!</p>';
 
-	  return '<h1>New Selection Request!</h1>';
+          return($html);
 
         });
         BBAQMSelection::execute();  
@@ -69,4 +74,37 @@ add_action('init', function() {
    }     
     
 });
+```
+
+```PHP
+  # Using BBATemplate Hooks 
+   - bba_qm_top_add_settings_before_parent
+   - bba_qm_add_settings_before_child_parent
+   - bba_qm_add_settings_after_child_parent
+   - bba_qm_add_settings_after_child_row_parent
+   - bba_qm_add_settings_bottom_child_row_parent
+   - bba_qm_add_settings_bottom_child_parent
+   - bba_qm_add_settings_after_bottom_child_parent
+   - bba_qm_add_settings_after_bottom_parent
+
+  # Hook Reference:
+  - Plugin/admin/class-bbacoursematchquiz-quiz-match.php
+
+  # functions.php file
+  add_action('init', function() {
+  
+  BBAQuizMatchPageURL::setURL('bba-qm-pg');
+
+  if(BBAQuizMatchPageURL::URL() == true ) {
+
+    add_action( 'bba_qm_add_settings_before_child_parent', function() {
+                    
+	echo "hookS@"; 
+	
+    });
+  
+  }
+
+});
+
 ```
