@@ -75,6 +75,14 @@ class Bbacoursematchquiz_Public {
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/bbacoursematchquiz-public.css', array(), $this->version, 'all' );
 
+		/*!
+		* Bootstrap v5.1.3 (https://getbootstrap.com/)
+		* Copyright 2011-2021 The Bootstrap Authors
+		* Copyright 2011-2021 Twitter, Inc.
+		* Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+		*/
+		wp_enqueue_style( 'Bootstrap v5', plugin_dir_url( __FILE__ ) . 'css/bootstrap.min.css', array(), '5.1.3', 'all' );
+
 	}
 
 	/**
@@ -97,6 +105,13 @@ class Bbacoursematchquiz_Public {
 		 */
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/bbacoursematchquiz-public.js', array( 'jquery' ), $this->version, false );
+		
+		/*!
+		* Bootstrap v5.1.3 (https://getbootstrap.com/)
+		* Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+		* Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+		*/
+		wp_enqueue_script( 'Bootstrap v5', plugin_dir_url( __FILE__ ) . 'js/bootstrap.bundle.min.js', array( 'jquery' ), 'v5.1.3', false );
 
 	}
 

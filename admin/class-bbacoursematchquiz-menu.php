@@ -33,12 +33,13 @@ class BBACourseMatchMenu {
     public function __construct()
     {
 
-       add_action( 'admin_menu', [ $this,'bba_quiz_match' ] );
+      add_action( 'admin_menu', [ $this,'bba_quiz_match' ] );
 
        /**
         * @since 25.05.2022 
-        * Defined: BBACourseMatchFrontEndShortCode::Class
-        */ 
+        * Defined: BBACourseMatchFrontEndShortCode::Class */
+       BBACourseMatchMenu::require_bba_assets(); 
+       
        add_action( 'init', [ $this,'wp_get_bba_quiz_match_frontEnd_rendered' ] );
        add_shortcode( 'QuizMatch', array( 'BBACourseMatchFrontEndShortCode', 'frontEndShortCode' ) );
     
@@ -52,10 +53,10 @@ class BBACourseMatchMenu {
 
        add_menu_page(
 
-      'BBA Quiz Match Result',
-      'CBBA Quiz Match',
-      'manage_options',
-       'bba-quiz-match-result',
+        'BBA Quiz Match Result',
+        'CBBA Quiz Match',
+        'manage_options',
+        'bba-quiz-match-result',
         [$this, 'wp_get_bba_quiz_match_rendered'],
         'dashicons-welcome-write-blog'
     
@@ -78,11 +79,15 @@ class BBACourseMatchMenu {
 
    public function wp_get_bba_quiz_match_frontEnd_rendered() {
 
-    require_once ( 'class-bbacoursematchquiz-frontEnd-shortcode.php' );
+    self::require_bba_assets();
     if( class_exists('BBACourseMatchFrontEndShortCode') ) {
       new BBACourseMatchFrontEndShortCode();
     }
 
+  }
+   
+  static public function require_bba_assets() {
+    require_once ('class-bbacoursematchquiz-quiz-match.php');
   }
 
 

@@ -10,7 +10,7 @@
    h1, h2, h3, h4, h5, h6 { font-weight: 500; }
    p, span, div { font-weight: 300; }
    /* Parent Container */
-   #bba_parent_qm_pg1 { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #FFF; overflow: scroll;}
+   #bba_activate_page { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #FFF; overflow: scroll;}
    /* BBA QM Branding */
    #bba_icon_brand { width: 15%; text-align: center;}
    /* QM Content */

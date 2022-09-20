@@ -112,8 +112,12 @@ class Bbacoursematchquiz_Admin {
 		 */
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/bbacoursematchquiz-admin.js', array( 'jquery' ), $this->version, false );
-    
-		/*
+
+	}
+
+	public function bba_qm_admin() {
+
+	   /*
 		*  jQuery table2excel - v1.1.2
 		*  jQuery plugin to export an .xls file in browser from an HTML table
 		*  https://github.com/rainabba/jquery-table2excel
@@ -122,9 +126,8 @@ class Bbacoursematchquiz_Admin {
 		*  Under MIT License
 		*/
 	
-		 wp_enqueue_script( 'table2excel', plugin_dir_url( __FILE__ ) . 'js/jquery.table2excel.js', array( 'jquery' ),  'v1.1.2' , false );
+		wp_enqueue_script( 'table2excel', plugin_dir_url( __FILE__ ) . 'js/jquery.table2excel.js', array( 'jquery' ),  'v1.1.2' , false );
       
-
 	}
 
 }

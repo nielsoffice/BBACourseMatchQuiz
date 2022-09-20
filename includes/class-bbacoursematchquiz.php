@@ -123,6 +123,17 @@ class Bbacoursematchquiz {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-bbacoursematchquiz-menu.php';
 
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-bbacoursematchquiz-frontEnd-shortcode.php';
+
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-bbacoursematchquiz-frontEnd-url.php';
+
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-bbacoursematchquiz-execute.php';
+
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-bbacoursematchquiz-quiz-match.php';
+
+
+		
+		
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
@@ -160,6 +171,8 @@ class Bbacoursematchquiz {
 	private function define_admin_hooks() {
 
 		$plugin_admin = new Bbacoursematchquiz_Admin( $this->get_plugin_name(), $this->get_version() );
+
+		$bba_qm_admin = new Bbacoursematchquiz_Admin( 'BBAQuizMatch', '1.0' );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );

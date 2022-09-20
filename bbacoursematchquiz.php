@@ -30,22 +30,6 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }   
 
-
-
-// add_action( 'current_screen', 'wpdocs_this_screen' );
-
-// /**
-//  * Run code on the admin widgets page
-//  */
-// function wpdocs_this_screen() {
-//     $currentScreen = get_current_screen();
-//     if( $currentScreen->parent_base === "bba-quiz-match-result" ) {
-//        echo "<style> #example { background-color: red; } </style>";
-//     }
-// }
-
-
-
 /**
  * Currently plugin version.
  * Start at version 1.0.0 and use SemVer - https://semver.org
@@ -53,6 +37,8 @@ if ( ! defined( 'WPINC' ) ) {
  */
 define( 'BBACOURSEMATCHQUIZ_VERSION', '1.0.0' );
 
+
+ 
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-bbacoursematchquiz-activator.php
