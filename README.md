@@ -39,26 +39,72 @@ Exclusive BBA Course Match Quiz Micro Plugin
 ```
 
 ```PHP
- // New Request Selection and page redirect!
- if (class_exists('BbaQMCourse')) {
- 
-   add_action( 'admin_init', function() {
-  
-   BbaQMCourse::BBATemplate('1-col' , ['xl' , 'newSelectionPage'] ); 
-   BbaQMCourse::BBAaddCol1Content([
-     
-      'target'          => ['#btn_iD'],  // btn must be click to process
-      'redirect'        => ['https://www.domain.com/quiz-match/?bba-qm-pg2'],  // page redirect after processing
-      'Have you try?'   => [ 1 , 0 , 2 , 1 ] //  Selection guide and score basis
+// Init action then run custom selection!
+add_action('init', function() {
+   
+  if (class_exists('BBAQMSelection')) {
+       
+     // Initialize Custom Page URL
+     BBAQuizMatchPageURL::setURL('?this-1');
+
+    if(BBAQuizMatchPageURL::URL() == true ) {
+   
+       BBAQMSelection::BBATemplate('1-col' , ['box-md' , 'bba_activate_page'] ); 
+       BBAQMSelection::BBAaddCol1Content([
+                  
+         'target'    => '#bba_qm_begin', 
+         'redirect'  => 'http://localhost/bba/quiz-match/?bba-qm-pg1', 
+         'question'  => 'Have you try?',
+         'selection' =>  [ ] 
+                
+       ],'lg', function() {
+      
+          $html  = '';
+          $html .= '<h3>Which BBA course is right for me?</h3>';
+          $html .= '<p>Take the quiz to be matched with your perfect lash journey!</p>';
+
+          return($html);
+
+        });
+        BBAQMSelection::execute();  
+     }
+
+   }  else {
+      echo "WP Plugin: BBA Quiz Match was removed or deactivated";
+   }     
     
-    ], 'lg', function() {
-      return '<h1>New Selection Request!</h1>';
-   });
-   BbaQMCourse::execute(); 
+});
+```
+
+```PHP
+  # Using BBATemplate Hooks 
+   - bba_qm_top_add_settings_before_parent
+   - bba_qm_add_settings_before_child_parent
+   - bba_qm_add_settings_after_child_parent
+   - bba_qm_add_settings_after_child_row_parent
+   - bba_qm_add_settings_bottom_child_row_parent
+   - bba_qm_add_settings_bottom_child_parent
+   - bba_qm_add_settings_after_bottom_child_parent
+   - bba_qm_add_settings_after_bottom_parent
+
+  # Hook Reference:
+  - Plugin/admin/class-bbacoursematchquiz-quiz-match.php
+
+  # functions.php file
+  add_action('init', function() {
   
-   });
+  BBAQuizMatchPageURL::setURL('bba-qm-pg');
+
+  if(BBAQuizMatchPageURL::URL() == true ) {
+
+    add_action( 'bba_qm_add_settings_before_child_parent', function() {
+                    
+	echo "hookS@"; 
+	
+    });
   
- } else {
-   echo "WP Plugin: BBA Quiz Match was removed or deactivated";
- }
+  }
+
+});
+
 ```
