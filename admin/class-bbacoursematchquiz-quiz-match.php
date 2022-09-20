@@ -122,15 +122,15 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
      * Defined: If not set default key assigned
      * @since    1.0.0
      * @since    09.19.2022 */
-    if(!isset( $dataGuide[0] )) { self::$tempBreakPoint = $defaultKey[2]; } 
-    else { self::$tempBreakPoint = self::bba_con_breakPoint( $dataGuide[0] ); }
-
+    if(!isset(  $dataGuide[0] )) {self::$tempBreakPoint = $defaultKey[1]; } 
+    else { self::$tempBreakPoint = self::bba_con_breakPoint( $dataGuide[0] );  }
+    
     /**
      * Defined: If not set default key assigned
      * @since    1.0.0
      * @since    09.19.2022 */
-    if(!isset( $dataGuide[1] )) { self::$validatedKeyParentID = $defaultKey[1]; }
-    else { self::$validatedKeyParentID = $dataGuide[1] }
+    if(!isset(  $dataGuide[1] )) {self::$validatedKeyParentID = $defaultKey[2]; } 
+    else {  self::$validatedKeyParentID = $dataGuide[1];  }
 
     }
     
