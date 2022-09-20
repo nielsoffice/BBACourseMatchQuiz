@@ -43,7 +43,66 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
 
         '1-col',
         'bba_mainID',
-        'container'
+        'container',
+        'c1',
+        'c2',
+        'c3',
+        'c4',
+        'c5',
+        'c6',
+        'c7',
+        'c8',
+        'c9',
+        'c10',
+        'c11',
+        'c12',
+        'c'
+ 
+     ];
+
+    /**
+     * Defined: Properties colSet key.
+     * @var @property $colSet
+     *
+     * @since    1.0.0
+     * @since    09.20.2022 */
+    static private $colSet = [
+
+        '1-col',
+        '2-col',
+        '3-col',
+        '4-col',
+        '5-col',
+        '6-col',
+        '7-col',
+        '8-col',
+        '9-col',
+        '10-col',
+        '11-col',
+        '12-col'
+ 
+     ];
+
+    /**
+     * Defined: Properties colLoopReq key.
+     * @var @property $colLoopReq
+     *
+     * @since    1.0.0
+     * @since    09.20.2022 */
+    static private $colLoopReq = [
+
+        '1',
+        '2',
+        '3',
+        '4',
+        '5',
+        '6',
+        '7',
+        '8',
+        '9',
+        '10',
+        '11',
+        '12'
  
      ];
      
@@ -115,21 +174,21 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
      * Defined: If not set default key assigned
      * @since    1.0.0
      * @since    09.19.2022 */
-    if(!isset( $colType )) { self::$colType = $defaultKey[0]; } 
+    if(!isset( $colType )) { self::$colType = self::$defaultKey[0]; } 
     else { self::$colType = $colType; }
 
     /**
      * Defined: If not set default key assigned
      * @since    1.0.0
      * @since    09.19.2022 */
-    if(!isset(  $dataGuide[0] )) {self::$tempBreakPoint = $defaultKey[1]; } 
+    if(!isset(  $dataGuide[0] )) {self::$tempBreakPoint = self::$defaultKey[1]; } 
     else { self::$tempBreakPoint = self::bba_con_breakPoint( $dataGuide[0] );  }
     
     /**
      * Defined: If not set default key assigned
      * @since    1.0.0
      * @since    09.19.2022 */
-    if(!isset(  $dataGuide[1] )) {self::$validatedKeyParentID = $defaultKey[2]; } 
+    if(!isset(  $dataGuide[1] )) {self::$validatedKeyParentID = self::$defaultKey[2]; } 
     else {  self::$validatedKeyParentID = $dataGuide[1];  }
 
     }
@@ -157,8 +216,8 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
          *
          * @since    1.0.0
          * @since    09.19.2022 */
-        self::$breakPoint['c1'] = $breakPoint;
-        self::$cbConFn['c1']    = $cbConFn;
+        self::$breakPoint[self::$defaultKey[3]] = $breakPoint;
+        self::$cbConFn[self::$defaultKey[3]]    = $cbConFn;
     }
 
     /**
@@ -184,8 +243,8 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
          *
          * @since    1.0.0
          * @since    09.19.2022 */
-        self::$breakPoint['c2'] = $breakPoint;
-        self::$cbConFn['c2']    = $cbConFn;
+        self::$breakPoint[self::$defaultKey[4]] = $breakPoint;
+        self::$cbConFn[self::$defaultKey[4]]    = $cbConFn;
     }
 
     /**
@@ -211,8 +270,8 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
          *
          * @since    1.0.0
          * @since    09.19.2022 */
-        self::$breakPoint['c3'] = $breakPoint;
-        self::$cbConFn['c3']    = $cbConFn;
+        self::$breakPoint[self::$defaultKey[5]] = $breakPoint;
+        self::$cbConFn[self::$defaultKey[5]]    = $cbConFn;
     }
 
     /**
@@ -238,8 +297,8 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
          *
          * @since    1.0.0
          * @since    09.19.2022 */
-        self::$breakPoint['c4'] = $breakPoint;
-        self::$cbConFn['c4']    = $cbConFn;
+        self::$breakPoint[self::$defaultKey[6]] = $breakPoint;
+        self::$cbConFn[self::$defaultKey[6]]    = $cbConFn;
     }
 
     /**
@@ -265,8 +324,8 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
          *
          * @since    1.0.0
          * @since    09.19.2022 */
-        self::$breakPoint['c5'] = $breakPoint;
-        self::$cbConFn['c5']    = $cbConFn;
+        self::$breakPoint[self::$defaultKey[7]] = $breakPoint;
+        self::$cbConFn[self::$defaultKey[7]]    = $cbConFn;
     }
 
     /**
@@ -292,8 +351,8 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
          *
          * @since    1.0.0
          * @since    09.19.2022 */
-        self::$breakPoint['c6'] = $breakPoint;
-        self::$cbConFn['c6']    = $cbConFn;
+        self::$breakPoint[self::$defaultKey[8]] = $breakPoint;
+        self::$cbConFn[self::$defaultKey[8]]    = $cbConFn;
     }
 
     /**
@@ -319,8 +378,8 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
          *
          * @since    1.0.0
          * @since    09.19.2022 */
-        self::$breakPoint['c7'] = $breakPoint;
-        self::$cbConFn['c7']    = $cbConFn;
+        self::$breakPoint[self::$defaultKey[9]] = $breakPoint;
+        self::$cbConFn[self::$defaultKey[9]]    = $cbConFn;
     }
 
     /**
@@ -333,7 +392,7 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
 
         /**
          * Defined: Selection perform database drivin operation and default page activation col8
-         * B5 Front End Framework Fullt responsive From Desktop to mobile
+         * B5 Front End Framework Fully responsive From Desktop to mobile
          * Class name: BBAQMPerform
          * Method name: publicSetter
          *
@@ -346,8 +405,8 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
          *
          * @since    1.0.0
          * @since    09.19.2022 */
-        self::$breakPoint['c8'] = $breakPoint;
-        self::$cbConFn['c8']    = $cbConFn;
+        self::$breakPoint[self::$defaultKey[10]] = $breakPoint;
+        self::$cbConFn[self::$defaultKey[10]]    = $cbConFn;
     }
 
     /**
@@ -373,8 +432,8 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
          *
          * @since    1.0.0
          * @since    09.19.2022 */
-        self::$breakPoint['c9'] = $breakPoint;
-        self::$cbConFn['c9']    = $cbConFn;
+        self::$breakPoint[self::$defaultKey[11]] = $breakPoint;
+        self::$cbConFn[self::$defaultKey[11]]    = $cbConFn;
     }
 
     /**
@@ -400,8 +459,8 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
          *
          * @since    1.0.0
          * @since    09.19.2022 */
-        self::$breakPoint['c10'] = $breakPoint;
-        self::$cbConFn['c10']    = $cbConFn;
+        self::$breakPoint[self::$defaultKey[12]] = $breakPoint;
+        self::$cbConFn[self::$defaultKey[12]]    = $cbConFn;
     }
 
     /**
@@ -427,8 +486,8 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
          *
          * @since    1.0.0
          * @since    09.19.2022 */
-        self::$breakPoint['c11'] = $breakPoint;
-        self::$cbConFn['c11']    = $cbConFn;
+        self::$breakPoint[self::$defaultKey[13]] = $breakPoint;
+        self::$cbConFn[self::$defaultKey[13]]    = $cbConFn;
     }
 
     /**
@@ -454,8 +513,8 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
          *
          * @since    1.0.0
          * @since    09.19.2022 */
-        self::$breakPoint['c12'] = $breakPoint;
-        self::$cbConFn['c12']    = $cbConFn;
+        self::$breakPoint[self::$defaultKey[14]] = $breakPoint;
+        self::$cbConFn[self::$defaultKey[14]]    = $cbConFn;
     }
 
    static public function do_BBATemplate() { 
@@ -514,17 +573,17 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
                  *
                  * @since    1.0.0
                  * @since    09.19.2022 */
-                case '2-col':  print(BBAQMSelection::BBAColumnRequest(2));  break;
-                case '3-col':  print(BBAQMSelection::BBAColumnRequest(3));  break;
-                case '4-col':  print(BBAQMSelection::BBAColumnRequest(4));  break;
-                case '5-col':  print(BBAQMSelection::BBAColumnRequest(5));  break;
-                case '6-col':  print(BBAQMSelection::BBAColumnRequest(6));  break;
-                case '7-col':  print(BBAQMSelection::BBAColumnRequest(7));  break;
-                case '8-col':  print(BBAQMSelection::BBAColumnRequest(8));  break;
-                case '9-col':  print(BBAQMSelection::BBAColumnRequest(9));  break;
-                case '10-col': print(BBAQMSelection::BBAColumnRequest(10)); break;
-                case '11-col': print(BBAQMSelection::BBAColumnRequest(11)); break;
-                case '12-col': print(BBAQMSelection::BBAColumnRequest(12)); break;
+                case self::$colSet[1]  :  print(BBAQMSelection::BBAColumnRequest(self::$colLoopReq[1]));  break;
+                case self::$colSet[2]  :  print(BBAQMSelection::BBAColumnRequest(self::$colLoopReq[2]));  break;
+                case self::$colSet[3]  :  print(BBAQMSelection::BBAColumnRequest(self::$colLoopReq[3]));  break;
+                case self::$colSet[4]  :  print(BBAQMSelection::BBAColumnRequest(self::$colLoopReq[4]));  break;
+                case self::$colSet[5]  :  print(BBAQMSelection::BBAColumnRequest(self::$colLoopReq[5]));  break;
+                case self::$colSet[6]  :  print(BBAQMSelection::BBAColumnRequest(self::$colLoopReq[6]));  break;
+                case self::$colSet[7]  :  print(BBAQMSelection::BBAColumnRequest(self::$colLoopReq[7]));  break;
+                case self::$colSet[8]  :  print(BBAQMSelection::BBAColumnRequest(self::$colLoopReq[8]));  break;
+                case self::$colSet[9]  :  print(BBAQMSelection::BBAColumnRequest(self::$colLoopReq[9]));  break;
+                case self::$colSet[10] :  print(BBAQMSelection::BBAColumnRequest(self::$colLoopReq[10])); break;
+                case self::$colSet[11] :  print(BBAQMSelection::BBAColumnRequest(self::$colLoopReq[11])); break;
 
                 /**
                  * Defined: If you dont set anything and leave as empty string "" it will
@@ -532,7 +591,7 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
                  *
                  * @since    1.0.0
                  * @since    09.19.2022 */
-                default:       print(BBAQMSelection::BBAColumnRequest(1));  break;
+                default:       print(BBAQMSelection::BBAColumnRequest(self::$colLoopReq[0]));  break;
               
               } ?>
         
@@ -585,14 +644,19 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
     *
     * @since    1.0.0
     * @since    09.19.2022 */    
-    
     static public function BBAColumnRequest($colType) {
 
       $data = [];  
       $init = 1; 
       
+       /**
+        * Defined: @var init initialized by 1 @var data as an empty array
+        * This take handles colimn as you added will be loop for from begin on 1 
+        *
+        * @since    1.0.0
+        * @since    09.20.2022 */   
       for($dataRequest = $init; $dataRequest <= $colType;  $dataRequest++) 
-      { $data[] = self::BBATemplateCol(self::$breakPoint['c'.$dataRequest], self::$cbConFn['c'.$dataRequest]); } 
+      { $data[] = self::BBATemplateCol(self::$breakPoint[self::$defaultKey[15].$dataRequest], self::$cbConFn[self::$defaultKey[15].$dataRequest]); } 
       
       return (implode("", $data));
 
