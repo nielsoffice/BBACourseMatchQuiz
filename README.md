@@ -9,7 +9,7 @@ Exclusive BBA Course Match Quiz Micro Plugin
   session_start();
 
   // Set URLS
-  if(isset($_GET['begin']))         { BBAQuizMatchPageURL::setURL('begin');
+  if(isset($_GET['begin']))             { BBAQuizMatchPageURL::setURL('begin');
   } else if(isset($_GET['bba-qm-pg1'])) { BBAQuizMatchPageURL::setURL('bba-qm-pg1'); 
   } else if(isset($_GET['bba-qm-pg2'])) { BBAQuizMatchPageURL::setURL('bba-qm-pg2'); 
   } else if(isset($_GET['bba-qm-pg3'])) { BBAQuizMatchPageURL::setURL('bba-qm-pg3'); 
