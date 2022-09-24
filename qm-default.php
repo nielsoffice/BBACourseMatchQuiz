@@ -18,12 +18,18 @@ add_action('init', function() {
 			'rel'  => 'stylesheet',
 			'type' => 'text/css',
 			'href' =>  '/wp-content/plugins/bbacoursematchquiz/public/css/bootstrap.min.css'
-		]);
+		], 'style');
 		BBAQMSelf::lounch();
 		BBAQMSelf::assetInstall([
 			'rel'  => 'stylesheet',
 			'type' => 'text/css',
 			'href' =>  '/wp-content/plugins/bbacoursematchquiz/public/css/bbacoursematchquiz-public.css'
+		], 'style');
+		BBAQMSelf::lounch();
+		BBAQMSelf::assetInstall([
+			'type' => 'text/javascript',
+			'id'   => 'script_id',
+			'src'  =>  '/wp-content/plugins/bbacoursematchquiz/public/js/bbacoursematchquiz-public.js'
 		]);
 		BBAQMSelf::lounch();
 	});   
@@ -77,7 +83,6 @@ add_action('init', function() {
 	 }  
 
  });
-
 
  /**
  * Defined: Apply hook for page 1
