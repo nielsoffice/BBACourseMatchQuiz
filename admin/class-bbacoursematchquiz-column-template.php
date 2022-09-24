@@ -77,7 +77,14 @@ class BBACourseMatchColumnTemplate {
    * 
    * @since    1.0.0
    * @since    09.25.2022 */  
-    if(isset($_REQUEST[self::$activation]) == true ) { 
+    if( (isset($_REQUEST[self::$activation]) == true)     || (isset($_REQUEST[self::$activation.'1']) == true) || 
+        (isset($_REQUEST[self::$activation.'2']) == true) || (isset($_REQUEST[self::$activation.'3']) == true) ||
+        (isset($_REQUEST[self::$activation.'3']) == true) || (isset($_REQUEST[self::$activation.'4']) == true) || 
+        (isset($_REQUEST[self::$activation.'5']) == true) || (isset($_REQUEST[self::$activation.'6']) == true) ||
+        (isset($_REQUEST[self::$activation.'7']) == true) || (isset($_REQUEST[self::$activation.'8']) == true) ||
+        (isset($_REQUEST[self::$activation.'9']) == true) || (isset($_REQUEST[self::$activation.'10']) == true) 
+        
+      ){ 
             
     /**
      * Defined:SET URL Begin the activation will run
