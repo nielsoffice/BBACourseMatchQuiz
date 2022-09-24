@@ -35,6 +35,12 @@ Exclusive BBA Course Match Quiz Micro Plugin
 	     'href' => '/wp-content/plugins/bbacoursematchquiz/public/css/bbacoursematchquiz-public.css'
 	   ]);
 	   BBAQMSelf::lounch();
+	   BBAQMSelf::assetInstall([
+	     'type' => 'text/javascript',
+	     'id'   => 'script_id',
+	     'src'  =>  '/wp-content/plugins/bbacoursematchquiz/public/js/bbacoursematchquiz-public.js'
+	  ]);
+	  BBAQMSelf::lounch();
      });   
 
      // Installing Brand for all pages!
