@@ -93,6 +93,44 @@ if (class_exists('BBAQMSelection')) {
 ```
 
 ```PHP
+# Generate new page
+add_action('init', function() {
+      
+    if (class_exists('BBAQMSelection')) {     
+
+          BBAQuizMatchPageURL::setURL('bba-qm-pg1');
+   
+       if(BBAQuizMatchPageURL::URL() == true ) {
+
+           BBAQMSelection::BBATemplate('1-col' , ['box-md' , 'bba_mq'] ); 
+           BBAQMSelection::BBAaddCol1Content([
+               
+             'target'    => 'bba_qm2a_form', 
+             'origin'    => 'http://localhost/bba/?begin', // if seems have any problem go to begin
+             'redirect'  => 'http://localhost/bba/?bba-qm-pg2', // else proceed to a next page
+             'question'  => "I am brand new to lashing",
+             'selection' =>  [1,2,1,0] 
+             
+           ],'lg', function() {
+   
+              $html  = '';
+              $html .= '<h3>Which best describes you?</h3>';
+
+              return($html);
+  
+           });
+           BBAQMSelection::execute();  
+
+        }
+
+     } else {
+       echo "WP Plugin: BBA Quiz Match was removed or deactivated";
+     } 
+
+ });
+```
+
+```PHP
   # Using Hooks insert Column 
   # Using BBATemplate Hooks 
    - bba_qm_top_add_settings_before_parent
