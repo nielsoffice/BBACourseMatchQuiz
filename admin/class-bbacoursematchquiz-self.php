@@ -65,6 +65,24 @@ class BBAQMSelf  {
      * @since    1.0.0
      * @since    09.24.2022 */ 
     private static $href;
+
+    /**
+     * Defined: @var @property setter_js_src
+     * @since    1.0.0
+     * @since    09.24.2022 */ 
+    private static $src;
+     
+    /**
+     * Defined: @var @property setter_js_id
+     * @since    1.0.0
+     * @since    09.24.2022 */ 
+    private static $id;
+    
+    /**
+     * Defined: @var @property setter_js_swicther
+     * @since    1.0.0
+     * @since    09.24.2022 */ 
+    private static $switch;
      
     /**
      * Defined: init setters
@@ -72,7 +90,18 @@ class BBAQMSelf  {
      *
      * @since    1.0.0
      * @since    09.24.2022 */ 
-    public static function assetInstall( $assets = [] ) {
+    public static function assetInstall( $assets = [], $switch = 'script' ) {
+
+      if( (self::$switch = $switch) === 'script' ) {
+
+      // check if those are set if not '' !;
+      self::$id   = $assets['id']?? '';
+      self::$type = $assets['type']?? '';
+
+      // defined: current dynamic page URL 
+      self::$src = get_site_url() . $assets['src']?? '';
+
+      } else {
 
       // check if those are set if not '' !;
       self::$rel  = $assets['rel']?? '';
@@ -80,6 +109,8 @@ class BBAQMSelf  {
 
       // defined: current dynamic page URL 
       self::$href = get_site_url() . $assets['href']?? '';
+      
+      }
 
     }
   
@@ -92,6 +123,8 @@ class BBAQMSelf  {
     public static function getRel()  { return(' rel="' .self::$rel .'"'); }
     public static function getType() { return(' type="'.self::$type.'"'); }
     public static function gethref() { return(' href="'.self::$href.'"'); }
+    public static function getID()   { return(' id="'  .self::$id .'"');  }
+    public static function getsrc()  { return(' src="' .self::$src.'"');  }
   
     /**
      * Defined: get all from setter assets
@@ -101,11 +134,10 @@ class BBAQMSelf  {
      * @since    09.24.2022 */ 
     public static function get() { 
       
-     return( '<link'
-        . self::getRel()
-        . self::getType() 
-        . self::gethref() .'/>'
-      ) ; }
+      if( self::$switch === 'script' ) { return( '<script' . self::getType() . self::getID() . self::getsrc() .'></script>');}
+      else { return( '<link' . self::getRel() . self::getType() . self::gethref() .'/>'); }
+
+     }
 
     /**
      * Defined: Lounch installing assets in custom URL
