@@ -40,20 +40,21 @@
         wp_register_style ( 'BBA_QM_B5_buttons',   get_site_url() . '/wp-content/plugins/bbacoursematchquiz/admin/css/buttons.bootstrap5.min.css',    array(), false ); 
         wp_register_style ( 'BBA_QM_B5_scroller',  get_site_url() . '/wp-content/plugins/bbacoursematchquiz/admin/css/scroller.bootstrap5.min.css',   array(), false ); 
         wp_register_style ( 'BBA_QM_font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css',              array(), false );
-        
+        wp_register_style ( 'BBA_QM_datePickerStyle  ', 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css',array(), false );
+     
         wp_enqueue_script('BBA_QM_bootstrap',  get_site_url() . '/wp-content/plugins/bbacoursematchquiz/admin/js/bootstrap.bundle.min.js',      array(), null); 
         wp_enqueue_script('BBA_QM_jqueryDataT',get_site_url() . '/wp-content/plugins/bbacoursematchquiz/admin/js/jquery.dataTables.min.js',     array(), null); 
         wp_enqueue_script('BBA_QM_dataTables', get_site_url() . '/wp-content/plugins/bbacoursematchquiz/admin/js/dataTables.bootstrap5.min.js', array(), null);
         wp_enqueue_script('BBA_QM_buttons',    get_site_url() . '/wp-content/plugins/bbacoursematchquiz/admin/js/buttons.bootstrap5.min.js',    array(), null); 
         wp_enqueue_script('BBA_QM_dataTables', get_site_url() . '/wp-content/plugins/bbacoursematchquiz/admin/js/dataTables.scroller.min.js',   array(), null); 
-        
+    
         function _filter_style_wp_register_enqueue() {
 
             $style_handles = [
 
                 'BBA_QM_B5_bootstrap', 'BBA_QM_B5_dataTables',
                 'BBA_QM_B5_buttons',   'BBA_QM_B5_scroller',
-                'BBA_QM_font-awesome',
+                'BBA_QM_font-awesome', 'BBA_QM_datePickerStyle'
     
             ];
             
@@ -77,6 +78,7 @@
          } ?>
 
         <script type="text/javascript" src="<?php print(get_site_url() . '/wp-content/plugins/bbacoursematchquiz/admin/js/jquery-3.6.0.min.js'); ?>"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
         <script>
             
         /*
@@ -366,6 +368,18 @@
             }); 
             });
 
+        });
+
+        $(document).ready(function(){
+        
+        $(function () {
+
+            $('#startDate').datepicker({ format: 'dd/mm/yyyy'});
+            $('#endDate').datepicker({ format: 'dd/mm/yyyy'});
+
+
+         });    
+        
         });
 
         </script>
