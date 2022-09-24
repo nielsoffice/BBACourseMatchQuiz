@@ -30,6 +30,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }   
 
+
 /**
  * Currently plugin version.
  * Start at version 1.0.0 and use SemVer - https://semver.org
@@ -37,15 +38,21 @@ if ( ! defined( 'WPINC' ) ) {
  */
 define( 'BBACOURSEMATCHQUIZ_VERSION', '1.0.0' );
 
+/**
+ * Currently plugin Quiz Match Default Settings.
+ * @since 09.20.2022
+ */
+ require_once plugin_dir_path( __FILE__ ) . 'qm-default.php';
 
- 
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-bbacoursematchquiz-activator.php
  */
 function activate_bbacoursematchquiz() {
+	
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-bbacoursematchquiz-activator.php';
 	Bbacoursematchquiz_Activator::activate();
+
 }
 
 /**

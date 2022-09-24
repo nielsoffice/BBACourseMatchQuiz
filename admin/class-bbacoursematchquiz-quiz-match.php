@@ -1,7 +1,7 @@
 <?php 
 
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-bbacoursematchquiz-column-template.php';
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-bbacoursematchquiz-execute.php';
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-bbacoursematchquiz-exec.php';
 
 /**
  * The file that defines the core plugin class
@@ -31,7 +31,7 @@ require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-bbacoursematc
  * @author     nielfernandez <renniel.fernandez@outgive.ca>
  */
 
-class BBAQMSelection extends BBACourseMatchColumnTemplate {
+class BBAQMSelection extends BBACourseMatchColumnTemplate { 
     
     /**
      * Defined: Properties default key.
@@ -160,7 +160,7 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
      *
      * @since    1.0.0
      * @since    09.20.2022 */
-    static private $validatedKeyParentID;    
+    static private $validatedKeyParentID;       
 
     /**
      * Defined: BBATemplate class generate B5 Framework easily!
@@ -199,7 +199,9 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
      *
      * @since    1.0.0
      * @since    09.19.2022 */
-    static public function BBAaddCol1Content($selection = [], $breakPoint , $cbConFn) {
+    static public function BBAaddCol1Content($selection = [], $breakPoint = null , $cbConFn = null) {
+        
+       self::$selection = (new BBAQMPerform)->publicSetter($selection, null );
 
         /**
          * Defined: Selection perform database drivin operation and default page activation col1
@@ -209,7 +211,7 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
          *
          * @since    1.0.0
          * @since    09.19.2022 */
-        self::$selection        = (new BBAQMPerform)->publicSetter($selection);
+       
 
         /**
          * Defined: count col-breakpoint for col1 is 1
@@ -226,8 +228,8 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
      *
      * @since    1.0.0
      * @since    09.19.2022 */
-    static public function BBAaddCol2Content($selection = [], $breakPoint , $cbConFn) {
-
+    static public function BBAaddCol2Content($selection = [], $breakPoint = null , $cbConFn = null ) {
+  
         /**
          * Defined: Selection perform database drivin operation and default page activation col2
          * B5 Front End Framework Fullt responsive From Desktop to mobile
@@ -236,7 +238,8 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
          *
          * @since    1.0.0
          * @since    09.19.2022 */
-        self::$selection        = (new BBAQMPerform)->publicSetter($selection);
+
+        self::$selection = (new BBAQMCol2Perform)->qmpublicSetter($selection, null );
 
         /**
          * Defined: count col-breakpoint for col2 is 2
@@ -253,7 +256,7 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
      *
      * @since    1.0.0
      * @since    09.19.2022 */
-    static public function BBAaddCol3Content($selection = [], $breakPoint , $cbConFn) {
+    static public function BBAaddCol3Content($selection = [], $request = null , $breakPoint = null , $cbConFn = null) {
 
         /**
          * Defined: Selection perform database drivin operation and default page activation col3
@@ -263,7 +266,7 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
          *
          * @since    1.0.0
          * @since    09.19.2022 */
-        self::$selection        = (new BBAQMPerform)->publicSetter($selection);
+        self::$selection = (new BBAQMPerform)->publicSetter($selection,null );
 
         /**
          * Defined: count col-breakpoint for col3 is 3
@@ -280,7 +283,7 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
      *
      * @since    1.0.0
      * @since    09.19.2022 */
-    static public function BBAaddCol4Content($selection = [], $breakPoint , $cbConFn) {
+    static public function BBAaddCol4Content($selection = [], $request = null , $breakPoint = null , $cbConFn = null) {
 
         /**
          * Defined: Selection perform database drivin operation and default page activation col4
@@ -290,7 +293,7 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
          *
          * @since    1.0.0
          * @since    09.19.2022 */
-        self::$selection        = (new BBAQMPerform)->publicSetter($selection);
+        self::$selection = (new BBAQMPerform)->publicSetter($selection, null );
 
         /**
          * Defined: count col-breakpoint for col4 is 4
@@ -307,7 +310,7 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
      *
      * @since    1.0.0
      * @since    09.19.2022 */
-    static public function BBAaddCol5Content($selection = [], $breakPoint , $cbConFn) {
+    static public function BBAaddCol5Content($selection = [], $request = null , $breakPoint = null , $cbConFn = null) {
 
         /**
          * Defined: Selection perform database drivin operation and default page activation col5
@@ -317,7 +320,7 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
          *
          * @since    1.0.0
          * @since    09.19.2022 */
-        self::$selection        = (new BBAQMPerform)->publicSetter($selection);
+        self::$selection = (new BBAQMPerform)->publicSetter($selection, null );;
 
         /**
          * Defined: count col-breakpoint for col5 is 5
@@ -334,8 +337,7 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
      *
      * @since    1.0.0
      * @since    09.19.2022 */
-    static public function BBAaddCol6Content($selection = [], $breakPoint , $cbConFn) {
-
+    static public function BBAaddCol6Content($selection = [], $request = null , $breakPoint = null , $cbConFn = null) {
         /**
          * Defined: Selection perform database drivin operation and default page activation col6
          * B5 Front End Framework Fullt responsive From Desktop to mobile
@@ -344,7 +346,7 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
          *
          * @since    1.0.0
          * @since    09.19.2022 */
-        self::$selection        = (new BBAQMPerform)->publicSetter($selection);
+        self::$selection = (new BBAQMPerform)->publicSetter($selection,null );
 
         /**
          * Defined: count col-breakpoint for col6 is 6
@@ -361,7 +363,7 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
      *
      * @since    1.0.0
      * @since    09.19.2022 */
-    static public function BBAaddCol7Content($selection = [], $breakPoint , $cbConFn) {
+    static public function BBAaddCol7Content($selection = [], $request = null , $breakPoint = null , $cbConFn = null) {
 
         /**
          * Defined: Selection perform database drivin operation and default page activation col7
@@ -371,8 +373,7 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
          *
          * @since    1.0.0
          * @since    09.19.2022 */
-        self::$selection        = (new BBAQMPerform)->publicSetter($selection);
-
+        self::$selection = (new BBAQMPerform)->publicSetter($selection, null );
         /**
          * Defined: count col-breakpoint for col7 is 7
          *
@@ -388,7 +389,7 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
      *
      * @since    1.0.0
      * @since    09.19.2022 */
-    static public function BBAaddCol8Content($selection = [], $breakPoint , $cbConFn) {
+    static public function BBAaddCol8Content($selection = [], $request = null , $breakPoint = null , $cbConFn = null) {
 
         /**
          * Defined: Selection perform database drivin operation and default page activation col8
@@ -398,7 +399,7 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
          *
          * @since    1.0.0
          * @since    09.19.2022 */
-        self::$selection        = (new BBAQMPerform)->publicSetter($selection);
+        self::$selection = (new BBAQMPerform)->publicSetter($selection,null);
 
         /**
          * Defined: count col-breakpoint for col8 is 8
@@ -415,7 +416,7 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
      *
      * @since    1.0.0
      * @since    09.19.2022 */
-    static public function BBAaddCol9Content($selection = [], $breakPoint , $cbConFn) {
+    static public function BBAaddCol9Content($selection = [], $request = null , $breakPoint = null , $cbConFn = null) {
 
         /**
          * Defined: Selection perform database drivin operation and default page activation col9
@@ -425,7 +426,7 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
          *
          * @since    1.0.0
          * @since    09.19.2022 */
-        self::$selection        = (new BBAQMPerform)->publicSetter($selection);
+        self::$selection = (new BBAQMPerform)->publicSetter($selection,null );
 
         /**
          * Defined: count col-breakpoint for col9 is 9
@@ -442,7 +443,7 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
      *
      * @since    1.0.0
      * @since    09.19.2022 */
-    static public function BBAaddCol10Content($selection = [], $breakPoint , $cbConFn) {
+    static public function BBAaddCol10Content($selection = [], $request = null , $breakPoint = null , $cbConFn = null) {
 
         /**
          * Defined: Selection perform database drivin operation and default page activation col10
@@ -452,7 +453,7 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
          *
          * @since    1.0.0
          * @since    09.19.2022 */
-        self::$selection         = (new BBAQMPerform)->publicSetter($selection);
+        self::$selection = (new BBAQMPerform)->publicSetter($selection,null );
 
         /**
          * Defined: count col-breakpoint for col10 is 10
@@ -469,7 +470,8 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
      *
      * @since    1.0.0
      * @since    09.19.2022 */
-    static public function BBAaddCol11Content($selection = [], $breakPoint , $cbConFn) {
+    static public function BBAaddCol11Content($selection = [], $request = null , $breakPoint = null , $cbConFn = null) {
+
 
         /**
          * Defined: Selection perform database drivin operation and default page activation col11
@@ -479,7 +481,7 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
          *
          * @since    1.0.0
          * @since    09.19.2022 */
-        self::$selection         = (new BBAQMPerform)->publicSetter($selection);
+        self::$selection = (new BBAQMPerform)->publicSetter($selection,null );
 
         /**
          * Defined: count col-breakpoint for col11 is 11
@@ -496,7 +498,7 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
      *
      * @since    1.0.0
      * @since    09.19.2022 */
-    static public function BBAaddCol12Content($selection = [], $breakPoint , $cbConFn) {
+    static public function BBAaddCol12Content($selection = [], $request = null , $breakPoint = null , $cbConFn = null) {
 
         /**
          * Defined: Selection perform database drivin operation and default page activation col12
@@ -506,7 +508,7 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
          *
          * @since    1.0.0
          * @since    09.19.2022 */
-        self::$selection         = (new BBAQMPerform)->publicSetter($selection);
+        self::$selection = (new BBAQMPerform)->publicSetter($selection,null);
 
         /**
          * Defined: count col-breakpoint for col12 is 12
@@ -516,6 +518,36 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
         self::$breakPoint[self::$defaultKey[14]] = $breakPoint;
         self::$cbConFn[self::$defaultKey[14]]    = $cbConFn;
     }
+
+    /**
+     * Defined: from col-1 b2 framework base add email content.
+     * function name: BBAaddCol1Content to BBAaddEmailContent same approach but email content
+     *
+     * @since    1.0.0
+     * @since    09.19.2022 */
+    static public function BBAaddEmailContent($selection = [], $breakPoint = null , $cbConFn = null) {
+        
+        self::$selection = (new BBAQMPerform)->publicSetter($selection , $email = true );
+ 
+         /**
+          * Defined: Selection perform database drivin operation and default page activation col1
+          * B5 Front End Framework Fullt responsive From Desktop to mobile
+          * Class name: BBAQMPerform
+          * Method name: publicSetter
+          *
+          * @since    1.0.0
+          * @since    09.19.2022 */
+        
+ 
+         /**
+          * Defined: count col-breakpoint for col1 is 1
+          *
+          * @since    1.0.0
+          * @since    09.19.2022 */
+         self::$breakPoint[self::$defaultKey[3]] = $breakPoint;
+         self::$cbConFn[self::$defaultKey[3]]    = $cbConFn;
+     }
+ 
 
    static public function do_BBATemplate() { 
          
@@ -593,9 +625,7 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
                  * @since    09.19.2022 */
                 default:       print(BBAQMSelection::BBAColumnRequest(self::$colLoopReq[0]));  break;
               
-              } ?>
-        
-            <?php 
+              } 
          
             /**
              * Defined: The Hook Setting before Parent BBATemplate.
@@ -637,7 +667,23 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
           do_action( 'bba_qm_add_settings_after_bottom_parent' ); ?>
  
     <?php } 
-    
+
+    static public function do_BBAColumnTemplate() { ?>
+            
+        <?php 
+            
+            /**
+             * Defined: If you dont set anything and leave as empty string "" it will
+             * return default value as one 
+             *
+             * @since    1.0.0
+             * @since    09.19.2022 */
+            print(BBAQMSelection::BBAColumnRequest(self::$colLoopReq[0]));  
+     
+            ?>
+
+    <?php } 
+        
    /**
     * Defined: function named: BBAColumnRequest
     * this handle how many cols will be executed base on your assigned colType 
@@ -656,7 +702,9 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
         * @since    1.0.0
         * @since    09.20.2022 */   
       for($dataRequest = $init; $dataRequest <= $colType;  $dataRequest++) 
-      { $data[] = self::BBATemplateCol(self::$breakPoint[self::$defaultKey[15].$dataRequest], self::$cbConFn[self::$defaultKey[15].$dataRequest]); } 
+      { 
+        
+      $data[] = self::BBATemplateCol(self::$breakPoint[self::$defaultKey[15].$dataRequest], self::$cbConFn[self::$defaultKey[15].$dataRequest], ); } 
       
       return (implode("", $data));
 
@@ -668,6 +716,14 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
     *
     * @since    1.0.0
     * @since    09.19.2022 */   
-    static public function Execute() { BBAQMSelection::do_BBATemplate() . die(); }  
-  
+    static public function Execute() { BBAQMSelection::do_BBATemplate() . die();  }  
+
+   /**
+    * Defined: function named: AddColContent
+    * this is simple getter will excute all setting when this function is call! 
+    *
+    * @since    1.0.0
+    * @since    09.20.2022 */  
+    static public function addColContent() { BBAQMSelection::do_BBAColumnTemplate();  }  
+
 }

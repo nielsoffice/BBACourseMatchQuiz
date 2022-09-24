@@ -7,7 +7,7 @@
  * @since      1.0.0
  *
  * @package    Bbacoursematchquiz
- * @subpackage Bbacoursematchquiz/admin
+ * @subpackage Bbacoursematchquiz/includes
  */
 
 /**
@@ -17,7 +17,7 @@
  * enqueue the admin-specific stylesheet and JavaScript.
  *
  * @package    Bbacoursematchquiz
- * @subpackage Bbacoursematchquiz/admin
+ * @subpackage Bbacoursematchquiz/includes
  * @author     nielfernandez <renniel.fernandez@outgive.ca>
  */
 

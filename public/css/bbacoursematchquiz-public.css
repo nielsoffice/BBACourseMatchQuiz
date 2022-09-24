@@ -21,3 +21,10 @@
   .bba-qm-btn { background-color: #69b569; border: none; width: 30%; padding: 10px 20px; font-weight: 500; margin-bottom: 15px;}
    /* QM btn hover */
   .bba-qm-btn:hover { background-color: #60ad60; cursor: pointer; }
+
+
+  /* Begin URL CSS */
+  .bbarow {
+    text-align: center;
+    margin-top: 75px !important;
+  }

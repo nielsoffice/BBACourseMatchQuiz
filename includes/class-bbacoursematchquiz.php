@@ -67,6 +67,7 @@ class Bbacoursematchquiz {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
+
 		if ( defined( 'BBACOURSEMATCHQUIZ_VERSION' ) ) {
 			$this->version = BBACOURSEMATCHQUIZ_VERSION;
 		} else {
@@ -79,8 +80,18 @@ class Bbacoursematchquiz {
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 
-		new BBACourseMatchMenu();
+		$bba_qm = new BBACourseMatchMenu();
+		$bba_qm->BBAQMProperties(
 
+			'BBA Quiz Match Result',
+			'CBBA Quiz Match',
+			'manage_options',
+		    'bba-quiz-match-result',
+			[$this, 'wp_get_bba_quiz_match_rendered'],
+			'dashicons-welcome-write-blog'
+
+		);
+	
 	}
 
 	/**
@@ -123,16 +134,30 @@ class Bbacoursematchquiz {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-bbacoursematchquiz-menu.php';
 
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-bbacoursematchquiz-frontEnd-shortcode.php';
+		/**
+		 * The class responsible for the result client side content
+		 */
+    	require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-bbacoursematchquiz-frontEnd-shortcode.php';
 
+		/**
+		 * The class responsible for the result generate url
+		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-bbacoursematchquiz-frontEnd-url.php';
 
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-bbacoursematchquiz-execute.php';
+		/**
+		 * The class responsible for the result excecution
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-bbacoursematchquiz-exec.php';
 
+		/**
+		 * The class responsible for the application
+		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-bbacoursematchquiz-quiz-match.php';
 
-
-		
+		/**
+		 * The class responsible for the admin contents
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-bbacoursematchquiz-rendered.php';	
 		
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
@@ -141,6 +166,18 @@ class Bbacoursematchquiz {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-bbacoursematchquiz-public.php';
 
 		$this->loader = new Bbacoursematchquiz_Loader();
+
+	}
+
+	/**
+	 * Defined: call back function class for Admin menu 
+	 * @since 25.05.2022
+	 */    
+	public function wp_get_bba_quiz_match_rendered() {
+
+	  if( class_exists('BBACourseMatchMenuRendered') ) {
+		new BBACourseMatchMenuRendered();
+	  }
 
 	}
 

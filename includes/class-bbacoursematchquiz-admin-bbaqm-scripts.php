@@ -7,7 +7,7 @@
  * @since      1.0.0
  *
  * @package    Bbacoursematchquiz
- * @subpackage Bbacoursematchquiz/admin
+ * @subpackage Bbacoursematchquiz/includes
  */
 
 /**
@@ -17,7 +17,7 @@
  * enqueue the admin-specific stylesheet and JavaScript.
  *
  * @package    Bbacoursematchquiz
- * @subpackage Bbacoursematchquiz/admin
+ * @subpackage Bbacoursematchquiz/includes
  * @author     nielfernandez <renniel.fernandez@outgive.ca>
  */
 
@@ -26,24 +26,59 @@
     public function __construct() {
 
         add_action( 'admin_footer', array($this, 'js' ), 80 );  
+
     }
-  
-    public function js() { ?>
 
-        <link rel="stylesheet" type="text/css" href="<?php print(get_site_url() . '/wp-content/plugins/bbacoursematchquiz/admin/css/bootstrap.min.css'); ?>"/>
-        <link rel="stylesheet" type="text/css" href="<?php print(get_site_url() . '/wp-content/plugins/bbacoursematchquiz/admin/css/dataTables.bootstrap5.min.css'); ?>"/>
-        <link rel="stylesheet" type="text/css" href="<?php print(get_site_url() . '/wp-content/plugins/bbacoursematchquiz/admin/css/buttons.bootstrap5.min.css"/>'); ?>"/>
-        <link rel="stylesheet" type="text/css" href="<?php print(get_site_url() . '/wp-content/plugins/bbacoursematchquiz/admin/css/scroller.bootstrap5.min.css'); ?>"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    /**
+     * Defined: script and style only for admin active menu
+     * @since    1.0.0
+     * @since    09.20.2022 */
+    public function js() { 
         
-        <script type="text/javascript" src="<?php print(get_site_url() . '/wp-content/plugins/bbacoursematchquiz/admin/js/jquery-3.6.0.min.js'); ?>"></script>
-        <script type="text/javascript" src="<?php print(get_site_url() . '/wp-content/plugins/bbacoursematchquiz/admin/js/bootstrap.bundle.min.js'); ?>"></script>
-        <script type="text/javascript" src="<?php print(get_site_url() . '/wp-content/plugins/bbacoursematchquiz/admin/js/jquery.dataTables.min.js'); ?>"></script>
-        <script type="text/javascript" src="<?php print(get_site_url() . '/wp-content/plugins/bbacoursematchquiz/admin/js/dataTables.bootstrap5.min.js'); ?>"></script>
-        <script type="text/javascript" src="<?php print(get_site_url() . '/wp-content/plugins/bbacoursematchquiz/admin/js/buttons.bootstrap5.min.js'); ?>"></script>
-        <script type="text/javascript" src="<?php print(get_site_url() . '/wp-content/plugins/bbacoursematchquiz/admin/js/dataTables.scroller.min.js'); ?>"></script>
+        wp_register_style ( 'BBA_QM_B5_bootstrap', get_site_url() . '/wp-content/plugins/bbacoursematchquiz/admin/css/bootstrap.min.css',             array(), false ); 
+        wp_register_style ( 'BBA_QM_B5_dataTables',get_site_url() . '/wp-content/plugins/bbacoursematchquiz/admin/css/dataTables.bootstrap5.min.css', array(), false ); 
+        wp_register_style ( 'BBA_QM_B5_buttons',   get_site_url() . '/wp-content/plugins/bbacoursematchquiz/admin/css/buttons.bootstrap5.min.css',    array(), false ); 
+        wp_register_style ( 'BBA_QM_B5_scroller',  get_site_url() . '/wp-content/plugins/bbacoursematchquiz/admin/css/scroller.bootstrap5.min.css',   array(), false ); 
+        wp_register_style ( 'BBA_QM_font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css',              array(), false );
+        
+        wp_enqueue_script('BBA_QM_bootstrap',  get_site_url() . '/wp-content/plugins/bbacoursematchquiz/admin/js/bootstrap.bundle.min.js',      array(), null); 
+        wp_enqueue_script('BBA_QM_jqueryDataT',get_site_url() . '/wp-content/plugins/bbacoursematchquiz/admin/js/jquery.dataTables.min.js',     array(), null); 
+        wp_enqueue_script('BBA_QM_dataTables', get_site_url() . '/wp-content/plugins/bbacoursematchquiz/admin/js/dataTables.bootstrap5.min.js', array(), null);
+        wp_enqueue_script('BBA_QM_buttons',    get_site_url() . '/wp-content/plugins/bbacoursematchquiz/admin/js/buttons.bootstrap5.min.js',    array(), null); 
+        wp_enqueue_script('BBA_QM_dataTables', get_site_url() . '/wp-content/plugins/bbacoursematchquiz/admin/js/dataTables.scroller.min.js',   array(), null); 
+        
+        function _filter_style_wp_register_enqueue() {
 
+            $style_handles = [
+
+                'BBA_QM_B5_bootstrap', 'BBA_QM_B5_dataTables',
+                'BBA_QM_B5_buttons',   'BBA_QM_B5_scroller',
+                'BBA_QM_font-awesome',
+    
+            ];
+            
+            foreach ( $style_handles as $style_handle_) { wp_enqueue_style ( $style_handle_ ); }
+        }
+        _filter_style_wp_register_enqueue();
+        
+        add_filter( 'script_loader_tag', 'bba_qm_typeScriptJS', 10, 3 );
+        function bba_qm_typeScriptJS( $tag, $handle, $src ) {
+
+            $handles = [
+                
+                 'BBA_QM_jquery3',     'BBA_QM_bootstrap',
+                 'BBA_QM_jqueryDataT', 'BBA_QM_dataTables',
+                 'BBA_QM_buttons',     'BBA_QM_dataTables'
+            
+            ]; foreach ($handles as $handle_) {
+
+                if ( $handle_ == $handle ) { return('<script type="text/javascript" src="' . $src . '" id="' . $handle . '"></script>'); }       
+            }
+         } ?>
+
+        <script type="text/javascript" src="<?php print(get_site_url() . '/wp-content/plugins/bbacoursematchquiz/admin/js/jquery-3.6.0.min.js'); ?>"></script>
         <script>
+            
         /*
         *  jQuery table2excel - v1.1.2
         *  jQuery plugin to export an .xls file in browser from an HTML table
@@ -334,7 +369,7 @@
         });
 
         </script>
-
+        
     <?php }
 
 };

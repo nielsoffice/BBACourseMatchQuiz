@@ -29,67 +29,126 @@
  */
 
 class BBACourseMatchMenu {
+     
+    /**
+     * Defined: @var @property mene for wp backend
+     * Method name: add_menu wp 
+     *
+     * @since    1.0.0
+     * @since    09.24.2022 */   
+    private $menu;
 
+    /**
+     * Defined: @var @property menu_name for wp backend
+     * Method name: add_menu wp 
+     *
+     * @since    1.0.0
+     * @since    09.24.2022 */   
+    private $menu_name;
+
+    /**
+     * Defined: manage option role capabilities
+     * Method name: add_menu wp 
+     *
+     * @since    1.0.0
+     * @since    09.24.2022 */   
+    private $options;
+
+    /**
+     * Defined: slug wp admin_menu
+     * Method name: add_menu wp 
+     *
+     * @since    1.0.0
+     * @since    09.24.2022 */   
+    private $menu_slug;
+
+    /**
+     * Defined: callback function / contents
+     * Method name: add_menu wp 
+     *
+     * @since    1.0.0
+     * @since    09.24.2022 */   
+    private $call_back = [];
+
+    /**
+     * Defined: icon dashicons
+     * Method name: add_menu wp 
+     *
+     * @since    1.0.0
+     * @since    09.24.2022 */   
+    private $icons;
+
+    /**
+     * Defined: Initialized admin menu and contents
+     * Method name: __construct
+     *
+     * @since    1.0.0
+     * @since    09.24.2022 */   
     public function __construct()
     {
 
+      // Init admin contents
       add_action( 'admin_menu', [ $this,'bba_quiz_match' ] );
 
-       /**
-        * @since 25.05.2022 
-        * Defined: BBACourseMatchFrontEndShortCode::Class */
-       BBACourseMatchMenu::require_bba_assets(); 
-       
-       add_action( 'init', [ $this,'wp_get_bba_quiz_match_frontEnd_rendered' ] );
-       add_shortcode( 'QuizMatch', array( 'BBACourseMatchFrontEndShortCode', 'frontEndShortCode' ) );
-    
     }
 
     /**
-     * Defined: create admin menu back end wp for create post
-     * @since 25.05.2022
-     */
+     * Defined: Menu Attributes and properties setter
+     * Method name: add_menu wp 
+     *
+     * @since    1.0.0
+     * @since    09.24.2022 */   
+    public function BBAQMProperties(
+      
+      $menu=null,      $menu_name=null, $options=null, 
+      $menu_slug=null, $call_back = [], $icons=null)       
+    
+    {
+
+      $this->menu      = $menu;
+      $this->menu_name = $menu_name;
+      $this->options   = $options;
+      $this->menu_slug = $menu_slug;
+      $this->call_back = $call_back;
+      $this->icons     = $icons;
+
+      
+    }
+
+    /**
+     * Defined: @var @property menu_name for wp backend
+     * Method name: add_menu wp 
+     *
+     * @since    1.0.0
+     * @since    09.24.2022 */   
     public function bba_quiz_match() : void  {
 
        add_menu_page(
 
-        'BBA Quiz Match Result',
-        'CBBA Quiz Match',
-        'manage_options',
-        'bba-quiz-match-result',
-        [$this, 'wp_get_bba_quiz_match_rendered'],
-        'dashicons-welcome-write-blog'
+        $this->menu,
+        $this->menu_name,
+        $this->options, 
+        $this->menu_slug, 
+        $this->call_back, 
+        $this->icons 
     
       );
     
     }
- 
-  /**
-   * Defined: call back function class for Admin menu 
-   * @since 25.05.2022
-   */    
-   public function wp_get_bba_quiz_match_rendered() {
 
-     require_once ( 'class-bbacoursematchquiz-rendered.php' );
-     if( class_exists('BBACourseMatchMenuRendered') ) {
-       new BBACourseMatchMenuRendered();
-     }
+    /**
+     * Defined: wp_get_bba_quiz_match_frontEnd_rendered client content
+     * Method name: add_menu wp 
+     *
+     * @since    1.0.0
+     * @since    09.24.2022 */ 
+    public function wp_get_bba_quiz_match_frontEnd_rendered() {
 
-   }
-
-   public function wp_get_bba_quiz_match_frontEnd_rendered() {
-
-    self::require_bba_assets();
-    if( class_exists('BBACourseMatchFrontEndShortCode') ) {
-      new BBACourseMatchFrontEndShortCode();
+      if( class_exists('BBACourseMatchFrontEndShortCode') ) {
+        new BBACourseMatchFrontEndShortCode();
+      }
+  
     }
-
-  }
-   
-  static public function require_bba_assets() {
-    require_once ('class-bbacoursematchquiz-quiz-match.php');
-  }
-
-
+    
 }
 
