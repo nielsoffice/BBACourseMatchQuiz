@@ -9,7 +9,7 @@ Exclusive BBA Course Match Quiz Micro Plugin
   session_start();
 
   // Set URLS
-  if(isset($_GET['bba-qm-pg']))         { BBAQuizMatchPageURL::setURL('bba-qm-pg');
+  if(isset($_GET['begin']))         { BBAQuizMatchPageURL::setURL('begin');
   } else if(isset($_GET['bba-qm-pg1'])) { BBAQuizMatchPageURL::setURL('bba-qm-pg1'); 
   } else if(isset($_GET['bba-qm-pg2'])) { BBAQuizMatchPageURL::setURL('bba-qm-pg2'); 
   } else if(isset($_GET['bba-qm-pg3'])) { BBAQuizMatchPageURL::setURL('bba-qm-pg3'); 
@@ -60,7 +60,7 @@ add_action('init', function() {
       
 if (class_exists('BBAQMSelection')) {     
 
-   BBAQuizMatchPageURL::setURL('bba-qm-pg');
+   BBAQuizMatchPageURL::setURL('begin');
 
     if(BBAQuizMatchPageURL::URL() == true ) {
 
@@ -111,7 +111,7 @@ if (class_exists('BBAQMSelection')) {
 
     BBAQMSelection::BBAaddCol1Content([	
       'target'    => 'bba_qm2b_form', 
-      'origin'    => 'http://localhost/bba/?bba-qm-pg',
+      'origin'    => 'http://localhost/bba/?begin',
       'redirect'  => 'http://localhost/bba/?bba-qm-pg2', 
       'question'  => "I have some experience",
       'selection' =>  [0,1,0,3] 
