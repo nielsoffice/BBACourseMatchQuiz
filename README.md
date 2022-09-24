@@ -2,81 +2,92 @@
 Exclusive BBA Course Match Quiz Micro Plugin 
 
 ```PHP
- // Front End Base or Primary Approach 
- // Adding Question Column base on b5 Framework BBA Quiz Match approach
- if (class_exists('BbaQMCourse')) {
-  
-   BbaQMCourse::BBATemplate('3-col' , ['breakPoint' , 'parentId'] ); : [ 'colType', [parentBreakPoint, 'parentId'] ]
-   BbaQMCourse::BBAaddCol1Content( selection: [],' breakpoint: lg', content: function() {
-     return 'test';
-   });
-   BbaQMCourse::BBAaddCol2Content( [],'sm',function() {
-     return 'test col 2';
-   });
-   BbaQMCourse::BBAaddCol3Content( [],'sm', function() {
-     return 'test col 3';
-   });
-   BbaQMCourse::execute(); 
-  
- } else {
-   echo "WP Plugin: BBA Quiz Match was removed or deactivated";
- }
-```
+  // Configuration!
+  add_action('init', function() {
+	
+  // Begin Session!
+  session_start();
 
-```HTML
- <!-- front end rendered --> 
- <div id="parentId" class="container-fluid bbafluid">
-    <div class="container-fluid bba-box">
-      <div class="row bbarow">
-                     
-      <div class="col-lg">test</div>             
-      <div class="col-sm">test col 2</div>
-      <div class="col-sm">test col 3</div>
-    
-      </div>
-    </div>
- </div>
+  // Set URLS
+  if(isset($_GET['bba-qm-pg']))         { BBAQuizMatchPageURL::setURL('bba-qm-pg');
+  } else if(isset($_GET['bba-qm-pg1'])) { BBAQuizMatchPageURL::setURL('bba-qm-pg1'); 
+  } else if(isset($_GET['bba-qm-pg2'])) { BBAQuizMatchPageURL::setURL('bba-qm-pg2'); 
+  } else if(isset($_GET['bba-qm-pg3'])) { BBAQuizMatchPageURL::setURL('bba-qm-pg3'); 
+  } else { BBAQuizMatchPageURL::setURL('bba-qm-pg4'); }
+
+ // Check if any of those URL is true !
+ if( BBAQuizMatchPageURL::URL() == true ) {		
+
+     // Apply hooks
+     add_action( 'bba_qm_top_add_settings_before_parent', function() {
+
+	  // Installing assets B5 min css
+	  BBAQMSelf::assetInstall([
+		'rel'  => 'stylesheet',
+		'type' => 'text/css',
+		'href' =>  '/wp-content/plugins/bbacoursematchquiz/public/css/bootstrap.min.css'
+	   ]);
+	   BBAQMSelf::lounch();
+	   // Installing asset Public css
+   	   BBAQMSelf::assetInstall([
+		'rel'  => 'stylesheet',
+		'type' => 'text/css',
+		'href' =>  '/wp-content/plugins/bbacoursematchquiz/public/css/bbacoursematchquiz-public.css'
+	   ]);
+	   BBAQMSelf::lounch();
+     });   
+
+     // Installing Brand for all pages!
+      add_action( 'bba_qm_add_settings_after_child_parent', function() {
+
+	print(BBAQMSelf::BBABranding());
+
+      });
+    }
+});
+
 ```
 
 ```PHP
-// Init action then run custom selection!
+// Init or activation
 add_action('init', function() {
-   
-  if (class_exists('BBAQMSelection')) {
-       
-     // Initialize Custom Page URL
-     BBAQuizMatchPageURL::setURL('?this-1');
+      
+if (class_exists('BBAQMSelection')) {     
+
+   BBAQuizMatchPageURL::setURL('bba-qm-pg');
 
     if(BBAQuizMatchPageURL::URL() == true ) {
-   
-       BBAQMSelection::BBATemplate('1-col' , ['box-md' , 'bba_activate_page'] ); 
-       BBAQMSelection::BBAaddCol1Content([
-                  
-         'target'    => '#bba_qm_begin', 
-         'redirect'  => 'http://localhost/bba/quiz-match/?bba-qm-pg1', 
-         'question'  => 'Have you try?',
-         'selection' =>  [ ] 
-                
-       ],'lg', function() {
-      
-          $html  = '';
-          $html .= '<h3>Which BBA course is right for me?</h3>';
-          $html .= '<p>Take the quiz to be matched with your perfect lash journey!</p>';
 
-          return($html);
+      BBAQMSelection::BBATemplate('1-col' , ['box-md' , 'bba_mq'] ); 
+      BBAQMSelection::BBAaddCol1Content([
 
-        });
-        BBAQMSelection::execute();  
-     }
+	 'target'    => 'bba_qm_begin', 
+	 'redirect'  => 'http://localhost/bba/quiz-match/?bba-qm-pg1', 
+	 'question'  => 'BEGIN',
+	 'selection' =>  [] 
 
-   }  else {
-      echo "WP Plugin: BBA Quiz Match was removed or deactivated";
-   }     
-    
-});
+      ],'lg', function() {
+
+	  $html  = '';
+	  $html .= '<h3>Which BBA course is right for me?</h3>';
+	  $html .= '<p>Take the quiz to be matched with your perfect lash journey!</p>';
+
+	  return($html);
+
+     });
+     BBAQMSelection::execute();  
+ 
+    }
+
+  } else {
+    echo "PG1 | WP Plugin: BBA Quiz Match was removed or deactivated";
+  }   
+
+ });
 ```
 
 ```PHP
+  # Using Hooks insert Column 
   # Using BBATemplate Hooks 
    - bba_qm_top_add_settings_before_parent
    - bba_qm_add_settings_before_child_parent
@@ -89,22 +100,18 @@ add_action('init', function() {
 
   # Hook Reference:
   - Plugin/admin/class-bbacoursematchquiz-quiz-match.php
-
-  # functions.php file
-  add_action('init', function() {
   
-  BBAQuizMatchPageURL::setURL('bba-qm-pg');
+ add_action( 'bba_qm_add_settings_bottom_child_row_parent', function() {
 
-  if(BBAQuizMatchPageURL::URL() == true ) {
+    BBAQMSelection::BBAaddCol1Content([	
+      'target'    => 'bba_qm2b_form', 
+      'origin'    => 'http://localhost/bba/?bba-qm-pg',
+      'redirect'  => 'http://localhost/bba/?bba-qm-pg2', 
+      'question'  => "I have some experience",
+      'selection' =>  [0,1,0,3] 
 
-    add_action( 'bba_qm_add_settings_before_child_parent', function() {
-                    
-	echo "hookS@"; 
-	
-    });
-  
-  }
+    ],'lg');
+    BBAQMSelection::addColContent();
 
-});
-
+ });
 ```
