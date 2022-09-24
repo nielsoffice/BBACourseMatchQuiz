@@ -4,7 +4,7 @@ add_action('init', function() {
 
 	session_start();
 	
-	if(isset($_GET['bba-qm-pg']))         { BBAQuizMatchPageURL::setURL('bba-qm-pg');
+	if(isset($_GET['begin']))             { BBAQuizMatchPageURL::setURL('begin');
 	} else if(isset($_GET['bba-qm-pg1'])) { BBAQuizMatchPageURL::setURL('bba-qm-pg1'); 
 	} else if(isset($_GET['bba-qm-pg2'])) { BBAQuizMatchPageURL::setURL('bba-qm-pg2'); 
 	} else if(isset($_GET['bba-qm-pg3'])) { BBAQuizMatchPageURL::setURL('bba-qm-pg3'); 
@@ -53,7 +53,7 @@ add_action('init', function() {
       
 	if (class_exists('BBAQMSelection')) {     
  
-		BBAQuizMatchPageURL::setURL('bba-qm-pg');
+		BBAQuizMatchPageURL::setURL('begin');
    
 	   if(BBAQuizMatchPageURL::URL() == true ) {
 
@@ -102,7 +102,7 @@ add_action('init', function() {
 					
 			BBAQMSelection::BBAaddCol1Content([	
 			  'target'    => 'bba_qm2b_form', 
-			  'origin'    => 'http://localhost/bba/?bba-qm-pg',
+			  'origin'    => 'http://localhost/bba/?begin',
 			  'redirect'  => 'http://localhost/bba/?bba-qm-pg2', 
 			  'question'  => "I have some experience",
 			  'selection' =>  [0,1,0,3] 
@@ -116,7 +116,7 @@ add_action('init', function() {
            BBAQMSelection::BBAaddCol1Content([
                
              'target'    => 'bba_qm2a_form', 
-             'origin'    => 'http://localhost/bba/?bba-qm-pg',
+             'origin'    => 'http://localhost/bba/?begin',
              'redirect'  => 'http://localhost/bba/?bba-qm-pg2', 
              'question'  => "I am brand new to lashing",
              'selection' =>  [1,2,1,0] 
@@ -157,7 +157,7 @@ add_action('init', function() {
 					
 				BBAQMSelection::BBAaddCol1Content([	
 				  'target'    => 'bba_qm2b', 
-				  'origin'    => 'http://localhost/bba/?bba-qm-pg',
+				  'origin'    => 'http://localhost/bba/?begin',
 				  'redirect'  => 'http://localhost/bba/?bba-qm-pg3', 
 				  'question'  => "I want to try it out as a hobby.",
 				  'selection' =>  [2,0,1,0] 
@@ -171,7 +171,7 @@ add_action('init', function() {
             BBAQMSelection::BBAaddCol1Content([
                 
               'target'    => 'bba_qm2a', 
-              'origin'    => 'http://localhost/bba/?bba-qm-pg',
+              'origin'    => 'http://localhost/bba/?begin',
               'redirect'  => 'http://localhost/bba/?bba-qm-pg3', 
               'question'  => "I want to make lashing my career!",
               'selection' =>  [0,2,1,0] 
@@ -213,7 +213,7 @@ add_action('init', function() {
 					
 				BBAQMSelection::BBAaddCol1Content([	
 				  'target'    => 'bba_qm2b', 
-				  'origin'    => 'http://localhost/bba/?bba-qm-pg',
+				  'origin'    => 'http://localhost/bba/?begin',
 				  'redirect'  => 'http://localhost/bba/?bba-qm-pg4', 
 				  'question'  => "No supplies yet!",
 				  'selection' =>   [2,2,0,0] 
@@ -227,7 +227,7 @@ add_action('init', function() {
             BBAQMSelection::BBAaddCol1Content([
                 
               'target'    => 'bba_qm2a', 
-              'origin'    => 'http://localhost/bba/?bba-qm-pg',
+              'origin'    => 'http://localhost/bba/?begin',
               'redirect'  => 'http://localhost/bba/?bba-qm-pg4', 
               'question'  => "Yup! I've got tweezers adhesive, lash extensions & more.",
               'selection' =>  [0,0,3,3] 
@@ -268,7 +268,7 @@ add_action('init', function() {
 		BBAQMSelection::BBAaddEmailContent([
 			
 		  'target'    => 'bba_qm2a', 
-		  'redirect'  => 'http://localhost/bba/?bba-qm-pg2', 
+		  'redirect'  => 'http://localhost/bba/?begin', 
 		  'question'  => "I want to receive emails from Beauty Boss Academy",
 		  'selection' =>  [1,2,3,4],
 
