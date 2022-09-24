@@ -26,14 +26,14 @@ Exclusive BBA Course Match Quiz Micro Plugin
 	     'rel'  => 'stylesheet',
 	     'type' => 'text/css',
 	     'href' => '/wp-content/plugins/bbacoursematchquiz/public/css/bootstrap.min.css'
-	   ]);
+	   ],'style');
 	   BBAQMSelf::lounch();
 	   // Installing asset Public css
    	   BBAQMSelf::assetInstall([
 	     'rel'  => 'stylesheet',
 	     'type' => 'text/css',
 	     'href' => '/wp-content/plugins/bbacoursematchquiz/public/css/bbacoursematchquiz-public.css'
-	   ]);
+	   ],'style');
 	   BBAQMSelf::lounch();
 	   BBAQMSelf::assetInstall([
 	     'type' => 'text/javascript',
