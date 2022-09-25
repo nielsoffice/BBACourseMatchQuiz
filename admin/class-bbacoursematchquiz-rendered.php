@@ -119,7 +119,7 @@ class BBACourseMatchMenuRendered {
                  <td scope="row" style="width: 20%;"><?php echo date("F j, Y", strtotime($bbq_qm->sDC)); ?> </td>
                  <td scope="row"><?php echo $bbq_qm->eM; ?></td>
                  <td scope="row"><?php echo ($bbq_qm->eL == 1 ) ? 'Yes' : 'No'; ?></td> 
-                 <td class="w-25"> <?php echo(self::BBACourseRecommendation($bbq_qm->sID));?> </td>
+                 <td class="w-25"><?php echo(self::BBACourseRecommendation($bbq_qm->sID));?> </td>
 
                 <td scope="row" style="width: 50%;">
                 <table class="table table-bordered table-image">
@@ -311,7 +311,7 @@ class BBACourseMatchMenuRendered {
     if( ( $qm_classic > $qm_classic_kit)     && 
         ( $qm_classic > $qm_ultimate_Bundle) && 
         ( $qm_classic > $qm_volume))  
-        { print('<img style="width: 100%;" src="'.plugins_url("/img/CourseClassic.png",__FILE__ ) .'" />'); } 
+        { print('<img style="width: 100%;" src="'.plugins_url("/img/CourseClassic.jpeg",__FILE__ ) .'" />'); } 
     
         # check which scores are lower and return the highest number
     if( ( $qm_volume > $qm_classic_kit)     && 

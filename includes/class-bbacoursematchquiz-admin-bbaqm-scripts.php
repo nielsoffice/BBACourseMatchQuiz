@@ -374,8 +374,8 @@
         
         $(function () {
 
-            $('#startDate').datepicker({ format: 'dd/mm/yyyy'});
-            $('#endDate').datepicker({ format: 'dd/mm/yyyy'});
+            $('#startDate').datepicker({ format: 'MM d, yyyy'});
+            $('#endDate').datepicker({ format: 'MM d, yyyy'});
 
 
          });    

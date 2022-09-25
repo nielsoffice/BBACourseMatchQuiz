@@ -136,7 +136,7 @@ class BBAQMSelf  {
       
       if( self::$switch === 'script' ) { return( '<script' . self::getType() . self::getID() . self::getsrc() .'></script>');}
       else { return( '<link' . self::getRel() . self::getType() . self::gethref() .'/>'); }
-
+   
      }
 
     /**
@@ -145,7 +145,17 @@ class BBAQMSelf  {
      *
      * @since    1.0.0
      * @since    09.24.2022 */ 
-    public static function lounch() { print(self::get()); }
+    public static function lounch() { 
+      
+    /**
+     * Defined: HTML template head
+     * @since    1.0.0
+     * @since    09.2.2022 */ 
+     require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/bbacoursematchquiz-admin-opening-head-html.php';
+    
+      print(self::get()); 
+
+    }
 
     /**
      * Defined: Self Class Redirection JS

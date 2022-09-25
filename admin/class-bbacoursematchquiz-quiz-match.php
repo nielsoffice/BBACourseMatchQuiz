@@ -546,8 +546,8 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
           * @since    09.19.2022 */
          self::$breakPoint[self::$defaultKey[3]] = $breakPoint;
          self::$cbConFn[self::$defaultKey[3]]    = $cbConFn;
+
      }
- 
 
    static public function do_BBATemplate() { 
          
@@ -556,11 +556,16 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
          *
          * @since    1.0.0
          * @since    09.19.2022 */
-        do_action( 'bba_qm_top_add_settings_before_parent' ); ?>
- 
-       <div id='<?php print( self::$validatedKeyParentID ); ?>' class='container-fluid bbafluid'>
-
-       <?php 
+        do_action( 'bba_qm_top_add_settings_before_parent' ); 
+        
+       /**
+       * Defined: HTML template closing head
+       * @since    1.0.0
+       * @since    09.2.2022 */ 
+       require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/bbacoursematchquiz-admin-closing-head-html.php'; 
+       
+       ?>
+       <div id='<?php print( self::$validatedKeyParentID ); ?>' class='container-fluid bbafluid'> <?php 
          
          /**
           * Defined: The Hook Setting before Parent BBATemplate.
@@ -569,9 +574,7 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
           * @since    09.19.2022 */
           do_action( 'bba_qm_add_settings_before_child_parent' ); ?>
    
-         <div class='<?php print self::$tempBreakPoint ?> bba-box'>
-
-         <?php 
+         <div class='<?php print self::$tempBreakPoint ?> bba-box'> <?php 
          
          /**
           * Defined: The Hook Setting before Parent BBATemplate.
@@ -580,8 +583,7 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
           * @since    09.19.2022 */
           do_action( 'bba_qm_add_settings_after_child_parent' ); ?>
 
-           <div class='row bbarow'>
-
+         <div class='row bbarow'>
          <?php 
          
          /**
@@ -634,9 +636,9 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
              * @since    09.19.2022 */
             do_action( 'bba_qm_add_settings_bottom_child_row_parent' ); ?>
 
-             </div>
-
-         <?php 
+    
+          </div>
+          <?php 
          
          /**
           * Defined: The Hook Setting before Parent BBATemplate.
@@ -644,9 +646,8 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
           * @since    1.0.0
           * @since    09.19.2022 */
          do_action( 'bba_qm_add_settings_bottom_child_parent' ); ?>
-         </div>
-
-         <?php 
+        
+        </div><?php 
          
          /**
           * Defined: The Hook Setting before Parent BBATemplate.
@@ -656,16 +657,21 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
           do_action( 'bba_qm_add_settings_after_bottom_child_parent' ); ?>
    
      </div>
-
-         <?php 
+     <?php 
          
          /**
           * Defined: The Hook Setting before Parent BBATemplate.
           *
           * @since    1.0.0
           * @since    09.19.2022 */
-          do_action( 'bba_qm_add_settings_after_bottom_parent' ); ?>
- 
+          do_action( 'bba_qm_add_settings_after_bottom_parent' ); 
+
+         /**
+          * Defined: HTML template closing head
+          * @since    1.0.0
+          * @since    09.2.2022 */ 
+          require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/bbacoursematchquiz-admin-closing-html.php'; ?>
+  
     <?php } 
 
     static public function do_BBAColumnTemplate() { ?>
@@ -681,7 +687,6 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
             print(BBAQMSelection::BBAColumnRequest(self::$colLoopReq[0]));  
      
             ?>
-
     <?php } 
         
    /**
@@ -702,9 +707,7 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
         * @since    1.0.0
         * @since    09.20.2022 */   
       for($dataRequest = $init; $dataRequest <= $colType;  $dataRequest++) 
-      { 
-        
-      $data[] = self::BBATemplateCol(self::$breakPoint[self::$defaultKey[15].$dataRequest], self::$cbConFn[self::$defaultKey[15].$dataRequest], ); } 
+      { $data[] = self::BBATemplateCol(self::$breakPoint[self::$defaultKey[15].$dataRequest], self::$cbConFn[self::$defaultKey[15].$dataRequest], ); } 
       
       return (implode("", $data));
 
