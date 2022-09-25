@@ -58,6 +58,206 @@ class BBACourseMatchMenuRendered {
 
     }
 
+    /**
+     * Defined: BBACourseRecommendation;
+     * @since    1.0.0
+     * @since    09.25.2022 */
+    private static function BBACourseRecommendation($qm_sID) {
+        
+        /**
+         * Defined: get Classaic Kit score;
+         * @since    1.0.0
+         * @since    09.25.2022 */
+        $qm_classic_kit = new ProductsScore();
+        $qm_classic_kit->setProdID($qm_sID);
+        $qm_classic_kit->setProdTbl('qm_classic_kit');
+        $qm_classic_kit = $qm_classic_kit->getScore();
+    
+        /**
+         * Defined: get Ultimate Bundle score;
+         * @since    1.0.0
+         * @since    09.25.2022 */
+        $qm_ultimate_Bundle = new ProductsScore();
+        $qm_ultimate_Bundle->setProdID($qm_sID);
+        $qm_ultimate_Bundle->setProdTbl('qm_ultimate_Bundle');
+        $qm_ultimate_Bundle = $qm_ultimate_Bundle->getScore();
+
+        /**
+         * Defined: get CLassic score;
+         * @since    1.0.0
+         * @since    09.25.2022 */
+        $qm_classic = new ProductsScore();
+        $qm_classic->setProdID($qm_sID);
+        $qm_classic->setProdTbl('qm_classic');
+        $qm_classic = $qm_classic->getScore();
+
+        /**
+         * Defined: get Volume score;
+         * @since    1.0.0
+         * @since    09.25.2022 */
+        $qm_volume = new ProductsScore();
+        $qm_volume->setProdID($qm_sID);
+        $qm_volume->setProdTbl('qm_volume');
+        $qm_volume = $qm_volume->getScore();
+           
+        /**
+         * Defined: Do some check each scores return highest and print images appropriate!;
+         * @since    1.0.0
+         * @since    09.25.2022 */
+    if( ( $qm_classic_kit > $qm_ultimate_Bundle) && 
+        ( $qm_classic_kit > $qm_classic)         && 
+        ( $qm_classic_kit > $qm_volume ))  
+        { print('<img style="width: 100%;" src="'.plugins_url("/img/CourseClassicKit.jpeg",__FILE__ ) .'" />'); } 
+        
+        # check which scores are lower and return the highest number
+    if( ( $qm_ultimate_Bundle > $qm_classic_kit) && 
+        ( $qm_ultimate_Bundle > $qm_classic)     && 
+        ( $qm_ultimate_Bundle > $qm_volume))  
+        { print('<img style="width: 100%;" src="'.plugins_url("/img/CourseBundle.png",__FILE__ ) .'" />'); } 
+    
+        # check which scores are lower and return the highest number
+    if( ( $qm_classic > $qm_classic_kit)     && 
+        ( $qm_classic > $qm_ultimate_Bundle) && 
+        ( $qm_classic > $qm_volume))  
+        { print('<img style="width: 100%;" src="'.plugins_url("/img/CourseClassic.jpeg",__FILE__ ) .'" />'); } 
+    
+        # check which scores are lower and return the highest number
+    if( ( $qm_volume > $qm_classic_kit)     && 
+        ( $qm_volume > $qm_ultimate_Bundle) && 
+        ( $qm_volume > $qm_classic ))  
+        { print('<img style="width: 100%;" src="'.plugins_url("/img/CourseVolume.png",__FILE__ ) .'" />'); } 
+
+     }
+
+    /**
+     * Defined: Get ProductQueery
+     * @since    1.0.0
+     * @since    09.25.2022 */    
+    private static function QMProductQuery() {
+
+        global $wpdb;
+    
+       /**
+         * Defined: Get ALL PRODUCTS ROW QUERY
+         * @since    1.0.0
+         * @since    09.25.2022 */   
+        return($wpdb->get_results("SELECT 
+        wp_bba_qm_session.id            AS sID, 
+        wp_bba_qm_session.Date_created  AS sDC, 
+        wp_bba_qm_elist.qm_emal         AS eM, 
+        wp_bba_qm_elist.qm_e_list       AS eL
+    
+        FROM       wp_bba_qm_session
+        RIGHT JOIN wp_bba_qm_elist
+        ON         wp_bba_qm_session.id = wp_bba_qm_elist.id_session
+    
+        ORDER BY wp_bba_qm_session.id DESC"));
+    
+       }
+
+    /**
+     * Defined: Delete Specific row !
+     * @since    1.0.0
+     * @since    09.25.2022 */     
+    private static function QMEntireRowDelete($sID) {
+
+        global $wpdb;
+
+        /**
+         * Defined: Get the current page and return to the screen admin !
+         * @since    1.0.0
+         * @since    09.25.2022 */     
+        $current_page    = admin_url( "admin.php?page=".$_GET["page"] );
+        $current_page_re = admin_url( "admin.php?page=bba-quiz-match-result");
+
+        # Check if Delete request is true if so then !
+        if( isset($_REQUEST['delete']) == true ) :
+
+            # Del check if it is set! then return empty if not !
+            $qm_del = $_REQUEST['delete'];
+            
+            $sql = 'DELETE
+                    FROM wp_bba_qm_products 
+                    WHERE id_session = '.$qm_del;
+
+            $wpdb->query($sql);
+
+            /**
+             * Defined: Delete as well as DB relationship data !
+             * @since    1.0.0
+             * @since    09.25.2022 */   
+            $qm_rows = 'DELETE 
+                 wp_bba_qm_session, wp_bba_qm_elist
+            FROM wp_bba_qm_session
+            RIGHT JOIN wp_bba_qm_elist 
+            ON         wp_bba_qm_session.id = wp_bba_qm_elist.id_session
+            WHERE      wp_bba_qm_elist.id_session = '. $qm_del;
+             
+            # If everything set as  true then wipeout!
+            $wpdb->query($qm_rows);                       
+
+            BBAQMSelf::BBAQMAdminRedirect($current_page_re);
+   
+            endif;  
+
+            /**
+             * Defined: Get HTML btn del link
+             * @since    1.0.0
+             * @since    09.25.2022 */ 
+            $html = '';
+            $html .= '<a href="'.$current_page.'&delete='.$sID.'">'; 
+            $html .= '<i class="fa fa-close" style="font-size:36px;color:red"></i>';
+            $html .= '</a>';
+
+            return($html);
+  
+   }
+
+    /**
+     * Defined: Delete Prodict list QA response!
+     * @since    1.0.0
+     * @since    09.25.2022 */     
+   private static function QMProductListDel($sID) { 
+
+        global $wpdb;  
+
+        /**
+         * Defined: Get the current page and return to the screen admin !
+         * @since    1.0.0
+         * @since    09.25.2022 */   
+        $current_page    = admin_url( "admin.php?page=".$_GET["page"] );
+        $current_page_re = admin_url( "admin.php?page=bba-quiz-match-result");
+
+        # Check if Delete request is true if so then !
+        if( isset($_REQUEST['qm-del']) == true ) :
+
+            # Del check if it is set! then return empty if not !
+            $QMProductListDel = $_REQUEST['qm-del'];
+            
+            $sql = 'DELETE 
+                    FROM wp_bba_qm_products 
+                    WHERE id = '.$QMProductListDel;
+
+            # If everything set as  true then wipeout!
+            $wpdb->query($sql);             
+
+            BBAQMSelf::BBAQMAdminRedirect($current_page_re);
+
+        endif; 
+
+        /**
+         * Defined: Get HTML btn del link
+         * @since    1.0.0
+         * @since    09.25.2022 */ 
+        $html = '';
+        $html .= '<a href="'.$current_page.'&qm-del='.$sID.'">'; 
+        $html .= '<i class="fa fa-trash" style="font-size:20px;color:red"></i>';
+        $html .= '</a>';
+
+        return($html);     
+
+   }
+
    public function BBA_QM_REDERED() { ?>
 
     <div class="fluid-container">
@@ -250,206 +450,5 @@ class BBACourseMatchMenuRendered {
     </div>
     <?php }
   
-    /**
-     * Defined: BBACourseRecommendation;
-     * @since    1.0.0
-     * @since    09.25.2022 */
-     private static function BBACourseRecommendation($qm_sID) {
-        
-        /**
-         * Defined: get Classaic Kit score;
-         * @since    1.0.0
-         * @since    09.25.2022 */
-        $qm_classic_kit = new ProductsScore();
-        $qm_classic_kit->setProdID($qm_sID);
-        $qm_classic_kit->setProdTbl('qm_classic_kit');
-        $qm_classic_kit = $qm_classic_kit->getScore();
-    
-        /**
-         * Defined: get Ultimate Bundle score;
-         * @since    1.0.0
-         * @since    09.25.2022 */
-        $qm_ultimate_Bundle = new ProductsScore();
-        $qm_ultimate_Bundle->setProdID($qm_sID);
-        $qm_ultimate_Bundle->setProdTbl('qm_ultimate_Bundle');
-        $qm_ultimate_Bundle = $qm_ultimate_Bundle->getScore();
-
-        /**
-         * Defined: get CLassic score;
-         * @since    1.0.0
-         * @since    09.25.2022 */
-        $qm_classic = new ProductsScore();
-        $qm_classic->setProdID($qm_sID);
-        $qm_classic->setProdTbl('qm_classic');
-        $qm_classic = $qm_classic->getScore();
-
-        /**
-         * Defined: get Volume score;
-         * @since    1.0.0
-         * @since    09.25.2022 */
-        $qm_volume = new ProductsScore();
-        $qm_volume->setProdID($qm_sID);
-        $qm_volume->setProdTbl('qm_volume');
-        $qm_volume = $qm_volume->getScore();
-           
-        /**
-         * Defined: Do some check each scores return highest and print images appropriate!;
-         * @since    1.0.0
-         * @since    09.25.2022 */
-    if( ( $qm_classic_kit > $qm_ultimate_Bundle) && 
-        ( $qm_classic_kit > $qm_classic)         && 
-        ( $qm_classic_kit > $qm_volume ))  
-        { print('<img style="width: 100%;" src="'.plugins_url("/img/CourseClassicKit.jpeg",__FILE__ ) .'" />'); } 
-        
-        # check which scores are lower and return the highest number
-    if( ( $qm_ultimate_Bundle > $qm_classic_kit) && 
-        ( $qm_ultimate_Bundle > $qm_classic)     && 
-        ( $qm_ultimate_Bundle > $qm_volume))  
-        { print('<img style="width: 100%;" src="'.plugins_url("/img/CourseBundle.png",__FILE__ ) .'" />'); } 
-    
-        # check which scores are lower and return the highest number
-    if( ( $qm_classic > $qm_classic_kit)     && 
-        ( $qm_classic > $qm_ultimate_Bundle) && 
-        ( $qm_classic > $qm_volume))  
-        { print('<img style="width: 100%;" src="'.plugins_url("/img/CourseClassic.jpeg",__FILE__ ) .'" />'); } 
-    
-        # check which scores are lower and return the highest number
-    if( ( $qm_volume > $qm_classic_kit)     && 
-        ( $qm_volume > $qm_ultimate_Bundle) && 
-        ( $qm_volume > $qm_classic ))  
-        { print('<img style="width: 100%;" src="'.plugins_url("/img/CourseVolume.png",__FILE__ ) .'" />'); } 
-
-     }
-
-    /**
-     * Defined: Get ProductQueery
-     * @since    1.0.0
-     * @since    09.25.2022 */    
-    private static function QMProductQuery() {
-
-        global $wpdb;
-    
-       /**
-         * Defined: Get ALL PRODUCTS ROW QUERY
-         * @since    1.0.0
-         * @since    09.25.2022 */   
-        return($wpdb->get_results("SELECT 
-        wp_bba_qm_session.id            AS sID, 
-        wp_bba_qm_session.Date_created  AS sDC, 
-        wp_bba_qm_elist.qm_emal         AS eM, 
-        wp_bba_qm_elist.qm_e_list       AS eL
-    
-        FROM       wp_bba_qm_session
-        RIGHT JOIN wp_bba_qm_elist
-        ON         wp_bba_qm_session.id = wp_bba_qm_elist.id_session
-    
-        ORDER BY wp_bba_qm_session.id DESC"));
-    
-       }
-
-    /**
-     * Defined: Delete Specific row !
-     * @since    1.0.0
-     * @since    09.25.2022 */     
-    private static function QMEntireRowDelete($sID) {
-
-        global $wpdb;
-
-        /**
-         * Defined: Get the current page and return to the screen admin !
-         * @since    1.0.0
-         * @since    09.25.2022 */     
-        $current_page    = admin_url( "admin.php?page=".$_GET["page"] );
-        $current_page_re = admin_url( "admin.php?page=bba-quiz-match-result");
-
-        # Check if Delete request is true if so then !
-        if( isset($_REQUEST['delete']) == true ) :
-
-            # Del check if it is set! then return empty if not !
-            $qm_del = $_REQUEST['delete'];
-            
-            $sql = 'DELETE
-                    FROM wp_bba_qm_products 
-                    WHERE id_session = '.$qm_del;
-
-            $wpdb->query($sql);
-
-            /**
-             * Defined: Delete as well as DB relationship data !
-             * @since    1.0.0
-             * @since    09.25.2022 */   
-            $qm_rows = 'DELETE 
-                 wp_bba_qm_session, wp_bba_qm_elist
-            FROM wp_bba_qm_session
-            RIGHT JOIN wp_bba_qm_elist 
-            ON         wp_bba_qm_session.id = wp_bba_qm_elist.id_session
-            WHERE      wp_bba_qm_elist.id_session = '. $qm_del;
-             
-            # If everything set as  true then wipeout!
-            $wpdb->query($qm_rows);                       
-
-            BBAQMSelf::BBAQMRedirect($current_page_re);
-   
-            endif;  
-
-            /**
-             * Defined: Get HTML btn del link
-             * @since    1.0.0
-             * @since    09.25.2022 */ 
-            $html = '';
-            $html .= '<a href="'.$current_page.'&delete='.$sID.'">'; 
-            $html .= '<i class="fa fa-close" style="font-size:36px;color:red"></i>';
-            $html .= '</a>';
-
-            return($html);
-  
-   }
-
-    /**
-     * Defined: Delete Prodict list QA response!
-     * @since    1.0.0
-     * @since    09.25.2022 */     
-   private static function QMProductListDel($sID) { 
-
-        global $wpdb;  
-
-        /**
-         * Defined: Get the current page and return to the screen admin !
-         * @since    1.0.0
-         * @since    09.25.2022 */   
-        $current_page    = admin_url( "admin.php?page=".$_GET["page"] );
-        $current_page_re = admin_url( "admin.php?page=bba-quiz-match-result");
-
-        # Check if Delete request is true if so then !
-        if( isset($_REQUEST['qm-del']) == true ) :
-
-            # Del check if it is set! then return empty if not !
-            $QMProductListDel = $_REQUEST['qm-del'];
-            
-            $sql = 'DELETE 
-                    FROM wp_bba_qm_products 
-                    WHERE id = '.$QMProductListDel;
-
-            # If everything set as  true then wipeout!
-            $wpdb->query($sql);             
-
-            BBAQMSelf::BBAQMRedirect($current_page_re);
-
-        endif; 
-
-        /**
-         * Defined: Get HTML btn del link
-         * @since    1.0.0
-         * @since    09.25.2022 */ 
-        $html = '';
-        $html .= '<a href="'.$current_page.'&qm-del='.$sID.'">'; 
-        $html .= '<i class="fa fa-trash" style="font-size:20px;color:red"></i>';
-        $html .= '</a>';
-
-        return($html);     
-
-   }
-
-
 }
     

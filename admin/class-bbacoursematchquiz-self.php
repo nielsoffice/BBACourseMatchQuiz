@@ -166,8 +166,14 @@ class BBAQMSelf  {
      * @since    09.20.2022 */ 
     public static function BBAQMRedirect( $url = '' ) { ?>
         
-      <script> location.reload(true); window.location.href = "<?php print( $url ); ?>"; </script>
+      <script>  window.location.href = "<?php print( $url ); ?>"; </script>
     
+    <?php }
+
+    public static function BBAQMAdminRedirect( $url = '' ) { ?>
+            
+      <script> location.reload(true); window.location.href = "<?php print( $url ); ?>"; </script>
+
     <?php }
 
     /**
