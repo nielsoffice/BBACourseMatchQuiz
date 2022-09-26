@@ -49,6 +49,7 @@ add_action('init', function() {
 
   }
 });
+```
 
 ```PHP
 add_action('init', function() {
@@ -99,18 +100,17 @@ add_action('init', function() {
 // bba_qm_add_settings_after_bottom_child_parent
 // bba_qm_add_settings_after_bottom_parent
 
-		add_action( 'bba_qm_add_settings_bottom_child_row_parent', function() {
-					
-			BBAQMSelection::BBAaddCol1Content([	
-			  'target'    => 'bba_qm2b_form', 
-			  'origin'    => 'http://localhost/bba/?begin',
-			  'redirect'  => 'http://localhost/bba/?bba-qm-pg2', 
-			  'question'  => "I have some experience",
-			  'selection' =>  [0,1,0,3] 
-	
-			],'lg');
-			BBAQMSelection::addColContent();
-```
+add_action( 'bba_qm_add_settings_bottom_child_row_parent', function() {
+
+	BBAQMSelection::BBAaddCol1Content([	
+	  'target'    => 'bba_qm2b_form', 
+	  'origin'    => 'http://localhost/bba/?begin',
+	  'redirect'  => 'http://localhost/bba/?bba-qm-pg2', 
+	  'question'  => "I have some experience",
+	  'selection' =>  [0,1,0,3] 
+
+	],'lg');
+	BBAQMSelection::addColContent();
 
 ```
 
