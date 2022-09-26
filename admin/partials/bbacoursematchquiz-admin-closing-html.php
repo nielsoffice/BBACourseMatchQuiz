@@ -12,6 +12,7 @@
  * @subpackage Bbacoursematchquiz/admin/partials
  */
 ?>
+  <script> var preLoader; function preLoader() { preLoader = setTimeout(unHide, 2000); } function unHide() { document.getElementById("loader").style.display = "none"; document.querySelector(".bbafluid").style.display  = "block";} </script> 
  </body>
 </html>
 <?php 

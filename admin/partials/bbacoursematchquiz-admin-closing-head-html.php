@@ -13,5 +13,5 @@
  */
 ?>
 </head>
-  <body>
+  <body onload="preLoader()" style="margin:0;"><div id="preLoader"><div id="loader"></div></div>
 <?php 

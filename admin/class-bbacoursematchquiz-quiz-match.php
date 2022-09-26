@@ -565,7 +565,7 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/bbacoursematchquiz-admin-closing-head-html.php'; 
        
        ?>
-       <div id='<?php print( self::$validatedKeyParentID ); ?>' class='container-fluid bbafluid'> <?php 
+       <div id='<?php print( self::$validatedKeyParentID ); ?>' class='container-fluid bbafluid animate-bottom' style="display:none;"> <?php 
          
          /**
           * Defined: The Hook Setting before Parent BBATemplate.

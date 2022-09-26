@@ -28,6 +28,12 @@ add_action('init', function() {
 		BBAQMSelf::lounch();
 		BBAQMSelf::assetInstall([
 			'type' => 'text/javascript',
+			'id'   => 'jQuery',
+			'src'  =>  '/wp-content/plugins/bbacoursematchquiz/public/js/jquery-3.6.0.min.js'
+		]);
+		BBAQMSelf::lounch();
+		BBAQMSelf::assetInstall([
+			'type' => 'text/javascript',
 			'id'   => 'script_id',
 			'src'  =>  '/wp-content/plugins/bbacoursematchquiz/public/js/bbacoursematchquiz-public.js'
 		]);
@@ -162,7 +168,7 @@ add_action('init', function() {
 				  'question'  => "I want to try it out as a hobby.",
 				  'selection' =>  [2,0,1,0] 
 		
-				],'lg');
+				],'lg-12');
 				BBAQMSelection::addColContent();
 					 
 			 });
@@ -176,7 +182,7 @@ add_action('init', function() {
               'question'  => "I want to make lashing my career!",
               'selection' =>  [0,2,1,0] 
               
-            ],'lg', function() {
+            ],'lg-12', function() {
 
               $html  = '';
               $html .= '<h3>What are your lash goals?</h3>';
@@ -218,7 +224,7 @@ add_action('init', function() {
 				  'question'  => "No supplies yet!",
 				  'selection' =>   [2,2,0,0] 
 		
-				],'lg');
+				],'lg-12');
 				BBAQMSelection::addColContent();
 					 
 			});
@@ -226,13 +232,13 @@ add_action('init', function() {
             BBAQMSelection::BBATemplate('1-col' , ['box-md' , 'bba_mq'] ); 
             BBAQMSelection::BBAaddCol1Content([
                 
-              'target'    => 'bba_qm2a', 
+              'target'    => 'bba_qm2a-textwrap', 
               'origin'    => 'http://localhost/bba/?begin',
               'redirect'  => 'http://localhost/bba/?bba-qm-pg4', 
               'question'  => "Yup! I've got tweezers adhesive, lash extensions & more.",
               'selection' =>  [0,0,3,3] 
               
-            ],'lg', function() {
+            ],'lg-12', function() {
 
               $html  = '';
               $html .= '<h3>Do you currently own any lash supplies?</h3>';
@@ -267,7 +273,7 @@ add_action('init', function() {
 		BBAQMSelection::BBATemplate('1-col' , ['box-md' , 'bba_mq'] ); 
 		BBAQMSelection::BBAaddEmailContent([
 			
-		  'target'    => 'bba_qm2a', 
+		  'target'    => 'bba_qm2email', 
 		  'redirect'  => 'http://localhost/bba/?begin', 
 		  'question'  => "I want to receive emails from Beauty Boss Academy",
 		  'selection' =>  [1,2,3,4],

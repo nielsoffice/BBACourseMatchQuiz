@@ -1,161 +1,54 @@
-# BBACourseMatchQuiz
-Exclusive BBA Course Match Quiz Micro Plugin 
+# PHPCrud-sample-data
+Support PHPWine v1.2.09
 
-```PHP
-  // Configuration!
-  add_action('init', function() {
-	
-  // Begin Session!
-  session_start();
+Create Crud with Boostrap sample data 
 
-  // Set URLS
-  if(isset($_GET['begin']))             { BBAQuizMatchPageURL::setURL('begin');
-  } else if(isset($_GET['bba-qm-pg1'])) { BBAQuizMatchPageURL::setURL('bba-qm-pg1'); 
-  } else if(isset($_GET['bba-qm-pg2'])) { BBAQuizMatchPageURL::setURL('bba-qm-pg2'); 
-  } else if(isset($_GET['bba-qm-pg3'])) { BBAQuizMatchPageURL::setURL('bba-qm-pg3'); 
-  } else { BBAQuizMatchPageURL::setURL('bba-qm-pg4'); }
+```SQL
+// SQL 
+CREATE TABLE `crud` (
 
- // Check if any of those URL is true !
- if( BBAQuizMatchPageURL::URL() == true ) {		
+ `friend_id` bigint(20) UNSIGNED NOT NULL,
+ `friend_name` varchar(255) NOT NULL,
+ `friend_mobile` varchar(255) NOT NULL,
+ `friend_email` varchar(255) NOT NULL
 
-     // Apply hooks
-     add_action( 'bba_qm_top_add_settings_before_parent', function() {
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-	  // Installing assets B5 min css
-	  BBAQMSelf::assetInstall([
-	     'rel'  => 'stylesheet',
-	     'type' => 'text/css',
-	     'href' => '/wp-content/plugins/bbacoursematchquiz/public/css/bootstrap.min.css'
-	   ],'style');
-	   BBAQMSelf::lounch();
-	   // Installing asset Public css
-   	   BBAQMSelf::assetInstall([
-	     'rel'  => 'stylesheet',
-	     'type' => 'text/css',
-	     'href' => '/wp-content/plugins/bbacoursematchquiz/public/css/bbacoursematchquiz-public.css'
-	   ],'style');
-	   BBAQMSelf::lounch();
-	   BBAQMSelf::assetInstall([
-	     'type' => 'text/javascript',
-	     'id'   => 'script_id',
-	     'src'  =>  '/wp-content/plugins/bbacoursematchquiz/public/js/bbacoursematchquiz-public.js'
-	  ]);
-	  BBAQMSelf::lounch();
-     });   
-
-     // Installing Brand for all pages!
-      add_action( 'bba_qm_add_settings_after_child_parent', function() {
-
-	print(BBAQMSelf::BBABranding());
-
-      });
-    }
-});
-
-```
-
-```PHP
-// Init or activation
-add_action('init', function() {
-      
-if (class_exists('BBAQMSelection')) {     
-
-   BBAQuizMatchPageURL::setURL('begin');
-
-    if(BBAQuizMatchPageURL::URL() == true ) {
-
-      BBAQMSelection::BBATemplate('1-col' , ['box-md' , 'bba_mq'] ); 
-      BBAQMSelection::BBAaddCol1Content([
-
-	 'target'    => 'bba_qm_begin', 
-	 'redirect'  => 'http://localhost/bba/quiz-match/?bba-qm-pg1', 
-	 'question'  => 'BEGIN',
-	 'selection' =>  [] 
-
-      ],'lg', function() {
-
-	  $html  = '';
-	  $html .= '<h3>Which BBA course is right for me?</h3>';
-	  $html .= '<p>Take the quiz to be matched with your perfect lash journey!</p>';
-
-	  return($html);
-
-     });
-     BBAQMSelection::execute();  
- 
-    }
-
-  } else {
-    echo "PG1 | WP Plugin: BBA Quiz Match was removed or deactivated";
-  }   
-
- });
-```
-
-```PHP
-# Generate new page
-add_action('init', function() {
-      
-    if (class_exists('BBAQMSelection')) {     
-
-          BBAQuizMatchPageURL::setURL('bba-qm-pg1');
-   
-       if(BBAQuizMatchPageURL::URL() == true ) {
-
-           BBAQMSelection::BBATemplate('1-col' , ['box-md' , 'bba_mq'] ); 
-           BBAQMSelection::BBAaddCol1Content([
-               
-             'target'    => 'bba_qm2a_form', 
-             'origin'    => 'http://localhost/bba/?begin', // if seems have any problem go to begin
-             'redirect'  => 'http://localhost/bba/?bba-qm-pg2', // else proceed to a next page
-             'question'  => "I am brand new to lashing",
-             'selection' =>  [1,2,1,0] 
-             
-           ],'lg', function() {
-   
-              $html  = '';
-              $html .= '<h3>Which best describes you?</h3>';
-
-              return($html);
+ALTER TABLE `crud`
+  ADD PRIMARY KEY (`friend_id`);
   
-           });
-           BBAQMSelection::execute();  
-
-        }
-
-     } else {
-       echo "WP Plugin: BBA Quiz Match was removed or deactivated";
-     } 
-
- });
+ALTER TABLE `crud`
+  MODIFY `friend_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+COMMIT;
 ```
 
-```PHP
-  # Using Hooks insert Column 
-  # Using BBATemplate Hooks 
-   - bba_qm_top_add_settings_before_parent
-   - bba_qm_add_settings_before_child_parent
-   - bba_qm_add_settings_after_child_parent
-   - bba_qm_add_settings_after_child_row_parent
-   - bba_qm_add_settings_bottom_child_row_parent
-   - bba_qm_add_settings_bottom_child_parent
-   - bba_qm_add_settings_after_bottom_child_parent
-   - bba_qm_add_settings_after_bottom_parent
-
-  # Hook Reference:
-  - Plugin/admin/class-bbacoursematchquiz-quiz-match.php
-  
- add_action( 'bba_qm_add_settings_bottom_child_row_parent', function() {
-
-    BBAQMSelection::BBAaddCol1Content([	
-      'target'    => 'bba_qm2b_form', 
-      'origin'    => 'http://localhost/bba/?begin',
-      'redirect'  => 'http://localhost/bba/?bba-qm-pg2', 
-      'question'  => "I have some experience",
-      'selection' =>  [0,1,0,3] 
-
-    ],'lg');
-    BBAQMSelection::addColContent();
-
- });
+```SQL
+INSERT INTO `crud` (`friend_name`, `friend_mobile`, `friend_email`) VALUES
+('Nikkie The Drummer'    , '999.999.999' , 'nikki@mail.com'),
+('Marian The Base Guitar', '999.999.999' , 'marian@mail.com'),
+('Japz The Song Leader'  , '999.999.999' , 'japz@mail.com'),
+('Niel The All around'   , '999.999.999' , 'niel@mail.com');
 ```
+
+Download <a href="https://github.com/nielsofficeofficial/PHPWine"> PHPWine > </a> <br />
+Download <a href="https://github.com/nielsofficeofficial/PHPCrud"> PHPCrud > </a>
+
+Article Link: https://nielsoffice197227997.wordpress.com/2022/03/05/phpcrud-sample-data-phpwine-v1-2-10/
+
+<h2>Thanks To:</h2>
+<h5>
+Github : To allow me to upload my PHPWine plugin Vanilla Flavour to repository<br /> 
+php.net : To oppurtunity Develop web application using corePHP - PHPFrameworks<br />
+</h5>
+
+
+<hr />
+Would you like me to treat a cake and coffee ? <br />
+Become a donor, Because with you! We can build more... 
+
+Donate: <br />
+GCash : +639650332900 <br /> 
+Paypal account: syncdevprojects@gmail.com
+<hr />
+<br />
+Thanks and good luck! 

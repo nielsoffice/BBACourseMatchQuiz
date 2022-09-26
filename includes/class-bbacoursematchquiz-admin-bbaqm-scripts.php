@@ -91,18 +91,23 @@
         */
    
         (function ( $, window, document, undefined ) {
-            var pluginName = "table2excel",
 
-            defaults = {
-                exclude: ".noExl",
-                name: "Table2Excel",
-                filename: "table2excel",
-                fileext: ".xls",
-                exclude_img: true,
-                exclude_links: true,
-                exclude_inputs: true,
-                preserveColors: false
-            };
+            var pluginName = "table2excel";
+
+                defaults = {
+                   
+                   exclude: ".noExcel",
+                   name: "Table2Excel",
+                   filename: "table2excel",
+                   fileext: ".xls",
+                   exclude_img: true,
+                   exclude_links: true,
+                   exclude_inputs: true,
+                   preserveColors: false
+
+                };
+
+           
 
             // The actual plugin constructor
             function Plugin ( element, options ) {
@@ -360,30 +365,27 @@
         });
 
         $(".exportToExcel").click(function(){
-            $("#exampleExport").table2excel({
-                name: "BBA_QUIZMATCH_",
-            filename: "BBA_QUIZMATCH_" + new Date().toDateString() + ".xls",
-            fileext: ".xls"
 
-            }); 
-            });
-
-        });
+              $("#exampleExport").table2excel({
+               name: "BBA_QUIZMATCH_",
+               filename: "BBA_QUIZMATCH_" + new Date().toDateString() + ".xls",
+               fileext: ".xls"
+             });    
+         });
+      });
 
         $(document).ready(function(){
         
         $(function () {
 
-            $('#startDate').datepicker({ format: 'MM d, yyyy'});
-            $('#endDate').datepicker({ format: 'MM d, yyyy'});
+          $('#startDate').datepicker({ format: 'MM d, yyyy'});
+          $('#endDate').datepicker({ format: 'MM d, yyyy'});
 
+         });
 
-         });    
-        
         });
-
         </script>
-        
+                
     <?php }
 
 };

@@ -29,4 +29,15 @@
 	 * practising this, we should strive to set a better example in our own work.
 	 */
 
+	 $(document).ready(function () {
+
+		// Hide cols
+		$(':submit').click(function(){
+
+			$(".bbarow").fadeIn('slow');
+
+		});
+
+    });
+
 })( jQuery );

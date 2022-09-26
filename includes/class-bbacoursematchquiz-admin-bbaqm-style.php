@@ -25,13 +25,18 @@
   
     public function __construct() {
 
-        add_action( 'admin_footer', array($this, 'style' ), 80 );        
+        add_action( 'admin_footer', array($this, 'style' ), 80 ); 
+        add_action( 'admin_head', array($this, 'styleheader' ), 80 );        
 
     }
+
+    public function styleheader() {?>
+     
+    <?php }
   
     public function style() { ?>
 
-     <style> /* BBA QM Branding */ #bba_icon_brand { width: 10%; margin-bottom: 35px;} .bba_col { text-align: center;} 
+      <style> /* BBA QM Branding */ #bba_icon_brand { width: 10%; margin-bottom: 35px;} .bba_col { text-align: center;} 
       #select_bba_to, #select_bba_from { width: 100% !important; min-width: 100% !important; max-width: 100% !important; padding: 5px !important; margin-bottom: 25px !important; }
       #id_btn_search {
         width: 100%;
@@ -78,6 +83,7 @@
       div#wpfooter { display: none ;}
       div#dateFilter { padding-bottom: 25px; }
       #btnExport { width: 100%; }
+      
      </style>  
         
     <?php }

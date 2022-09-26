@@ -18,14 +18,43 @@
    /* QM Primary container */
   .bba_container  { width: 100%; margin: 0 auto ; text-align: center; margin-top: 15px;}
    /* QM btn */
-  .bba-qm-btn { background-color: #69b569; border: none; width: 30%; padding: 10px 20px; font-weight: 500; margin-bottom: 15px;}
+   input#bba_qm2a,
+   input#bba_qm2b,
+   #bba_qm2a-textwrap,
+   #bba_qm2email,
+   input#bba_qm_begin { overflow-wrap: break-word !important; background-color: #69b569; border: none; width: 30%; padding: 10px 20px; font-weight: 500; margin-bottom: 15px;}
    /* QM btn hover */
-  .bba-qm-btn:hover { background-color: #60ad60; cursor: pointer; }
+   #bba_qm2email:hover,
+   input#bba_qm2a:hover,
+   input#bba_qm2b:hover,
+   input#bba_qm_begin:hover  { background-color: #60ad60; cursor: pointer; }
 
-
+   #bba_qm2a-textwrap { width: 40%;}
   /* Begin URL CSS */
   .bbarow {
     text-align: center;
     margin-top: 75px !important;
   }
+  
+  input#bba_qm2a{
+    margin-bottom: 15px;
+  }
+  input#email_input {
+    width: 30%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    margin-bottom: 15px;
+    
+}
 
+label.bba_qm2email {  width: 100%; }
+
+#flexCheckDefault  {
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+input#email_input {
+  padding: 25px;
+}
