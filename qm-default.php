@@ -2,7 +2,6 @@
 
 add_action('init', function() {
 
-	session_start();
 	
 	if(isset($_GET['begin']))             { BBAQuizMatchPageURL::setURL('begin');
 	} else if(isset($_GET['bba-qm-pg1'])) { BBAQuizMatchPageURL::setURL('bba-qm-pg1'); 
