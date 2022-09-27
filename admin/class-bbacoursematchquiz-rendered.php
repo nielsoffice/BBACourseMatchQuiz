@@ -141,7 +141,7 @@ class BBACourseMatchMenuRendered {
      * Defined: Get ProductQueery
      * @since    1.0.0
      * @since    09.25.2022 */    
-    protected static function QMProductQuery($order_by = 'DESC', $limit = 0 ) {
+    protected static function QMProductQuery($order_by = 'DESC', $limit = null ) {
 
         global $wpdb;
     
@@ -159,8 +159,7 @@ class BBACourseMatchMenuRendered {
         RIGHT JOIN wp_bba_qm_elist
         ON         wp_bba_qm_session.id = wp_bba_qm_elist.id_session
     
-        ORDER BY wp_bba_qm_session.id ".$order_by." 
-        LIMIT ".$limit ));
+        ORDER BY wp_bba_qm_session.id ".$order_by." ". ((!is_null($limit) || isset($limit))? ' LIMIT '.$limit.'))' : false ) .""));
     
        }
 
@@ -382,7 +381,7 @@ class BBACourseMatchMenuRendered {
                  <td scope="row" style="width: 20%;"><?php echo date("F j, Y", strtotime($bbq_qm->sDC)); ?> </td>
                  <td scope="row"><?php echo $bbq_qm->eM; ?></td>
                  <td scope="row" <?php echo ($bbq_qm->eL ==  0 ) ? 'class="excludes__"' : ''; ?>><?php echo ($bbq_qm->eL == 1 ) ? 'Yes' : 'No'; ?></td> 
-                 <td class="w-25"><?php echo(self::BBACourseRecommendation($bbq_qm->sID));?> </td>
+                 <td class="w-25"><?phpecho(self::BBACourseRecommendation($bbq_qm->sID));?> </td>
    
                 <td scope="row" style="width: 50%;">
                 <table class="table table-bordered table-image">
