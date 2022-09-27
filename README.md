@@ -5,8 +5,6 @@
 // Default Begin 0 to 10 layouts 
 // Configuration
 add_action('init', function() {
-
-  session_start();
 	
   if(isset($_GET['begin']))      { BBAQuizMatchPageURL::setURL('begin');
   } else if(isset($_GET['pg1'])) { BBAQuizMatchPageURL::setURL('pg1'); 
