@@ -2,12 +2,12 @@
 
 add_action('init', function() {
 
-	
-	if(isset($_GET['begin']))             { BBAQuizMatchPageURL::setURL('begin');
-	} else if(isset($_GET['bba-qm-pg1'])) { BBAQuizMatchPageURL::setURL('bba-qm-pg1'); 
-	} else if(isset($_GET['bba-qm-pg2'])) { BBAQuizMatchPageURL::setURL('bba-qm-pg2'); 
-	} else if(isset($_GET['bba-qm-pg3'])) { BBAQuizMatchPageURL::setURL('bba-qm-pg3'); 
-	} else { BBAQuizMatchPageURL::setURL('bba-qm-pg4'); }
+	if(isset($_GET['begin']))      { BBAQuizMatchPageURL::setURL('begin');
+	} else if(isset($_GET['pg1'])) { BBAQuizMatchPageURL::setURL('pg1'); 
+	} else if(isset($_GET['pg2'])) { BBAQuizMatchPageURL::setURL('pg2'); 
+	} else if(isset($_GET['pg3'])) { BBAQuizMatchPageURL::setURL('pg3'); 
+	} else if(isset($_GET['pg4'])) { BBAQuizMatchPageURL::setURL('pg4'); 
+    } else { BBAQuizMatchPageURL::setURL('result'); }
 
 	if(	BBAQuizMatchPageURL::URL() == true ) {	
 
@@ -18,25 +18,32 @@ add_action('init', function() {
 			'type' => 'text/css',
 			'href' =>  '/wp-content/plugins/bbacoursematchquiz/public/css/bootstrap.min.css'
 		], 'style');
-		BBAQMSelf::lounch();
+		BBAQMSelf::launch();
 		BBAQMSelf::assetInstall([
 			'rel'  => 'stylesheet',
 			'type' => 'text/css',
 			'href' =>  '/wp-content/plugins/bbacoursematchquiz/public/css/bbacoursematchquiz-public.css'
 		], 'style');
-		BBAQMSelf::lounch();
+		BBAQMSelf::launch();
 		BBAQMSelf::assetInstall([
 			'type' => 'text/javascript',
 			'id'   => 'jQuery',
 			'src'  =>  '/wp-content/plugins/bbacoursematchquiz/public/js/jquery-3.6.0.min.js'
 		]);
-		BBAQMSelf::lounch();
+		BBAQMSelf::launch();
 		BBAQMSelf::assetInstall([
 			'type' => 'text/javascript',
 			'id'   => 'script_id',
 			'src'  =>  '/wp-content/plugins/bbacoursematchquiz/public/js/bbacoursematchquiz-public.js'
 		]);
-		BBAQMSelf::lounch();
+		BBAQMSelf::launch();
+		?> 
+		<style> 
+		#bba_qm_brand { margin-bottom: 0px !important; } 
+		div#col1 a, div#col2 a { color: #FFA18B; text-decoration: none; }
+		div#col1 a:hover, div#col2 a:hover { color: #fe9279; font-weight: 500; font-size: 16px; border-bottom: solid 1px #fe9279; }
+	   </style>
+	   <?php 
 	});   
 
 	add_action( 'bba_qm_add_settings_after_child_parent', function() {
@@ -66,7 +73,7 @@ add_action('init', function() {
 		   BBAQMSelection::BBAaddCol1Content([
 			   
 			 'target'    => 'bba_qm_begin', 
-			 'redirect'  => 'http://localhost/bba/quiz-match/?bba-qm-pg1', 
+			 'redirect'  =>  get_site_url().'/?pg1', 
 			 'question'  => 'BEGIN',
 			 'selection' =>  [] 
 			 
@@ -99,16 +106,16 @@ add_action('init', function() {
       
 	if (class_exists('BBAQMSelection')) {     
 
-        BBAQuizMatchPageURL::setURL('bba-qm-pg1');
+        BBAQuizMatchPageURL::setURL('pg1');
    
        if(BBAQuizMatchPageURL::URL() == true ) {
 
 		add_action( 'bba_qm_add_settings_bottom_child_row_parent', function() {
 					
 			BBAQMSelection::BBAaddCol1Content([	
-			  'target'    => 'bba_qm2b_form', 
-			  'origin'    => 'http://localhost/bba/?begin',
-			  'redirect'  => 'http://localhost/bba/?bba-qm-pg2', 
+			  'target'    => 'bba_qm2a', 
+			  'origin'    => get_site_url().'/?begin',
+			  'redirect'  => get_site_url().'/?pg2', 
 			  'question'  => "I have some experience",
 			  'selection' =>  [0,1,0,3] 
 	
@@ -120,9 +127,9 @@ add_action('init', function() {
            BBAQMSelection::BBATemplate('1-col' , ['box-md' , 'bba_mq'] ); 
            BBAQMSelection::BBAaddCol1Content([
                
-             'target'    => 'bba_qm2a_form', 
-             'origin'    => 'http://localhost/bba/?begin',
-             'redirect'  => 'http://localhost/bba/?bba-qm-pg2', 
+             'target'    => 'bba_qm2b', 
+			 'origin'    => get_site_url().'/?begin',
+			 'redirect'  => get_site_url().'/?pg2', 
              'question'  => "I am brand new to lashing",
              'selection' =>  [1,2,1,0] 
              
@@ -154,16 +161,16 @@ add_action('init', function() {
 
 	if (class_exists('BBAQMSelection')) {     
         
-        BBAQuizMatchPageURL::setURL('bba-qm-pg2');
+        BBAQuizMatchPageURL::setURL('pg2');
 
         if(BBAQuizMatchPageURL::URL() == true ) {
 
 			add_action( 'bba_qm_add_settings_bottom_child_row_parent', function() {
 					
 				BBAQMSelection::BBAaddCol1Content([	
-				  'target'    => 'bba_qm2b', 
-				  'origin'    => 'http://localhost/bba/?begin',
-				  'redirect'  => 'http://localhost/bba/?bba-qm-pg3', 
+				  'target'    => 'bba_qm2a', 
+				  'origin'    => get_site_url().'/?begin',
+				  'redirect'  => get_site_url().'/?pg3',  
 				  'question'  => "I want to try it out as a hobby.",
 				  'selection' =>  [2,0,1,0] 
 		
@@ -175,9 +182,9 @@ add_action('init', function() {
             BBAQMSelection::BBATemplate('1-col' , ['box-md' , 'bba_mq'] ); 
             BBAQMSelection::BBAaddCol1Content([
                 
-              'target'    => 'bba_qm2a', 
-              'origin'    => 'http://localhost/bba/?begin',
-              'redirect'  => 'http://localhost/bba/?bba-qm-pg3', 
+              'target'    => 'bba_qm2b', 
+			  'origin'    => get_site_url().'/?begin',
+			  'redirect'  => get_site_url().'/?pg3', 
               'question'  => "I want to make lashing my career!",
               'selection' =>  [0,2,1,0] 
               
@@ -210,16 +217,16 @@ add_action('init', function() {
 	
 	 if (class_exists('BBAQMSelection')) {     
       
-		   BBAQuizMatchPageURL::setURL('bba-qm-pg3');
+		   BBAQuizMatchPageURL::setURL('pg3');
 
         if(BBAQuizMatchPageURL::URL() == true ) {
 
 			add_action( 'bba_qm_add_settings_bottom_child_row_parent', function() {
 					
 				BBAQMSelection::BBAaddCol1Content([	
-				  'target'    => 'bba_qm2b', 
-				  'origin'    => 'http://localhost/bba/?begin',
-				  'redirect'  => 'http://localhost/bba/?bba-qm-pg4', 
+				  'target'    => 'bba_qm2a', 
+				  'origin'    => get_site_url().'/?begin',
+				  'redirect'  => get_site_url().'/?pg4', 
 				  'question'  => "No supplies yet!",
 				  'selection' =>   [2,2,0,0] 
 		
@@ -232,8 +239,8 @@ add_action('init', function() {
             BBAQMSelection::BBAaddCol1Content([
                 
               'target'    => 'bba_qm2a-textwrap', 
-              'origin'    => 'http://localhost/bba/?begin',
-              'redirect'  => 'http://localhost/bba/?bba-qm-pg4', 
+			  'origin'    => get_site_url().'/?begin',
+			  'redirect'  => get_site_url().'/?pg4',  
               'question'  => "Yup! I've got tweezers adhesive, lash extensions & more.",
               'selection' =>  [0,0,3,3] 
               
@@ -265,7 +272,7 @@ add_action('init', function() {
 
  if (class_exists('BBAQMSelection')) {     
       
-	BBAQuizMatchPageURL::setURL('bba-qm-pg4');
+	BBAQuizMatchPageURL::setURL('pg4');
 
 	if(BBAQuizMatchPageURL::URL() == true ) {
 
@@ -273,7 +280,8 @@ add_action('init', function() {
 		BBAQMSelection::BBAaddEmailContent([
 			
 		  'target'    => 'bba_qm2email', 
-		  'redirect'  => 'http://localhost/bba/?begin', 
+		  'origin'    => get_site_url().'/?begin',
+		  'redirect'  => get_site_url().'/?result', 
 		  'question'  => "I want to receive emails from Beauty Boss Academy",
 		  'selection' =>  [1,2,3,4],
 
@@ -297,3 +305,88 @@ add_action('init', function() {
   }
  
 });
+
+
+add_action('init', function() {
+
+ if (class_exists('BBAQMSelection')) {     
+      
+	BBAQuizMatchPageURL::setURL('pg4');
+
+	if(BBAQuizMatchPageURL::URL() == true ) {
+
+		BBAQMSelection::BBATemplate('1-col' , ['box-md' , 'bba_mq'] ); 
+		BBAQMSelection::BBAaddEmailContent([
+			
+		  'target'    => 'bba_qm2email', 
+		  'origin'    => get_site_url().'/?begin',
+		  'redirect'  => get_site_url().'/?result', 
+		  'question'  => "I want to receive emails from Beauty Boss Academy",
+		  'selection' =>  [1,2,3,4],
+
+		  
+		],'lg', function() {
+
+		  $html  = '';
+		  $html .= '<h2>Almost There!</h2>';
+		  $html .= '<h4>What is your email address?</h4>';
+
+		  return($html);
+
+		});
+	
+		BBAQMSelection::execute();  
+
+   }
+
+  } else {
+  echo "WP Plugin: BBA Quiz Match was removed or deactivated";
+  }
+ 
+});
+
+add_action('init', function() { 
+		 
+	BBAQuizMatchPageURL::setURL('result');
+
+   if(BBAQuizMatchPageURL::URL() == true ) {
+	
+	add_action( 'bba_qm_add_settings_bottom_child_row_parent', function() {
+					
+		BBAQMSelection::BBAaddCol1Content([],'lg-12', function() {
+
+			$stringsURL = '/quiz-match/?begin';
+
+			return('
+			
+			<div class="container-fluid">
+			<div class="container">
+			<div class="row">
+		   
+			 <div id="col1" class="col-md-6"> <a class="" href="'. get_site_url() .'"> Back To Home!</a></div>
+			 <div id="col2" class="col-md-6"> <a class="" href="'. get_site_url() . $stringsURL .'"> Try Again?</a></div>
+		   
+			</div> 
+			</div> 
+			</div>
+			
+			');
+		});
+		BBAQMSelection::addColContent();
+			 
+	});
+
+	 BBAQMSelection::BBATemplate('1-col' , ['box-md' , 'bba_mq'] ); 
+	 BBAQMSelection::BBAaddEmailContent([],'lg-12', function() { 
+
+		return do_shortcode( '[QUIZ_MATCH]' );
+
+	 });
+
+	BBAQMSelection::execute();  
+
+   }   
+
+});
+
+ 

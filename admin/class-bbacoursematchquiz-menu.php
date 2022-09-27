@@ -90,6 +90,8 @@ class BBACourseMatchMenu {
       // Init admin contents
       add_action( 'admin_menu', [ $this,'bba_quiz_match' ] );
 
+      add_shortcode('QUIZ_MATCH', ['BBACourseMatchFrontEndShortCode', 'qmresult']);
+      add_shortcode('QUIZ_RESULT', ['BBACourseMatchResult', 'qmresult']);
     }
 
     /**
@@ -134,20 +136,6 @@ class BBACourseMatchMenu {
     
       );
     
-    }
-
-    /**
-     * Defined: wp_get_bba_quiz_match_frontEnd_rendered client content
-     * Method name: add_menu wp 
-     *
-     * @since    1.0.0
-     * @since    09.24.2022 */ 
-    public function wp_get_bba_quiz_match_frontEnd_rendered() {
-
-      if( class_exists('BBACourseMatchFrontEndShortCode') ) {
-        new BBACourseMatchFrontEndShortCode();
-      }
-  
     }
     
 }

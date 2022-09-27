@@ -4,7 +4,7 @@
  */
 
    /* google fonts installed */   
-   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
+   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
    /* BBA QM main layout */
    h1, h2, h3, h4, h5, h6, p, span, div { font-family: 'Roboto', sans-serif; }
    h1, h2, h3, h4, h5, h6 { font-weight: 500; }
@@ -12,49 +12,52 @@
    /* Parent Container */
    #bba_activate_page { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #FFF; overflow: scroll;}
    /* BBA QM Branding */
-   #bba_icon_brand { width: 15%; text-align: center;}
+   #bba_icon_brand { width: 10%; text-align: center;}
+   #bba_qm_brand { margin-bottom: 15%; }
    /* QM Content */
    #bba_qm_content { margin-top: 10%; }
    /* QM Primary container */
-  .bba_container  { width: 100%; margin: 0 auto ; text-align: center; margin-top: 15px;}
+  .bba_container { width: 100%; margin: 0 auto ; text-align: center; margin-top: 15px;}
    /* QM btn */
-   input#bba_qm2a,
-   input#bba_qm2b,
-   #bba_qm2a-textwrap,
-   #bba_qm2email,
-   input#bba_qm_begin { overflow-wrap: break-word !important; background-color: #69b569; border: none; width: 30%; padding: 10px 20px; font-weight: 500; margin-bottom: 15px;}
+   input#bba_qm2a,     input#bba_qm2b,
+   #bba_qm2a-textwrap, #bba_qm2email,
+   input#bba_qm_begin { overflow-wrap: break-word !important; background-color: #94b795; border: none; width: 30%; padding: 8px 10px; font-weight: 300; margin-bottom: 15px;}
    /* QM btn hover */
-   #bba_qm2email:hover,
-   input#bba_qm2a:hover,
-   input#bba_qm2b:hover,
-   input#bba_qm_begin:hover  { background-color: #60ad60; cursor: pointer; }
-
+   #bba_qm2email:hover, input#bba_qm2a:hover, input#bba_qm2b:hover, input#bba_qm_begin:hover  { background-color: #84b885; cursor: pointer; }
+   input#email_input:hover, input#email_input:focus, input#email_input:active { border: 1px solid #F29C81; outline:  #F29C81;}
    #bba_qm2a-textwrap { width: 40%;}
   /* Begin URL CSS */
-  .bbarow {
-    text-align: center;
-    margin-top: 75px !important;
-  }
-  
-  input#bba_qm2a{
-    margin-bottom: 15px;
-  }
-  input#email_input {
-    width: 30%;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    margin-bottom: 15px;
-    
-}
+  .bbarow { text-align: center; margin-top: 75px !important; }
+  input#bba_qm2a{ margin-bottom: 15px; }
+  input#email_input { width: 30%; border-top: none; border-left: none; border-right: none; margin-bottom: 15px; }
+  label.bba_qm2email {  width: 100%; }
+  #flexCheckDefault  { margin-right: 10px; margin-bottom: 5px; }
+  input#email_input { padding: 25px; }
 
-label.bba_qm2email {  width: 100%; }
+  table#recomendation_qm { width: 100% !important }
+  tbody#recomendation_qmtb tr td img { width: 25% !important}
 
-#flexCheckDefault  {
-    margin-right: 10px;
-    margin-bottom: 5px;
-}
-
-input#email_input {
-  padding: 25px;
-}
+/*--------------------------------------------------------------
+ # Defined! Contents @Media Query All Device 
+--------------------------------------------------------------*/
+@media only screen and (max-width: 1440px ) { }
+@media only screen and (max-width: 1280px ) { }
+@media only screen and (max-width: 1024px ) { }
+@media only screen and (max-width: 966px )  { }
+@media only screen and (max-width: 853px )  { }
+@media only screen and (max-width: 800px )  { }
+@media only screen and (max-width: 768px )  { }
+@media only screen and (max-width: 736px )  { }
+@media only screen and (max-width: 690px )  { }
+@media only screen and (max-width: 667px )  { }
+@media only screen and (max-width: 640px )  { }
+@media only screen and (max-width: 603px )  { }
+@media only screen and (max-width: 598px )  { }
+@media only screen and (max-width: 568px )  { }
+@media only screen and (max-width: 533px )  { }
+@media only screen and (max-width: 480px )  { }
+@media only screen and (max-width: 425px )  { }
+@media only screen and (max-width: 384px )  { }
+@media only screen and (max-width: 375px )  { }
+@media only screen and (max-width: 360px )  { }
+@media only screen and (max-width: 320px )  { }

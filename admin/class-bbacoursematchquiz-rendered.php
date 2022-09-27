@@ -66,7 +66,7 @@ class BBACourseMatchMenuRendered {
      * Defined: BBACourseRecommendation;
      * @since    1.0.0
      * @since    09.25.2022 */
-    private static function BBACourseRecommendation($qm_sID, $string = false ) {
+    protected static function BBACourseRecommendation($qm_sID, $string = false ) {
         
         /**
          * Defined: get Classaic Kit score;
@@ -141,7 +141,7 @@ class BBACourseMatchMenuRendered {
      * Defined: Get ProductQueery
      * @since    1.0.0
      * @since    09.25.2022 */    
-    private static function QMProductQuery($order_by = 'DESC') {
+    protected static function QMProductQuery($order_by = 'DESC', $limit = 0 ) {
 
         global $wpdb;
     
@@ -159,7 +159,8 @@ class BBACourseMatchMenuRendered {
         RIGHT JOIN wp_bba_qm_elist
         ON         wp_bba_qm_session.id = wp_bba_qm_elist.id_session
     
-        ORDER BY wp_bba_qm_session.id ".$order_by));
+        ORDER BY wp_bba_qm_session.id ".$order_by." 
+        LIMIT ".$limit ));
     
        }
 

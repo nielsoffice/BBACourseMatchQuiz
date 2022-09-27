@@ -145,7 +145,7 @@ class BBAQMSelf  {
      *
      * @since    1.0.0
      * @since    09.24.2022 */ 
-    public static function lounch() { 
+    public static function launch() { 
       
     /**
      * Defined: HTML template head

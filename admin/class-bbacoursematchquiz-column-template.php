@@ -1,7 +1,5 @@
 <?php 
 
-session_start();
-
 /**
  * The file that defines the core plugin class
  *

@@ -140,6 +140,11 @@ class Bbacoursematchquiz {
     	require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-bbacoursematchquiz-frontEnd-shortcode.php';
 
 		/**
+		 * The class responsible for the result client side content
+		 */
+    	require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-bbacoursematchquiz-result-img-thumbnail.php';
+
+		/**
 		 * The class responsible for the result generate url
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-bbacoursematchquiz-frontEnd-url.php';

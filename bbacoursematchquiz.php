@@ -8,17 +8,17 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              https://nielsoffice197227997.wordpress.com/
+ * @link              https://outgive.ca/
  * @since             1.0.0
  * @package           Bbacoursematchquiz
  *
  * @wordpress-plugin
  * Plugin Name:       BBACourseMatchQuiz
  * Plugin URI:        https://github.com/nielsofficeofficial/BBACourseMatchQuiz
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       BBA Quiz Match which course suit for you! 
  * Version:           1.0.0
  * Author:            nielfernandez
- * Author URI:        https://nielsoffice197227997.wordpress.com/
+ * Author URI:        https://outgive.ca/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       bbacoursematchquiz
@@ -30,13 +30,97 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }   
 
-
 /**
  * Currently plugin version.
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
 define( 'BBACOURSEMATCHQUIZ_VERSION', '1.0.0' );
+
+
+function ___qmireg_09282022_456am() {
+
+	global $wpdb;
+
+	$table_name = $wpdb->prefix . 'bba_qm_session';
+	$query      = $wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->esc_like( $table_name ) );
+	$charset_collate = $wpdb->get_charset_collate();
+	
+	if ( ! $wpdb->get_var( $query ) == $table_name ) {	
+	
+	$sql = "CREATE TABLE  $table_name  (
+			id bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT ,
+			Date_created date NOT NULL DEFAULT current_timestamp(),
+			PRIMARY KEY (id)
+		   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
+	
+	require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+	dbDelta( $sql );
+	
+	}
+}
+
+register_activation_hook( __FILE__, '___qmireg_09282022_456am' );
+
+function ___qmireg_09282022_456am_products() {
+	
+	global $wpdb;
+
+	# Products
+	$table_name = $wpdb->prefix . 'bba_qm_products';
+	$query      = $wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->esc_like( $table_name ) );
+	$charset_collate = $wpdb->get_charset_collate();
+
+	if ( ! $wpdb->get_var( $query ) == $table_name ) {	
+
+	$sql = "CREATE TABLE $table_name (
+		id bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+		id_session bigint(20) UNSIGNED NOT NULL,
+		QM_code varchar(5) NOT NULL,
+		qm_selection_Guide varchar(255) DEFAULT NULL,
+		qm_classic_kit int(60) NOT NULL,
+		qm_ultimate_Bundle int(60) NOT NULL,
+		qm_classic int(60) NOT NULL,
+		qm_volume int(60) NOT NULL,
+		PRIMARY KEY (id)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
+
+	require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+	dbDelta( $sql );
+
+	}
+
+}
+
+register_activation_hook( __FILE__, '___qmireg_09282022_456am_products' );
+
+function ___qmireg_09282022_456am_emailList() {
+
+	global $wpdb;
+
+	# bba_qm_elist	
+	$table_name = $wpdb->prefix . 'bba_qm_elist';
+	$query      = $wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->esc_like( $table_name ) );
+	$charset_collate = $wpdb->get_charset_collate();
+
+	if ( ! $wpdb->get_var( $query ) == $table_name ) {		
+
+	$sql = " CREATE TABLE $table_name (
+			id bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+			id_session bigint(20) UNSIGNED NOT NULL,
+			qm_emal varchar(255) NOT NULL,
+			qm_e_list varchar(255) NOT NULL,
+			PRIMARY KEY (id)
+			) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
+
+	require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+	dbDelta( $sql );
+
+	}
+
+}
+
+register_activation_hook( __FILE__, '___qmireg_09282022_456am_emailList' );
 
 /**
  * Currently plugin Quiz Match Default Settings.
