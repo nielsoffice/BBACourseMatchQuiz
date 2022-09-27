@@ -56,35 +56,35 @@ add_action('init', function() {
  add_action('init', function() {
       
   if (class_exists('BBAQMSelection')) {     
-
-	BBAQuizMatchPageURL::setURL('begin');
-
+ 
+       BBAQuizMatchPageURL::setURL('begin');
+     
      if(BBAQuizMatchPageURL::URL() == true ) {
 
 	  BBAQMSelection::BBATemplate('1-col' , ['box-md' , 'bba_mq'] ); 
 	  BBAQMSelection::BBAaddCol1Content([
-
-	    'target'    => 'bba_qm_begin', 
-	    'redirect'  => 'http://localhost/bba/quiz-match/?bba-qm-pg1', 
-	    'question'  => 'BEGIN',
-	    'selection' =>  [] 
-
+			   
+	     'target'    => 'bba_qm_begin', 
+	     'redirect'  =>  get_site_url().'/?pg1', 
+	     'question'  => 'BEGIN',
+	     'selection' =>  [] 
+			 
 	  ],'lg', function() {
+   
+	     $html  = '';
+	     $html .= '<h3>Which BBA course is right for me?</h3>';
+	     $html .= '<p>Take the quiz to be matched with your perfect lash journey!</p>';
 
-	    $html  = '';
-	    $html .= '<h3>Which BBA course is right for me?</h3>';
-	    $html .= '<p>Take the quiz to be matched with your perfect lash journey!</p>';
-
-	    return($html);
-
-          });
+	      return($html);
+   
+	  });
 	  BBAQMSelection::execute();  
 
-     }
+	}
 
-  } else {
-     echo "PG1 | WP Plugin: BBA Quiz Match was removed or deactivated";
-  }  
+ } else {
+   echo "PG1 | WP Plugin: BBA Quiz Match was removed or deactivated";
+ }  
 
  });
 ```
