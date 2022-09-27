@@ -159,7 +159,7 @@ class BBACourseMatchMenuRendered {
         RIGHT JOIN wp_bba_qm_elist
         ON         wp_bba_qm_session.id = wp_bba_qm_elist.id_session
     
-        ORDER BY wp_bba_qm_session.id ".$order_by." ". ((!is_null($limit) || isset($limit))? ' LIMIT '.$limit.'))' : false ) .""));
+        ORDER BY wp_bba_qm_session.id ".$order_by." ". ((!is_null($limit) || isset($limit))? ' LIMIT '.$limit.'' : false ) .""));
     
        }
 
