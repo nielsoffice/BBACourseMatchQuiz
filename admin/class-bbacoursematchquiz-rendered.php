@@ -381,7 +381,7 @@ class BBACourseMatchMenuRendered {
                  <td scope="row" style="width: 20%;"><?php echo date("F j, Y", strtotime($bbq_qm->sDC)); ?> </td>
                  <td scope="row"><?php echo $bbq_qm->eM; ?></td>
                  <td scope="row" <?php echo ($bbq_qm->eL ==  0 ) ? 'class="excludes__"' : ''; ?>><?php echo ($bbq_qm->eL == 1 ) ? 'Yes' : 'No'; ?></td> 
-                 <td class="w-25"><?phpecho(self::BBACourseRecommendation($bbq_qm->sID));?> </td>
+                 <td class="w-25"><?php echo(self::BBACourseRecommendation($bbq_qm->sID)); ?> </td>
    
                 <td scope="row" style="width: 50%;">
                 <table class="table table-bordered table-image">
