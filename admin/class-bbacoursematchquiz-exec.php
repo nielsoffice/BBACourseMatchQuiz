@@ -78,6 +78,13 @@ class BBAQMPerform  {
    private static $selected = [];
 
   /**
+   * Defined: @var @property session_id
+   *
+   * @since    1.0.0
+   * @since    09.28.2022 */ 
+   public static $session_id;
+
+  /**
    * Defined: @var @property set_id
    *
    * @since    1.0.0

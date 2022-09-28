@@ -684,7 +684,7 @@ class BBAQMSelection extends BBACourseMatchColumnTemplate {
              *
              * @since    1.0.0
              * @since    09.19.2022 */
-            print(BBAQMSelection::BBAColumnRequest(self::$colLoopReq[0]));  
+            return(BBAQMSelection::BBAColumnRequest(self::$colLoopReq[0]));  
      
             ?>
     <?php } 

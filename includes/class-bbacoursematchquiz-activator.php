@@ -35,7 +35,9 @@ class Bbacoursematchquiz_Activator {
 
 	}
 
-	static public function QM_REGISTER_QUERY() {
+	static public function QM_REGISTER_QUERY() : void {
+
+	
 		
 	
 	}

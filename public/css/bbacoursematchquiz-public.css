@@ -19,9 +19,9 @@
    /* QM Primary container */
   .bba_container { width: 100%; margin: 0 auto ; text-align: center; margin-top: 15px;}
    /* QM btn */
-   input#bba_qm2a,     input#bba_qm2b,
+   input#bba_qm2a, input#bba_qm2b,
    #bba_qm2a-textwrap, #bba_qm2email,
-   input#bba_qm_begin { overflow-wrap: break-word !important; background-color: #94b795; border: none; width: 30%; padding: 8px 10px; font-weight: 300; margin-bottom: 15px;}
+   input#bba_qm_begin {overflow-wrap: break-word !important;background-color: #94b795;border: none; width: 30%; padding: 8px 10px;font-weight: 300;margin-bottom: 15px;}
    /* QM btn hover */
    #bba_qm2email:hover, input#bba_qm2a:hover, input#bba_qm2b:hover, input#bba_qm_begin:hover  { background-color: #84b885; cursor: pointer; }
    input#email_input:hover, input#email_input:focus, input#email_input:active { border: 1px solid #F29C81; outline:  #F29C81;}
@@ -37,27 +37,3 @@
   table#recomendation_qm { width: 100% !important }
   tbody#recomendation_qmtb tr td img { width: 25% !important}
 
-/*--------------------------------------------------------------
- # Defined! Contents @Media Query All Device 
---------------------------------------------------------------*/
-@media only screen and (max-width: 1440px ) { }
-@media only screen and (max-width: 1280px ) { }
-@media only screen and (max-width: 1024px ) { }
-@media only screen and (max-width: 966px )  { }
-@media only screen and (max-width: 853px )  { }
-@media only screen and (max-width: 800px )  { }
-@media only screen and (max-width: 768px )  { }
-@media only screen and (max-width: 736px )  { }
-@media only screen and (max-width: 690px )  { }
-@media only screen and (max-width: 667px )  { }
-@media only screen and (max-width: 640px )  { }
-@media only screen and (max-width: 603px )  { }
-@media only screen and (max-width: 598px )  { }
-@media only screen and (max-width: 568px )  { }
-@media only screen and (max-width: 533px )  { }
-@media only screen and (max-width: 480px )  { }
-@media only screen and (max-width: 425px )  { }
-@media only screen and (max-width: 384px )  { }
-@media only screen and (max-width: 375px )  { }
-@media only screen and (max-width: 360px )  { }
-@media only screen and (max-width: 320px )  { }

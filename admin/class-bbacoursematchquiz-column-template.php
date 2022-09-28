@@ -108,8 +108,8 @@ class BBACourseMatchColumnTemplate {
        *  
        * @since    1.0.0
        * @since    09.25.2022 */
-        if( is_callable($content) ) { print($content(self::$doString) . (BBAQMPerform::do_insert()) );  }  
-        else { print($content . BBAQMPerform::do_insert() ); }
+        if( is_callable($content) ) { print($content(self::$doString) );  }   
+        else { print($content); }
    
       ?>
     </div><?php }
