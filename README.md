@@ -20,25 +20,25 @@ add_action('init', function() {
 	BBAQMSelf::assetInstall([
 	   'rel'  => 'stylesheet',
 	   'type' => 'text/css',
-	   'href' =>  '/wp-content/plugins/bbacoursematchquiz/public/css/bootstrap.min.css'
+	   'href' => '/wp-content/plugins/bbacoursematchquiz/public/css/bootstrap.min.css'
 	], 'style');
 	BBAQMSelf::launch();
 	BBAQMSelf::assetInstall([
 	   'rel'  => 'stylesheet',
 	   'type' => 'text/css',
-	   'href' =>  '/wp-content/plugins/bbacoursematchquiz/public/css/bbacoursematchquiz-public.css'
+	   'href' => '/wp-content/plugins/bbacoursematchquiz/public/css/bbacoursematchquiz-public.css'
 	], 'style');
 	BBAQMSelf::launch();
 	BBAQMSelf::assetInstall([
 	   'type' => 'text/javascript',
 	   'id'   => 'jQuery',
-	   'src'  =>  '/wp-content/plugins/bbacoursematchquiz/public/js/jquery-3.6.0.min.js'
+	   'src'  => '/wp-content/plugins/bbacoursematchquiz/public/js/jquery-3.6.0.min.js'
 	]);
 	BBAQMSelf::launch();
 	BBAQMSelf::assetInstall([
 	   'type' => 'text/javascript',
 	   'id'   => 'script_id',
-	   'src'  =>  '/wp-content/plugins/bbacoursematchquiz/public/js/bbacoursematchquiz-public.js'
+	   'src'  => '/wp-content/plugins/bbacoursematchquiz/public/js/bbacoursematchquiz-public.js'
 	]);
 	BBAQMSelf::launch();
   });   
