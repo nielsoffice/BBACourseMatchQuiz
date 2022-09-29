@@ -21,7 +21,7 @@
    /* QM btn */
    input#bba_qm2a, input#bba_qm2b,
    #bba_qm2a-textwrap, #bba_qm2email,
-   input#bba_qm_begin {overflow-wrap: break-word !important;background-color: #94b795;border: none; width: 30%; padding: 8px 10px;font-weight: 300;margin-bottom: 15px;}
+   input#bba_qm_begin { white-space: normal; overflow-wrap: break-word !important;background-color: #94b795;border: none; width: 30%; padding: 8px 10px;font-weight: 300;margin-bottom: 15px;}
    /* QM btn hover */
    #bba_qm2email:hover, input#bba_qm2a:hover, input#bba_qm2b:hover, input#bba_qm_begin:hover  { background-color: #84b885; cursor: pointer; }
    input#email_input:hover, input#email_input:focus, input#email_input:active { border: 1px solid #F29C81; outline:  #F29C81;}
@@ -36,4 +36,3 @@
 
   table#recomendation_qm { width: 100% !important }
   tbody#recomendation_qmtb tr td img { width: 25% !important}
-

@@ -66,7 +66,7 @@ class ProductsScore{
 
         return($wpdb->get_results("SELECT 
         ".$this->setProdTbl." AS sumCkit
-        FROM wp_bba_qm_products 
+        FROM wp_bba_qm_products_match 
         WHERE id_session = ".$this->sID.""));
 
      }

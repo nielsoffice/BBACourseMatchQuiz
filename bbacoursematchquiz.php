@@ -67,7 +67,7 @@ function ___qmireg_09282022_456am_products() {
 	global $wpdb;
 
 	# Products
-	$table_name = $wpdb->prefix . 'bba_qm_products';
+	$table_name = $wpdb->prefix . 'bba_qm_products_match';
 	$query      = $wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->esc_like( $table_name ) );
 	$charset_collate = $wpdb->get_charset_collate();
 
@@ -76,7 +76,6 @@ function ___qmireg_09282022_456am_products() {
 	$sql = "CREATE TABLE $table_name (
 		id bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
 		id_session bigint(20) UNSIGNED NOT NULL,
-		QM_code varchar(5) NOT NULL,
 		qm_selection_Guide varchar(255) DEFAULT NULL,
 		qm_classic_kit int(60) NOT NULL,
 		qm_ultimate_Bundle int(60) NOT NULL,

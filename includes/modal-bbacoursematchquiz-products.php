@@ -79,7 +79,7 @@ class ProductsList {
         global $wpdb;
 
         return($wpdb->get_results("SELECT *
-        FROM wp_bba_qm_products
+        FROM wp_bba_qm_products_match
         WHERE id_session = ". $this->sID ."
         ORDER BY id_session 
         DESC"));

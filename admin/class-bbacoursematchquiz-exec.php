@@ -424,7 +424,7 @@ class BBAQMPerform  {
     $html .= 'name="';
     $html .=  $_emailQMBBAID; // dynamic_name
     $html .= '" ';
-    $html .= ' />';
+    $html .= ' required />';
     $html .= '<label ';
     $html .= 'class="';
     $html .=  self::$target; // dyanmic_class
@@ -474,7 +474,9 @@ class BBAQMPerform  {
       * @since    09.28.2022 */ 
     if (isset($_POST[$getTargetID])) {
 
-         $sql = "INSERT INTO `wp_bba_qm_products` 
+         $question__ = htmlspecialchars(strip_tags(trim(self::$question)));
+
+         $sql = 'INSERT INTO `wp_bba_qm_products_match` 
          ( `id`
           ,`id_session`
           ,`qm_selection_Guide`
@@ -483,14 +485,14 @@ class BBAQMPerform  {
           ,`qm_classic`
           ,`qm_volume`)
             VALUES (NULL
-           ,$sessionRequest 
-           ,'".self::$question."'
-           ,".self::$selected['prod1']."
-           ,".self::$selected['prod2']."
-           ,".self::$selected['prod3']."
-           ,".self::$selected['prod4']." 
+           ,"'.$sessionRequest .'"
+           ,"'.$question__.'"
+           ,"'.self::$selected['prod1'].'"
+           ,"'.self::$selected['prod2'].'"
+           ,"'.self::$selected['prod3'].'"
+           ,"'.self::$selected['prod4'].'" 
                 
-         );";
+         );';
    
      /**
       * Defined: after all session do those thing s processing DESTROYED session return to begin!

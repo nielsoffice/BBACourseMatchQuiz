@@ -192,7 +192,7 @@ class BBAQMSelf  {
       $bba_branner .= '<div class="bba_col">';
       $bba_branner .= '<img id="bba_icon_brand" ';
       if( !empty($source) ) { $bba_branner .= ' src="'.$source.'" '; }
-       else { $bba_branner .= ' src="'.  plugins_url("/img/BBA_Main.png", __FILE__) .'" '; }
+       else { $bba_branner .= ' src="'.  plugins_url("/img/BBAmain.png", __FILE__) .'" '; }
       $bba_branner .= '/>';
       $bba_branner .= '</div>';
       $bba_branner .= '</div>';  

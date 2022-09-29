@@ -204,7 +204,7 @@ class BBACourseMatchMenuRendered {
             $qm_del = $_REQUEST['delete'];
             
             $sql = 'DELETE
-                    FROM wp_bba_qm_products 
+                    FROM wp_bba_qm_products_match 
                     WHERE id_session = '.$qm_del;
 
             $wpdb->query($sql);
@@ -262,7 +262,7 @@ class BBACourseMatchMenuRendered {
             $QMProductListDel = $_REQUEST['qm-del'];
             
             $sql = 'DELETE 
-                    FROM wp_bba_qm_products 
+                    FROM wp_bba_qm_products_match 
                     WHERE id = '.$QMProductListDel;
 
             # If everything set as  true then wipeout!

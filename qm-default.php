@@ -51,21 +51,34 @@ add_action('init', function() {
 		BBAQMSelf::launch();
 		?> 
 		<style> 
+        input[type="submit"] { white-space: normal; overflow-wrap: break-word !important;}
+   
 		/*--------------------------------------------------------------
 		# Defined! Contents @Media Query All Device 
 		--------------------------------------------------------------*/
-		@media only screen and (max-width: 1024px ) { 
-
+		 @media only screen and (min-width: 1024px ) { img#bba_icon_brand { width: 15%;}	input#bba_qm2a, input#bba_qm2b, input#bba_qm2a { width: 40% !important; } }
+		 @media only screen and (min-width: 768px)  { #courseRecommend { margin: 0 auto; width: 50% !important;  } .col-12 h3 {  font-size: 18px; font-weight: 400; }  #bba_qm_brand { margin-bottom: 5% !important; }  }
+         
+         @media only screen and (max-width: 1024px ) { 
 		 #bba_qm_brand { margin-bottom: 0px !important; } 
 		 div#col1 a, div#col2 a { color: #FFA18B; text-decoration: none; }
 		 div#col1 a:hover, div#col2 a:hover { color: #fe9279; font-weight: 500; font-size: 16px; border-bottom: solid 1px #fe9279; }
 		}
+		
 		@media only screen and (max-width: 966px )  { img#bba_icon_brand { width: 20%; } input#bba_qm2a, input#bba_qm2b, input#bba_qm2a { width: 100% !important; } }
 		@media only screen and (max-width: 768px )  { #bba_qm2a-textwrap { width: 100%; } input#email_input, input#bba_qm2email { width: 80%; } }
 		@media only screen and (max-width: 690px )  { img#bba_icon_brand { width: 20%; } }
-		@media only screen and (max-width: 480px )  { input#bba_qm2a, input#bba_qm2b { width: 100% !important; } img#bba_icon_brand { width: 20%; } }
-		@media only screen and (max-width: 425px )  { img#bba_icon_brand { width: 30%; } }
-		@media only screen and (max-width: 320px )  { input#bba_qm2a, input#bba_qm2b { width: 100% !important; } img#bba_icon_brand { width: 40% !important; } .bbarow div h3 { font-size: 18px !important; font-weight: 400 !important; } }
+		@media only screen and (max-width: 480px )  { 
+            
+            #courseRecommend { margin: 0 auto; width: 100% !important;  } .col-12 h3 {  font-size: 18px; font-weight: 400; }  #bba_qm_brand { margin-bottom: 5% !important; }  
+            #col1, #col2 { margin: 10px; }
+            input#bba_qm2a, input#bba_qm2b { width: 100% !important; }          img#bba_icon_brand { width: 20%; } }
+		@media only screen and (max-width: 425px )  {
+        #courseRecommend { margin: 0 auto; width: 160% !important; margin-left: -65px; }
+        img#bba_icon_brand { width: 30%; } }
+		@media only screen and (max-width: 320px )  { input#bba_qm2a, input#bba_qm2b { width: 100% !important; } img#bba_icon_brand { width: 40% !important; } .bbarow div h3 { font-size: 18px !important; font-weight: 400 !important; } 
+         #courseRecommend { margin: 0 auto; width: 160% !important; margin-left: -55px; }
+        }
 	   </style>
 	   <?php 
 	});   
@@ -94,7 +107,7 @@ add_action('init', function() {
 					
 					'target'    => 'bba_qm_begin',
 					'redirect'  =>  get_site_url().'/?begin',  
-					'redirect'  =>  get_site_url().'/quiz-match/?pg1', 
+					'redirect'  =>  get_site_url().'/quiz/?pg1', 
 					'question'  => 'BEGIN',
 					'selection' =>  [] 
 					
@@ -147,8 +160,8 @@ add_action('init', function() {
 					$html .= '<div class="col-12">';
 					$html .= BBAQMSelection::BBAaddCol1Content([	
 					'target'    => 'bba_qm2b', 
-					'origin'    => get_site_url().'/quiz-match/?begin',
-					'redirect'  => get_site_url().'/quiz-match/?pg2', 
+					'origin'    => get_site_url().'/quiz/?begin',
+					'redirect'  => get_site_url().'/quiz/?pg2', 
 					'question'  => "I am brand new to lashing",
 					'selection' =>  [1,2,1,0] 
 			
@@ -160,8 +173,8 @@ add_action('init', function() {
 					$html .= '<div class="col-12">';
 					$html .= BBAQMSelection::BBAaddCol1Content([	
 						'target'    => 'bba_qm2a', 
-						'origin'    => get_site_url().'/quiz-match/?begin',
-						'redirect'  => get_site_url().'/quiz-match/?pg2', 
+						'origin'    => get_site_url().'/quiz/?begin',
+						'redirect'  => get_site_url().'/quiz/?pg2', 
 						'question'  => "I have some experience",
 						'selection' =>  [0,1,0,3] 
 				
@@ -213,8 +226,8 @@ add_action('init', function() {
 							
 						BBAQMSelection::BBAaddCol1Content([	
 						'target'    => 'bba_qm2a', 
-						'origin'    => get_site_url().'/quiz-match/?begin',
-						'redirect'  => get_site_url().'/quiz-match/?pg3',  
+						'origin'    => get_site_url().'/quiz/?begin',
+						'redirect'  => get_site_url().'/quiz/?pg3',  
 						'question'  => "I want to try it out as a hobby.",
 						'selection' =>  [2,0,1,0] 
 				
@@ -229,8 +242,8 @@ add_action('init', function() {
 					BBAQMSelection::BBAaddCol1Content([
 						
 					'target'    => 'bba_qm2b', 
-					'origin'    => get_site_url().'/quiz-match/?begin',
-					'redirect'  => get_site_url().'/quiz-match/?pg3', 
+					'origin'    => get_site_url().'/quiz/?begin',
+					'redirect'  => get_site_url().'/quiz/?pg3', 
 					'question'  => "I want to make lashing my career!",
 					'selection' =>  [0,2,1,0] 
 					
@@ -272,8 +285,8 @@ add_action('init', function() {
 							
 						BBAQMSelection::BBAaddCol1Content([	
 						'target'    => 'bba_qm2a', 
-						'origin'    => get_site_url().'/quiz-match/?begin',
-						'redirect'  => get_site_url().'/quiz-match/?pg4', 
+						'origin'    => get_site_url().'/quiz/?begin',
+						'redirect'  => get_site_url().'/quiz/?pg4', 
 						'question'  => "No supplies yet!",
 						'selection' =>   [2,2,0,0] 
 				
@@ -288,8 +301,8 @@ add_action('init', function() {
 					BBAQMSelection::BBAaddCol1Content([
 						
 						'target'    => 'bba_qm2a-textwrap', 
-						'origin'    => get_site_url().'/quiz-match/?begin',
-						'redirect'  => get_site_url().'/quiz-match/?pg4',  
+						'origin'    => get_site_url().'/quiz/?begin',
+						'redirect'  => get_site_url().'/quiz/?pg4',  
 						'question'  => "Yup! I've got tweezers adhesive, lash extensions & more.",
 						'selection' =>  [0,0,3,3] 
 						
@@ -330,8 +343,8 @@ add_action('init', function() {
 					BBAQMSelection::BBAaddEmailContent([
 						
 					'target'    => 'bba_qm2email', 
-					'origin'    => get_site_url().'/quiz-match/?begin',
-					'redirect'  => get_site_url().'/quiz-match/?result', 
+					'origin'    => get_site_url().'/quiz/?begin',
+					'redirect'  => get_site_url().'/quiz/?result', 
 					'question'  => "I want to receive emails from Beauty Boss Academy",
 					'selection' =>  [1,2,3,4]
 
@@ -367,7 +380,7 @@ add_action('init', function() {
 							
 				BBAQMSelection::BBAaddCol1Content([],'lg-12', function() {
 
-					$stringsURL = '/quiz-match/?begin';
+					$stringsURL = '/quiz/?begin';
 
 					return('
 					
@@ -376,7 +389,7 @@ add_action('init', function() {
 					<div class="row">
 				
 					<div id="col1" class="col-md-6"> 
-					<a class="" href="'. get_site_url() .'"> Back To Home!</a></div>
+					<a class="" href="http://beautybossacademy.com/courses"> Learn More!</a></div>
 					<div id="col2" class="col-md-6"> 
 					<a class="" href="'. get_site_url() . $stringsURL .'"> Try Again?</a></div>
 				
@@ -403,5 +416,3 @@ add_action('init', function() {
 		}   
 
 	});
-
- 
