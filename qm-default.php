@@ -159,28 +159,37 @@ add_action('init', function() {
 
 					$html .= '<div class="col-12">';
 					$html .= BBAQMSelection::BBAaddCol1Content([	
-					'target'    => 'bba_qm2b', 
-					'origin'    => get_site_url().'/quiz/?begin',
-					'redirect'  => get_site_url().'/quiz/?pg2', 
-					'question'  => "I am brand new to lashing",
-					'selection' =>  [1,2,1,0] 
+					          'target'    => 'bba_qm2b', 
+					          'origin'    => get_site_url().'/quiz/?begin',
+					          'redirect'  => get_site_url().'/quiz/?pg2', 
+					          'question'  => "I am brand new to lashing",
+					          'selection' =>  [1,2,1,0] 
 			
-					],'lg-12');
+					],'lg-12', function() {
+							
+						return(BBAQMPerform::do_insert());
+						
+					});
+					
 					$html .= BBAQMSelection::addColContent();
-					$html .= BBAQMPerform::do_insert();			
+			
 					$html .= '</div>';
 
 					$html .= '<div class="col-12">';
 					$html .= BBAQMSelection::BBAaddCol1Content([	
-						'target'    => 'bba_qm2a', 
-						'origin'    => get_site_url().'/quiz/?begin',
-						'redirect'  => get_site_url().'/quiz/?pg2', 
-						'question'  => "I have some experience",
-						'selection' =>  [0,1,0,3] 
+					          'target'    => 'bba_qm2a', 
+					          'origin'    => get_site_url().'/quiz/?begin',
+					          'redirect'  => get_site_url().'/quiz/?pg2', 
+					          'question'  => "I have some experience",
+					          'selection' =>  [0,1,0,3] 
 				
-						],'lg-12');
+					],'lg-12', function() { 
+						
+						return(BBAQMPerform::do_insert());
+					
+					});
+					
 					$html .= BBAQMSelection::addColContent();
-					$html .= BBAQMPerform::do_insert();
 
 					$html .= '</div>';
 
