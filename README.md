@@ -109,7 +109,12 @@ add_action('init', function() {
        'question'  => "I have some experience",
        'selection' =>  [0,1,0,3] 
 
-    ],'lg');
+    ],'lg', function() { 
+						
+        return(BBAQMPerform::do_insert());
+					
+    });
+					
     BBAQMSelection::addColContent();
  });
 
